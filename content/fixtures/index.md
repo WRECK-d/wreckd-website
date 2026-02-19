@@ -13,7 +13,7 @@ Location: Orongorongo and South Coast.\
 Events Fee: TBC\
 Course: ~30km / 1040m\
 Route: Point to Point\
-Difficulty: (Mostly) Runnable\ 
+Difficulty: (Mostly) Runnable
 
 Check back later for more details.
 
@@ -22,16 +22,11 @@ Not for the Weak!
 
 Date: Early November
 
-Location: Mangatoetoe, Cape Palliser.
-
-Events Fee: TBC
-
-Course: ~27km / 2000m
-
-Route: Point to Point
-
+Location: Mangatoetoe, Cape Palliser.\
+Events Fee: TBC\
+Course: ~27km / 2000m\
+Route: Point to Point\
 Difficulty: Undulations better described as steep hills
-
 
 
 Check back later for more details.

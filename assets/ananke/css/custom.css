@@ -91,7 +91,8 @@ footer {
   font-weight: bold;
 }
 
-.join-form input {
+.join-form input[type="text"],
+.join-form input[type="email"] {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #2d4217;
@@ -105,6 +106,48 @@ footer {
 .join-form input:focus {
   outline: 2px solid #2d4217;
   outline-offset: 1px;
+}
+
+.join-form .membership-type {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.join-form .membership-type legend {
+  font-weight: bold;
+  color: #2d4217;
+  margin-bottom: 0.25rem;
+}
+
+.join-form .radio-label {
+  display: inline-block;
+  font-weight: normal;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+
+.join-form .radio-label input[type="radio"] {
+  width: auto;
+  margin-right: 0.25rem;
+  accent-color: #2d4217;
+}
+
+.join-form .checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-weight: normal;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.join-form .checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: #2d4217;
 }
 
 .join-form button[type="submit"] {

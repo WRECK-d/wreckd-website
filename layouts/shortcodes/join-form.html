@@ -10,18 +10,22 @@
   </div>
 
   <div class="form-group">
-    <label for="phone">Phone number</label>
-    <input type="tel" id="phone" name="phone" required>
+    <fieldset class="membership-type">
+      <legend>Membership type</legend>
+      <label class="radio-label">
+        <input type="radio" name="membership" value="adult" required> Adult
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="membership" value="youth"> Youth
+      </label>
+    </fieldset>
   </div>
 
   <div class="form-group">
-    <label for="next_of_kin">Next of kin</label>
-    <input type="text" id="next_of_kin" name="next_of_kin" required>
-  </div>
-
-  <div class="form-group">
-    <label for="next_of_kin_phone">Next of kin phone number</label>
-    <input type="tel" id="next_of_kin_phone" name="next_of_kin_phone" required>
+    <label class="checkbox-label">
+      <input type="checkbox" id="consent" name="consent" required>
+      <span>By filling out this form I am expressing my interest in becoming a member of WRECK'd and consent to my information being collected and retained for the purpose of processing this application.</span>
+    </label>
   </div>
 
   <button type="submit">Submit</button>
@@ -39,7 +43,12 @@ document.getElementById("join-form").addEventListener("submit", async function(e
   status.textContent = "";
   status.className = "form-status";
 
-  const data = Object.fromEntries(new FormData(this).entries());
+  const formData = new FormData(this);
+  const data = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    membership: formData.get("membership"),
+  };
 
   try {
     const resp = await fetch("{{ .Get "action" }}", {

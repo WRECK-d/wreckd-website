@@ -3,7 +3,7 @@ const ALLOWED_ORIGINS = [
   "http://wreckd.runs.nz",
 ];
 const GITHUB_REPO = "WRECK-d/form-submissions";
-const REQUIRED_FIELDS = ["name", "email", "phone", "next_of_kin", "next_of_kin_phone"];
+const REQUIRED_FIELDS = ["name", "email", "membership"];
 
 function isAllowedOrigin(origin) {
   return ALLOWED_ORIGINS.includes(origin);
@@ -77,12 +77,20 @@ export default {
       );
     }
 
+    if (!["adult", "youth"].includes(data.membership)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid membership type" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
+        }
+      );
+    }
+
     const submission = {
       name: data.name.trim(),
       email: data.email.trim(),
-      phone: data.phone.trim(),
-      next_of_kin: data.next_of_kin.trim(),
-      next_of_kin_phone: data.next_of_kin_phone.trim(),
+      membership: data.membership.trim(),
       submitted_at: new Date().toISOString(),
     };
 

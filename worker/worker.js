@@ -1,10 +1,17 @@
-const ALLOWED_ORIGIN = "https://wreckd.runs.nz";
+const ALLOWED_ORIGINS = [
+  "https://wreckd.runs.nz",
+  "http://wreckd.runs.nz",
+];
 const GITHUB_REPO = "WRECK-d/form-submissions";
 const REQUIRED_FIELDS = ["name", "email", "phone", "next_of_kin", "next_of_kin_phone"];
 
+function isAllowedOrigin(origin) {
+  return ALLOWED_ORIGINS.includes(origin);
+}
+
 function corsHeaders(origin) {
   return {
-    "Access-Control-Allow-Origin": origin === ALLOWED_ORIGIN ? ALLOWED_ORIGIN : "",
+    "Access-Control-Allow-Origin": isAllowedOrigin(origin) ? origin : "",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
@@ -38,7 +45,7 @@ export default {
       });
     }
 
-    if (origin && origin !== ALLOWED_ORIGIN) {
+    if (origin && !isAllowedOrigin(origin)) {
       return new Response(JSON.stringify({ error: "Forbidden" }), {
         status: 403,
         headers: { "Content-Type": "application/json" },

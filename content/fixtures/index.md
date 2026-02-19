@@ -13,7 +13,7 @@ Location: Orongorongo and South Coast.\
 Events Fee: TBC\
 Course: ~30km / 1040m\
 Route: Point to Point\
-Difficulty: (Mostly) Runnable
+Difficulty: (Mostly) runnable
 
 Check back later for more details.
 

@@ -5,9 +5,9 @@ description: "[Frequently] Ask Questions"
 
 ### How is this different from BSR (Big Sunday Runs)?
 
+WREC'd is an incorporated society. BSR is a state of mind.
 
 ### I know trail running!?
-
 
 ### Why an Inc.?
 

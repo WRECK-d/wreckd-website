@@ -3,6 +3,6 @@ title: "Join"
 description: "Join WRECK'd Running Club"
 ---
 
-Want to run with us? Just show up! All levels welcome.
+Want to run with us? Fill in the form below and we'll be in touch.
 
-Keep an eye on our events page for the next group run.
+{{< join-form action="WORKER_URL_PLACEHOLDER" >}}

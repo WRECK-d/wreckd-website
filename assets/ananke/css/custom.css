@@ -72,3 +72,72 @@ header {
 footer {
   border-top: 1px solid #2d4217;
 }
+
+/* Join form */
+.join-form {
+  max-width: 28rem;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.join-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.join-form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #2d4217;
+  font-weight: bold;
+}
+
+.join-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #2d4217;
+  background: #fff;
+  color: #2d4217;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.join-form input:focus {
+  outline: 2px solid #2d4217;
+  outline-offset: 1px;
+}
+
+.join-form button[type="submit"] {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #2d4217;
+  background: #2d4217;
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.join-form button[type="submit"]:hover {
+  background: #fff;
+  color: #2d4217;
+}
+
+.join-form button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.form-status.success {
+  color: #2d4217;
+}
+
+.form-status.error {
+  color: #8b0000;
+}

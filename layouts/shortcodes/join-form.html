@@ -1,0 +1,67 @@
+<form id="join-form" class="join-form" method="POST">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone number</label>
+    <input type="tel" id="phone" name="phone" required>
+  </div>
+
+  <div class="form-group">
+    <label for="next_of_kin">Next of kin</label>
+    <input type="text" id="next_of_kin" name="next_of_kin" required>
+  </div>
+
+  <div class="form-group">
+    <label for="next_of_kin_phone">Next of kin phone number</label>
+    <input type="tel" id="next_of_kin_phone" name="next_of_kin_phone" required>
+  </div>
+
+  <button type="submit">Submit</button>
+  <div id="form-status" class="form-status"></div>
+</form>
+
+<script>
+document.getElementById("join-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const status = document.getElementById("form-status");
+  const btn = this.querySelector("button[type=submit]");
+
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+  status.textContent = "";
+  status.className = "form-status";
+
+  const data = Object.fromEntries(new FormData(this).entries());
+
+  try {
+    const resp = await fetch("{{ .Get "action" }}", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const result = await resp.json();
+    if (resp.ok) {
+      status.textContent = "Thanks for signing up! We'll be in touch.";
+      status.className = "form-status success";
+      this.reset();
+    } else {
+      status.textContent = result.error || "Something went wrong. Please try again.";
+      status.className = "form-status error";
+    }
+  } catch (err) {
+    status.textContent = "Network error. Please try again.";
+    status.className = "form-status error";
+  }
+
+  btn.disabled = false;
+  btn.textContent = "Submit";
+});
+</script>

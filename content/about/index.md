@@ -20,11 +20,6 @@ We embrace challenge.
 
 WREC'kd has a committee.
 
-Andy Carruthers
-Callum Mallett
-Bogdan State
-Chris Martin
-Liz Palmer
 
 
 

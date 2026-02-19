@@ -21,6 +21,10 @@ theme = 'ananke'
     url = "/events/"
     weight = 20
   [[menu.main]]
+    name = "FAQ"
+    url = "/faq/"
+    weight = 20
+  [[menu.main]]
     name = "Join"
     url = "/join/"
     weight = 30

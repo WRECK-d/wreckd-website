@@ -2,6 +2,7 @@
 title: "FAQ"
 description: "Frequently Ask Questions"
 ---
+## \[Frequently]\ Asked Questions
 
 ### How is this different from BSR (Big Sunday Runs)?
 
@@ -29,7 +30,7 @@ WREC'kd is not a registered charity, you can help by engaging with our pursuits,
 ### I'm financial, but can't make an event?
 Cool! Accessibility is a priority, and your contribution helps others. It also allows us to put on cool projects you all benefit with.
 
-### [Sign me up!]((http://wreckd.runs.nz/join/)
+### [Sign me up!](http://wreckd.runs.nz/join/)
 
 
 

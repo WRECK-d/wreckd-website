@@ -1,8 +1,30 @@
 ---
 title: "About"
-description: "About WRECK'd Running Club"
+description: "About WREC'kd"
 ---
 
-WRECK'd is a Wellington-based running club open to runners of all abilities.
+WREC'kd is an Incorporated Society in Aotearoa that promotes endurance and adventure running activities. 
+We put on events for our members and support the Big Sunday Run philosophy.
 
-We believe running is better together. Our club offers a supportive community where you can push your limits, enjoy the trails and streets of Wellington, and have a good time doing it.
+## Philosphy
+
+We subscribe to a community of shared struggle and ambition. We look after each other, and we are principled in looking after the environment.
+We embrace challenge.
+
+[Manaakitanga]
+[Kaitiakitanga] 
+[Whanaungatanga]
+[Manawaroa]
+
+## Committee
+
+WREC'kd has a committee.
+
+Andy Carruthers
+Callum Mallett
+Bogdan State
+Chris Martin
+Liz Palmer
+
+
+

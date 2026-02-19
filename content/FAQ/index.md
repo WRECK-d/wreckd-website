@@ -2,7 +2,7 @@
 title: "FAQ"
 description: "Frequently Ask Questions"
 ---
-## \[Frequently]\ Asked Questions
+## \[Frequently] Asked Questions
 
 ### How is this different from BSR (Big Sunday Runs)?
 

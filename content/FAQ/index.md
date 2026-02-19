@@ -29,7 +29,7 @@ WREC'kd is not a registered charity, you can help by engaging with our pursuits,
 ### I'm financial, but can't make an event?
 Cool! Accessibility is a priority, and your contribution helps others. It also allows us to put on cool projects you all benefit with.
 
-### [Sign me up!](http://wreckd.runs.nz/fixtures/)
+### [Sign me up!]([http://wreckd.runs.nz/fixtures/](http://wreckd.runs.nz/join/)
 
 
 

@@ -8,7 +8,7 @@ WREC'kd organises grassroots running activities for its members.
 ### Mukamuka Munter
 ...is back
 
-Date: Mid-Late August
+Date: Mid-Late August\
 Location: Orongorongo and South Coast.\
 Events Fee: TBC\
 Course: ~30km / 1040m\

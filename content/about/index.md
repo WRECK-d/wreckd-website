@@ -26,6 +26,6 @@ We are a community of shared struggle and ambition.
 
 WREC'kd has a committee.
 
-
+[Contact Us](mailto:office@runs.nz)
 
 

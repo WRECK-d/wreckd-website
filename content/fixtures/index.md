@@ -9,16 +9,11 @@ WREC'kd organises grassroots running activities for its members.
 ...is back
 
 Date: Mid-Late August
-
-Location: Orongorongo and South Coast.
-
-Events Fee: TBC
-
-Course: ~30km / 1040m
-
-Route: Point to Point
-
-Difficulty: (Mostly) Runnable
+\Location: Orongorongo and South Coast.
+\Events Fee: TBC
+\Course: ~30km / 1040m
+\Route: Point to Point
+\Difficulty: (Mostly) Runnable
 
 Check back later for more details.
 

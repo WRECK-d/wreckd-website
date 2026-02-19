@@ -1,0 +1,74 @@
+/* WRECK'd monotone theme — white bg, monospace, #2d4217 text */
+
+* {
+  font-family: "Courier New", Courier, monospace !important;
+}
+
+body {
+  background-color: #fff !important;
+  color: #2d4217 !important;
+}
+
+/* Header and footer */
+.bg-white {
+  background-color: #fff !important;
+}
+
+header, footer {
+  background-color: #fff !important;
+  color: #2d4217 !important;
+}
+
+/* All text elements */
+h1, h2, h3, h4, h5, h6,
+p, a, li, span, td, th,
+.f2, .f3, .f4, .f5, .f6,
+.f-subheadline-l, .f-headline {
+  color: #2d4217 !important;
+}
+
+/* Links */
+a {
+  color: #2d4217 !important;
+  text-decoration: underline;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* Navigation */
+nav a {
+  color: #2d4217 !important;
+}
+
+/* Hero header text */
+.white-90, .white-80, .white-70, .white-60 {
+  color: #2d4217 !important;
+}
+
+/* Remove any dark overlays on headers */
+.bg-black-60, .bg-black-80, .bg-black-40 {
+  background-color: transparent !important;
+}
+
+/* Article and content text */
+.nested-copy-line-height,
+.nested-copy-line-height p,
+.nested-copy-line-height li {
+  color: #2d4217 !important;
+}
+
+/* Footer text */
+footer, footer a, footer span {
+  color: #2d4217 !important;
+}
+
+/* Subtle border for visual separation */
+header {
+  border-bottom: 1px solid #2d4217;
+}
+
+footer {
+  border-top: 1px solid #2d4217;
+}

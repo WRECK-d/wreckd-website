@@ -14,6 +14,9 @@
             {{ . }}
           </h2>
         {{ end }}
+        {{ with .Params.motto }}
+          <p class="f5 f4-l mt3 mb0 site-motto">{{ . }}</p>
+        {{ end }}
       </div>
     </div>
   </header>
@@ -26,9 +29,12 @@
           {{ .Title | compare.Default .Site.Title }}
         </h1>
         {{ with .Params.description }}
-          <h2 class="fw1 f5 f3-l lh-copy mt3 mb4 site-description">
+          <h2 class="fw1 f5 f3-l lh-copy mt3 mb0 site-description">
             {{ . }}
           </h2>
+        {{ end }}
+        {{ with .Params.motto }}
+          <p class="f5 f4-l mt3 mb4 site-motto">{{ . }}</p>
         {{ end }}
       </div>
     </div>

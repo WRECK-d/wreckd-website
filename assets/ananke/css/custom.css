@@ -15,9 +15,20 @@ body {
   color: #2d4217 !important;
 }
 
+/* Nav bar site title — sans-serif */
+nav a.f3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
 /* Subtitle — monospace, left-aligned */
 .site-description {
   color: #2d4217 !important;
+}
+
+/* Motto */
+.site-motto {
+  color: #2d4217 !important;
+  font-style: italic;
 }
 
 /* Header and footer */

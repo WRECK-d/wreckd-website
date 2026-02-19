@@ -1,4 +1,4 @@
-/* WRECK'd monotone theme — white bg, monospace, #2d4217 text */
+/* WREC'kd monotone theme — white bg, monospace, #2d4217 text */
 
 * {
   font-family: "Courier New", Courier, monospace !important;
@@ -6,6 +6,17 @@
 
 body {
   background-color: #fff !important;
+  color: #2d4217 !important;
+}
+
+/* Site title — sans-serif, left-aligned */
+.site-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  color: #2d4217 !important;
+}
+
+/* Subtitle — monospace, left-aligned */
+.site-description {
   color: #2d4217 !important;
 }
 

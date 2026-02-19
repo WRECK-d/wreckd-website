@@ -1,6 +1,6 @@
 baseURL = 'https://wreckd.runs.nz/'
 languageCode = 'en-nz'
-title = "WRECK'd Running Club"
+title = "WREC'kd"
 theme = 'ananke'
 
 [params]

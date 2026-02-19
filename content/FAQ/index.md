@@ -1,6 +1,6 @@
 ---
 title: "FAQ"
-description: "[Frequently] Ask Questions"
+description: "Frequently Ask Questions"
 ---
 
 ### How is this different from BSR (Big Sunday Runs)?

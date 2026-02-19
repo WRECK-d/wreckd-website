@@ -13,13 +13,13 @@ We put on events for our members and support the Big Sunday Runs philosophy.
 We live for the hills and would live *in the hills* if we could. We roam the tracks, ridges and riverbeds. We have a special connection to the Wellington hills, and the Aorangi, Remutaka and Tararua ranges.  
 
 ### Manaakitanga
-We find both freedom and purpose in the hills and want to help others find their path to the backcountry.
+We find both freedom and purpose in the hills and want to help others find their path to the backcountry, whatever their level of experience.
 
 ### Whanaungatanga
-We look after one another and the environment. We honour the history of these places.
+We look after one another and the environment. We honour the rich history of the hills, and work towards the preservation of these landscapes.
 
 ### Manawaroa
-We are a community of shared struggle and ambition. 
+We are a community of shared struggle and ambition.
 
 ## Committee
 

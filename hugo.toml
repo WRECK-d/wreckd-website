@@ -1,0 +1,24 @@
+baseURL = 'https://wreckd.runs.nz/'
+languageCode = 'en-nz'
+title = "WRECK'd Running Club"
+theme = 'ananke'
+
+[params]
+  description = "Wellington running club"
+  background_color_class = "bg-dark-green"
+  featured_image = ""
+  show_reading_time = false
+
+[menu]
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 10
+  [[menu.main]]
+    name = "Events"
+    url = "/events/"
+    weight = 20
+  [[menu.main]]
+    name = "Join"
+    url = "/join/"
+    weight = 30

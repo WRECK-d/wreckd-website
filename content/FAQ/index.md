@@ -6,7 +6,7 @@ description: "Frequently Ask Questions"
 
 ### How is this different from BSR (Big Sunday Runs)?
 
-WREC'd is a (slightly)\ organised group. BSR is a state of mind.
+WREC'd is a (slightly) organised group. BSR is a state of mind.
 
 ### I know trail running!?
 Adventure running, endurance running, running for hours in the Wilderness. 

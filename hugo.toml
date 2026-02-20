@@ -21,7 +21,7 @@ theme = 'ananke'
     url = "/fixtures/"
     weight = 20
   [[menu.main]]
-    name = "FAQ"
+    name = "Faq"
     url = "/faq/"
     weight = 20
   [[menu.main]]

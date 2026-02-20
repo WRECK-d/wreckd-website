@@ -19,4 +19,5 @@ WREC'kd has a committee.
 
 [Contact Us](mailto:office@runs.nz)
 
+### [Constitution](https://drive.google.com/file/d/13xENDM4tiLIc8xLUrKV9za-UpddFyDmD/view?usp=drivesdk)
 

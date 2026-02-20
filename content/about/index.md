@@ -5,7 +5,7 @@ description: "About WREC'kd"
 
 WREC'kd is an Incorporated Society in Aotearoa that promotes endurance and adventure running activities in New Zealand's hills and mountains. 
 
-We put on events for our members and support the Big Sunday Runs kaupapa.
+We put on events for our members, and collaborate with others doing like-minded things.
 
 ## Philosphy
 

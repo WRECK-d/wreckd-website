@@ -9,7 +9,7 @@ description: "Frequently Ask Questions"
 WREC'kd is a (slightly) organised group. BSR is a state of mind.
 
 ### I know trail running!?
-Call it running if you like? Adventure running, endurance running...for hours in the wilderness.
+Call it running if you like. Adventure running, endurance running...for hours in the wilderness.
 
 ### Why an Inc.?
 Chores and admin. WREC'kd hosts grassroots activities for its members. We collaborate with people and groups doing cool things!

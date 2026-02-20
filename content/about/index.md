@@ -11,7 +11,7 @@ We put on events for our members, and collaborate with others doing like-minded 
 
 We are part of nature, not separate.
 We embrace the challenge.
-In the hills, we respect the ngahere and whenua. We Back each other.
+In the hills, we respect the ngahere and whenua. We back each other.
 
 ## Committee
 

@@ -15,7 +15,8 @@ Call it running if you like? Adventure running, endurance running...for hours in
 Chores and admin. WREC'kd hosts grassroots activities for its members. We collaborate with people and groups doing cool things!
 
 ### What events?
-We exist to bring back the classic 'Martini' events, and other recreation in the hills!\
+We exist to bring back the classic 'Martini' events, and for other recreation in the hills!\
+
 Check out our [fixtures](https://wreckd.runs.nz/fixtures/) page.\
 
 These look like races? There is a start, a finish and an elapsed time.

@@ -6,14 +6,18 @@ description: "Frequently Ask Questions"
 
 ### How is this different from BSR (Big Sunday Runs)?
 
-WREC'd is a (slightly) organised group. BSR is a state of mind.
+WREC'kd is a (slightly) organised group. BSR is a state of mind.
 
 ### I know trail running!?
 Adventure running, endurance running, running for hours in the Wilderness. 
 Pushing the boundary of possibility.
 
 ### Why an Inc.?
-Admin! WREC'kd hosts grassroots for its members.
+Admin! WREC'kd hosts grassroots events for its members.
+
+### What events?
+We exist to bring back the classic 'Martini' races, and do cool things in the hills!\
+Check out our [fixtures](https://wreckd.runs.nz/fixtures/) page, or reach out if you have ideas!
 
 ### What about rules?
 Our participants are expected to be aware of their skills and limits in the backcountry. 

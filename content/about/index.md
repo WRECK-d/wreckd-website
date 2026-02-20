@@ -10,16 +10,16 @@ We put on events for our members and support the Big Sunday Runs kaupapa.
 ## Philosphy
 
 ### Kaitiakitanga
-People are part of nature, not seperate from it. We roam the tracks, ridges and riverbeds. We have a special connection to the Wellington ngahere, the Aorangi, Remutaka and Tararua.  
+Through our actions we enhance te taiao and its's mauri. People are part of nature, not seperate.
 
 ### Manaakitanga
-We find both freedom and purpose in the wilderness and want to help others find their path to the backcountry, whatever their level of experience.
+Mana grows when you uplift others. We are encouraging and respecting of differences. 
 
 ### Whanaungatanga
-We honour the rich history of the hills, and work towards the preservation of these landscapes. We share suffering in the pursuit of adventure.
+The sense of shared identity. Our interconnected community grows and builds to something bigger than ourselves. 
 
 ### Manawaroa
-We are a community of shared struggle and ambition.
+We are a community of shared struggle and ambition. Embrace challenge, together.
 
 
 ## Committee

@@ -17,9 +17,9 @@ Chores and admin. WREC'kd hosts grassroots activities for its members. We collab
 ### What events?
 We exist to bring back the classic 'Martini' events, and for other recreation in the hills!
 
-\Check out our [fixtures](https://wreckd.runs.nz/fixtures/) page.
+Check out our [fixtures](https://wreckd.runs.nz/fixtures/) page.
 
-\These look like races? There is a start, a finish and an elapsed time.
+These look like races? There is a start, a finish and an elapsed time.
 It is also time on feet shared and solo.
 
 

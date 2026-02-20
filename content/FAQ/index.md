@@ -35,8 +35,8 @@ We may only charge a reasonable recovery of costs for any events.
 ### Love it! How can I help?
 WREC'kd is not a registered charity. You can help by engaging in our pursuits, or support us by volunteering.
 
-### I'm financial member, but can't make an event?
-Cool! Accessibility is a priority, and your contribution will help out others. It is enabling to put on cool projects we all benefit from.
+### I'm a financial member, but can't make an event?
+Cool! Accessibility is a priority, and your contribution will help out others. It enables us to put on some sweet projects we all benefit from.
 
 ### [Sign me up!](http://wreckd.runs.nz/join/)
 

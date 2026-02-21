@@ -3,7 +3,7 @@ title: "Fixtures"
 description: "Upcoming \"runs\""
 ---
 
-WREC'kd organises grassroots running activities for its members.
+WREC'kd organises grassroots running activities for its [members](https://wreckd.runs.nz/join/).
 
 ### Mukamuka Munter
 ...is back

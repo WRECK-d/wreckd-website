@@ -8,7 +8,7 @@ WREC'kd organises grassroots running activities for its [members](https://wreckd
 ### Mukamuka Munter
 ...is back
 
-Date: Mid-Late August\
+Date: Saturday 15 August\
 Location: Orongorongo and South Coast.\
 Events Fee: TBC\
 Course: ~30km / 1040m\
@@ -20,7 +20,7 @@ Check back later for more details.
 ### Aorangi Undulator
 Not for the Weak!
 
-Date: Early November
+Date: (1st pencil) 31st October
 
 Location: Mangatoetoe, Cape Palliser.\
 Events Fee: TBC\

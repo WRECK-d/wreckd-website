@@ -15,7 +15,8 @@ In the hills, we respect the ngahere and whenua. We back each other.
 
 ## Committee
 
-WREC'kd has a committee.
+The admin is sorted by:
+Callum Mallett + Bogdan State +  Chris Martin + Liz Palmer + Allira Hanczakowski + Nick On + Andy Carruthers.
 
 [Contact Us](mailto:office@runs.nz)
 

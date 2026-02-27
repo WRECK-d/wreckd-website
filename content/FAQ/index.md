@@ -19,8 +19,10 @@ We exist to bring back the classic 'Martini' events, and for other recreation in
 
 Check out our [fixtures](https://wreckd.runs.nz/fixtures/) page.
 
-These look like races? There is a start, a finish and an elapsed time.
-It is also time on feet shared and solo.
+### But these look like races? 
+
+There is a start, a finish, and an elapsed time.
+It is also time on foot with others or solo.
 
 
 ### What about rules?

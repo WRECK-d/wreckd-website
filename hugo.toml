@@ -21,7 +21,7 @@ theme = 'ananke'
     url = "/fixtures/"
     weight = 20
   [[menu.main]]
-    name = "Recreation"
+    name = "recreation"
     url = "/fixtures/recreation/"
     parent = "Fixtures"
     weight = 1

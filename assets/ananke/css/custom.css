@@ -19,36 +19,6 @@ body {
 nav a.f3 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
-/* Dropdown nav */
-.nav-dropdown { position: relative; }
-
-.nav-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 160px;
-  z-index: 999;
-  border: 1px solid #e0e0e0;
-  background: white;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-dropdown:hover .nav-dropdown-menu {
-  display: block;
-}
-
-.nav-dropdown-menu li a:hover {
-  background-color: #f4f4f4;
-}
-
-.nav-arrow {
-  font-size: 0.7rem;
-  margin-left: 2px;
-}
-
 
 /* Subtitle — monospace, left-aligned */
 .site-description {

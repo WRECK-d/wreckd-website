@@ -1,5 +1,5 @@
 ---
 title: "Recreation"
+description: "General activities"
 ---
-
-Information about recreational runs.
+Information about other happenings.

@@ -1,0 +1,17 @@
+{{ $currentPage := . }}
+<nav class="flex-ns justify-between items-center pa3 pl0-l">
+  {{ range .Site.Menus.main }}
+    {{ if .HasChildren }}
+      <div class="nav-dropdown relative dib">
+        <a class="link db pv2 ph2 no-underline dark-gray hover-mid-gray f6 f5-l" href="{{ .URL }}">{{ .Name }} ▾</a>
+        <ul class="nav-dropdown-menu list pa0 ma0 absolute bg-white ba b--light-gray">
+          {{ range .Children }}
+            <li><a class="link db pv2 ph3 no-underline dark-gray hover-bg-light-gray f6 nowrap" href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ else }}
+      <a class="link db pv2 ph2 no-underline dark-gray hover-mid-gray f6 f5-l" href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}
+  {{ end }}
+</nav>

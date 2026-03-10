@@ -39,7 +39,7 @@ Date: TBC May-June?\
 Location: As determined by membership\
 Agenda:\
 -Run\
--Business\
+-Business
 
 
 WREC'kd has no traditions, But once a year we must gather at such a place and time for two important purposes: to go for a run, and to take care of admin

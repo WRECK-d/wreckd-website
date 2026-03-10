@@ -42,7 +42,7 @@ Agenda:\
 -Business
 
 
-WREC'kd has no traditions, But once a year we must gather at such a place and time for two important purposes: to go for a run, and to take care of admin
-Each year they quorum decides the choosen location for the following year.
+WREC'kd has no traditions, But once a year we must gather at such a place and time for two important purposes: to go for a run, and to take care of admin.\
+Each year the quorum decides the choosen location for the following year.
 
 Further details, including the confirmed date and locale, will be circulated once agreed.

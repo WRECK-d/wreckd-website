@@ -13,10 +13,10 @@
     <fieldset class="membership-type">
       <legend>Membership type</legend>
       <label class="radio-label">
-        <input type="radio" name="membership" value="adult" required> Adult
+        <input type="radio" name="membership" value="adult" required> Adult — $120 NZD
       </label>
       <label class="radio-label">
-        <input type="radio" name="membership" value="youth"> Youth
+        <input type="radio" name="membership" value="youth"> Youth — $70 NZD
       </label>
     </fieldset>
   </div>
@@ -24,11 +24,11 @@
   <div class="form-group">
     <label class="checkbox-label">
       <input type="checkbox" id="consent" name="consent" required>
-      <span>By filling out this form I am expressing my interest in becoming a member of WRECK'd and consent to my information being collected and retained for the purpose of processing this application.</span>
+      <span>By proceeding I am applying for membership of WREC'kd and consent to my information being collected and retained for the purpose of processing this application and payment.</span>
     </label>
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="submit">Proceed to Payment</button>
   <div id="form-status" class="form-status"></div>
 </form>
 
@@ -39,7 +39,7 @@ document.getElementById("join-form").addEventListener("submit", async function(e
   const btn = this.querySelector("button[type=submit]");
 
   btn.disabled = true;
-  btn.textContent = "Submitting...";
+  btn.textContent = "Redirecting to payment...";
   status.textContent = "";
   status.className = "form-status";
 
@@ -51,16 +51,15 @@ document.getElementById("join-form").addEventListener("submit", async function(e
   };
 
   try {
-    const resp = await fetch("{{ .Get "action" }}", {
+    const resp = await fetch("{{ .Get "action" }}/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     const result = await resp.json();
-    if (resp.ok) {
-      status.textContent = "Thanks for signing up! We'll be in touch.";
-      status.className = "form-status success";
-      this.reset();
+    if (resp.ok && result.url) {
+      window.location.href = result.url;
+      return;
     } else {
       status.textContent = result.error || "Something went wrong. Please try again.";
       status.className = "form-status error";
@@ -71,6 +70,6 @@ document.getElementById("join-form").addEventListener("submit", async function(e
   }
 
   btn.disabled = false;
-  btn.textContent = "Submit";
+  btn.textContent = "Proceed to Payment";
 });
 </script>

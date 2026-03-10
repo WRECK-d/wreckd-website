@@ -10,7 +10,7 @@ WREC'kd organises grassroots running activities for its [members](https://wreckd
 
 Date: Saturday 15 August\
 Location: Orongorongo and South Coast.\
-Events Fee: TBC\
+Events Fee: TBC. $10-20?\
 Course: ~30km / 1040m\
 Route: Point to Point\
 Difficulty: (Mostly) runnable
@@ -24,7 +24,7 @@ Not for the Weak!
 Date: (1st pencil) 31st October
 
 Location: Mangatoetoe, Cape Palliser.\
-Events Fee: TBC\
+Events Fee: TBC $20-30?\
 Course: ~27km / 2000m\
 Route: Point to Point\
 Difficulty: Undulations better described as steep hills

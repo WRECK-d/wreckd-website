@@ -8,8 +8,7 @@ Fill in the form below and complete payment to join.\
 Annual membership is open to anyone\
 Our Members can participate in the fun things organised by the Society. 
 
-Fixtures may include additional cost to cover any reasonable and actual event expenses.
-
+For further details on our activities (including races and trips), see our fixtures page.
 
 
 WREC'kd annual membership for the 2026/27 season:

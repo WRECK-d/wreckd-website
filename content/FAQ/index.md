@@ -14,6 +14,8 @@ Call it running if you like. Adventure running, endurance running...for hours in
 ### Why an Inc.?
 Chores and admin. WREC'kd hosts grassroots activities for its members. We collaborate with people and groups doing cool things!
 
+As an organised group (and not for profit) we can get outside together without some of the traditional restrictions that typically apply with commercially organised events. 
+
 ### What events?
 We exist to bring back the classic 'Martini' events, and for other recreation in the hills!
 

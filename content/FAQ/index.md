@@ -4,14 +4,24 @@ description: "Frequently Ask Questions"
 ---
 ## \[Frequently] Asked Questions
 
+### I know trail running!?
+Call it running if you like. Adventure running, endurance running...for hours in the wilderness.
+
 ### How is this different from BSR (Big Sunday Runs)?
 
 WREC'kd is a (slightly) organised group. BSR is a state of mind.
 
-### I know trail running!?
-Call it running if you like. Adventure running, endurance running...for hours in the wilderness.
+### What does becoming a financial member get me?
 
-### Why an Inc.?
+Access to the events, we think the subscription represents great value even if you can only make one fixture.
+There may be small fee for additional event related costs. (we might need to cover the sausages and beers at the finish line). 
+We also supports trail work, conservation efforts and advocacy.
+
+### How do I enter the events?
+
+Events are for subscribed members only. When you sign-up we'll provide you a bib # for the year, the details for registration and fixture sign-up, and access to a snazzy portal. 
+
+### Why the Inc.?
 Chores and admin. WREC'kd hosts grassroots activities for its members. We collaborate with people and groups doing cool things!
 
 As an organised group (and not for profit) we can get outside together without some of the traditional restrictions that typically apply with commercially organised events. 

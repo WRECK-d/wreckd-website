@@ -13,6 +13,8 @@
     "addressCountry": "NZ"
   }
 }
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
 </script>
 {{ $featured_image := partials.Include "func/GetFeaturedImage.html" . }}
 {{ if $featured_image }}

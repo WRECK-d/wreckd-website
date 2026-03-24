@@ -1,8 +1,4 @@
-
-
-
 <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -17,10 +13,6 @@
   }
 }
 </script>
-
-{{ $featured_image := partials.Include "func/GetFeaturedImage.html" . }}
-
-
 {{ $featured_image := partials.Include "func/GetFeaturedImage.html" . }}
 {{ if $featured_image }}
   {{ $featured_image_class := site.Params.featured_image_class | compare.Default "cover bg-top" }}

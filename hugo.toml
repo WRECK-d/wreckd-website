@@ -1,10 +1,10 @@
 baseURL = 'https://wreckd.runs.nz/'
 languageCode = 'en-nz'
-title = "WREC'kd"
+title = "WREC'kd – Wellington Trail & Endurance Running Club | New Zealand"
 theme = 'ananke'
 
 [params]
-  description = "Wellington trail and endurance running club. Grassroots events in the Orongorongo, Remutaka, Tararua and Aorangi ranges. Join WREC'kd – Wilderness Running and Endurance Collective Inc. We run the Mukamuka Munter and Aorangi Undulator. Local Wilderness adventures in the Wairarapa and Wellington Region"
+  description = "WREC'kd is Wellington's trail and endurance running club. Grassroots events in the Orongorongo, Remutaka, Tararua and Aorangi ranges. Join the Wilderness Running and Endurance Collective and run the Mukamuka Munter, Aorangi Undulator and more across the lower North Island."
   background_color_class = "bg-white"
   body_classes = "bg-white"
   featured_image = ""

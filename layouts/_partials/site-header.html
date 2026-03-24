@@ -1,4 +1,19 @@
 <meta name="description" content="{{ .Site.Params.description }}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "WREC'kd – Wilderness Running and Endurance Collective",
+  "url": "https://wreckd.runs.nz",
+  "sport": "Trail Running",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Wellington",
+    "addressCountry": "NZ"
+  }
+}
+</script>
 {{ $featured_image := partials.Include "func/GetFeaturedImage.html" . }}
 {{ if $featured_image }}
   {{ $featured_image_class := site.Params.featured_image_class | compare.Default "cover bg-top" }}

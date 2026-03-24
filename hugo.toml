@@ -4,7 +4,7 @@ title = "WREC'kd"
 theme = 'ananke'
 
 [params]
-  description = "Wellington running club"
+  description = "Wellington trail and endurance running club. Grassroots events in the Orongorongo, Remutaka, Tararua and Aorangi ranges. Join WREC'kd – Wilderness Running and Endurance Collective Inc. We run the Mukamuka Munter and Aorangi Undulator. Local Wilderness adventures in the Wairarapa and Wellington Region"
   background_color_class = "bg-white"
   body_classes = "bg-white"
   featured_image = ""

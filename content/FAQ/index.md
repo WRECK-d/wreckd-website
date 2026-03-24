@@ -1,6 +1,6 @@
 ---
 title: "FAQ"
-description: "Frequently Ask Questions"
+description: "What is WRECkd? What Events, How do I run the Mukamuka Munter and Aorangi Undulator? Wilderness and Trail Running in Wellington"
 ---
 ## \[Frequently] Asked Questions
 

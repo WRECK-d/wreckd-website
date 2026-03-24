@@ -1,6 +1,6 @@
 ---
 title: "Join"
-description: "Join WRECK'd"
+description: "Join WRECK'd, The Wilderness Running and Endurance Collective Inc. WRECkd puts on races for our membership. Registration and Event Sign up"
 ---
 
 Want to run with us? Easy!\

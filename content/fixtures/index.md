@@ -3,7 +3,7 @@ title: "Fixtures"
 description: "Upcoming \"runs\". Mukamuka Munter, Wellington Trail and Adventure Running. Local Grassroots sport. Aorangi Undulator. Orongorongo,Remutaka, Tararua, Aorangi Ranges events"
 ---
 
-WREC'kd organises grassroots running activities for its [members](https://wreckd.runs.nz/join/).
+WREC'kd organises grassroots running activities for its [members](/join/).
 
 ### Mukamuka Munter
 ...is back
@@ -16,7 +16,7 @@ Route: Point to Point\
 Difficulty: (Mostly) runnable
 
 [Fixture Card - TBC
-](https://wreckd.runs.nz/fixtures/Mukamuka%20Munter.pdf)
+](/fixtures/Mukamuka%20Munter.pdf)
 
 ### Aorangi Undulator
 Not for the Weak!

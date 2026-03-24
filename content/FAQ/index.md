@@ -29,7 +29,7 @@ As an organised group (and not for profit) we can get outside together without s
 ### What events?
 We exist to bring back the classic 'Martini' events, and for other recreation in the hills!
 
-Check out our [fixtures](https://wreckd.runs.nz/fixtures/) page.
+Check out our [fixtures](/fixtures/) page.
 
 ### But these look like races? 
 
@@ -52,7 +52,7 @@ WREC'kd is not a registered charity. You can help by engaging in our pursuits, o
 ### I'm a financial member, but can't make an event?
 Cool! Accessibility is a priority, and your contribution will help out others. It enables us to put on some sweet projects we all benefit from.
 
-### [Sign me up!](http://wreckd.runs.nz/join/)
+### [Sign me up!](/join/)
 
 
 

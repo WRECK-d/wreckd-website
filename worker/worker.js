@@ -1,6 +1,6 @@
 const ALLOWED_ORIGINS = [
-  "https://wreckd.runs.nz",
-  "http://wreckd.runs.nz",
+  "https://wreckd.org.nz",
+  "http://wreckd.org.nz",
 ];
 const GITHUB_REPO = "WRECK-d/form-submissions";
 const REQUIRED_FIELDS = ["name", "email", "membership"];
@@ -212,8 +212,8 @@ async function handleCreateCheckoutSession(request, env) {
         "line_items[0][price]": priceId,
         "line_items[0][quantity]": "1",
         customer_email: data.email.trim(),
-        success_url: "https://wreckd.runs.nz/join-success/",
-        cancel_url: "https://wreckd.runs.nz/join-cancelled/",
+        success_url: "https://wreckd.org.nz/join-success/",
+        cancel_url: "https://wreckd.org.nz/join-cancelled/",
         "metadata[name]": data.name.trim(),
         "metadata[email]": data.email.trim(),
         "metadata[membership]": data.membership.trim(),

@@ -1,6 +1,6 @@
 ---
 title: "Fixtures"
-description: "Upcoming \"runs\""
+description: "Upcoming \"runs\". Mukamuka Munter, Wellington Trail and Adventure Running. Local Grassroots sport. Aorangi Undulator. Orongorongo,Remutaka, Tararua, Aorangi Ranges events"
 ---
 
 WREC'kd organises grassroots running activities for its [members](https://wreckd.runs.nz/join/).

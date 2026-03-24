@@ -1,0 +1,75 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "WREC'kd – Wilderness Running and Endurance Collective",
+  "url": "https://wreckd.runs.nz",
+  "sport": "Trail Running",
+  "description": "Wellington's trail and endurance running club. Grassroots events in the Orongorongo, Remutaka, Tararua and Aorangi ranges.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Wellington",
+    "addressRegion": "Wellington",
+    "addressCountry": "NZ"
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": -41.2865,
+      "longitude": 174.7762
+    },
+    "geoRadius": "150000"
+  }
+}
+</script>
+{{ if eq .RelPermalink "/fixtures/" }}
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    "name": "Mukamuka Munter",
+    "startDate": "2026-08-15",
+    "location": {
+      "@type": "Place",
+      "name": "Orongorongo and South Coast",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Wellington",
+        "addressCountry": "NZ"
+      }
+    },
+    "organizer": {
+      "@type": "SportsOrganization",
+      "name": "WREC'kd – Wilderness Running and Endurance Collective",
+      "url": "https://wreckd.runs.nz"
+    },
+    "sport": "Trail Running",
+    "description": "Approx 30km point-to-point trail run with 1040m elevation through the Orongorongo and South Coast, Wellington."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    "name": "Aorangi Undulator",
+    "startDate": "2026-10-31",
+    "location": {
+      "@type": "Place",
+      "name": "Mangatoetoe, Cape Palliser",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Wairarapa",
+        "addressCountry": "NZ"
+      }
+    },
+    "organizer": {
+      "@type": "SportsOrganization",
+      "name": "WREC'kd – Wilderness Running and Endurance Collective",
+      "url": "https://wreckd.runs.nz"
+    },
+    "sport": "Trail Running",
+    "description": "Approx 27km trail run with 2000m elevation through the Aorangi Ranges, Cape Palliser. Not for the weak."
+  }
+]
+</script>
+{{ end }}

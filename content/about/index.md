@@ -1,6 +1,7 @@
 ---
 title: "About"
-description: "About WREC'kd"
+description: "About WREC'kd. Your local running club
+ Grassroots running events. Wellington Ridgeline Runners. Big Sunday Runs, Wellington Trail Running Scene. Conservation and Adventures"
 ---
 
 WREC'kd is an Incorporated Society in Aotearoa that promotes endurance and adventure running activities in New Zealand's hills and mountains. 

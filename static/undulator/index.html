@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aorangi Undulator</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root {
+  --blue: #1a4a8a;
+  --blue-light: #2a6abf;
+  --ink: #0d1a2e;
+  --paper: #f8f7f4;
+  --font-body: 'IBM Plex Mono', monospace;
+  --font-display: 'Barlow Condensed', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  background-color: var(--paper);
+  margin: 0;
+  font-family: var(--font-body);
+}
+
+/* DOTS GRID */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Ccircle cx='24' cy='24' r='1.2' fill='%231a4a8a' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 96px 96px;
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
+}
+
+.grid-overlay.scrolling {
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
+}
+
+.page {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 32px 120px;
+}
+
+section {
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 5;
+}
+
+/* ── HEADER ── */
+header {
+  margin-top: 32px;
+  margin-bottom: 130px;
+  position: relative;
+  margin-left: -16px;
+  margin-right: -16px;
+  height: 300px;
+  z-index: 20;
+}
+
+.header-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+}
+
+.logo-wrap {
+  position: absolute;
+  top: 250px;
+  left: 16px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.logo-aorangi {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 5.5vw, 3.2rem);
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--blue);
+  line-height: 0.95;
+  display: block;
+  letter-spacing: 0.04em;
+}
+
+.logo-undulator {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 7.5vw, 4.4rem);
+  color: var(--blue);
+  line-height: 0.85;
+  text-transform: uppercase;
+  display: block;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 520px) {
+  header {
+    height: 220px;
+    margin-bottom: 80px;
+  }
+  .logo-wrap {
+    left: 8px !important;
+    top: 185px !important;
+  }
+  .logo-aorangi {
+    font-size: clamp(1.4rem, 7vw, 2rem) !important;
+  }
+  .logo-undulator {
+    font-size: clamp(1.8rem, 9vw, 3rem) !important;
+  }
+}
+
+/* ── BODY TEXT ── */
+.body-text {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--paper);
+  padding: 15px;
+  display: inline-block;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* ── TAG LINKS ── */
+.tag-link {
+  display: inline-block;
+  background: var(--blue);
+  color: white;
+  padding: 4px 9px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+
+.tag-link:hover {
+  background: var(--blue-light);
+  transform: scale(1.04);
+}
+
+/* ── ROUTE TABLE ── */
+.route-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  border: none;
+}
+
+.route-table td {
+  padding: 20px 15px;
+  border: none;
+  vertical-align: top;
+  color: var(--ink);
+}
+
+.route-table tr:not(:last-child) td {
+  border-bottom: 0.5px solid var(--blue);
+}
+
+.route-table td:first-child {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  width: 110px;
+  border-right: 0.5px solid var(--blue);
+  padding-right: 20px;
+}
+
+.route-table td:last-child {
+  padding-left: 20px;
+}
+
+/* ── MAP ── */
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0;
+}
+
+#map {
+  width: 100%;
+  height: 420px;
+  background: transparent;
+  position: relative;
+  z-index: 20;
+}
+
+/* ── REGISTER BUTTON ── */
+.gpx-section {
+  position: relative;
+  z-index: 20;
+  margin-bottom: 60px;
+}
+
+.register-button {
+  display: block;
+  background: var(--blue);
+  color: white;
+  padding: 25px 40px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.1s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  background: var(--blue-light);
+  transform: translateY(-2px);
+}
+
+.register-button:active {
+  transform: translateY(0);
+}
+
+/* ── WRECKD BOX ── */
+.wreckd-box {
+  position: relative;
+  background: var(--blue);
+  color: white;
+  padding: 30px;
+  z-index: 20;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  color: #6b7a90;
+  font-size: 0.75rem;
+  padding: 40px 0;
+  border-top: 0.5px solid #dde2ea;
+}
+
+.footer-link {
+  color: #6b7a90;
+  text-decoration: none;
+  border-bottom: 1px solid #6b7a90;
+}
+
+.footer-link:hover {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+</style>
+</head>
+<body>
+
+<div class="grid-overlay"></div>
+
+<div class="page">
+
+  <header>
+    <img src="coast25.jpg" alt="Aorangi Forest" class="header-bg">
+    <div class="logo-wrap">
+      <span class="logo-aorangi">Aorangi</span>
+      <span class="logo-undulator">Undulator</span>
+    </div>
+  </header>
+
+  <section>
+    <span class="section-label">Deep in the Aorangi Forest</span>
+    <p class="body-text">
+      The Aorangi Undulator is a point-to-point trail race through the heart of the Aorangi Forest Park — one of New Zealand's most remote and seldom-visited wilderness areas. Expect relentless ridge undulations, dense native bush, and long sections where the only sounds are your own breathing and the wind in the tōtara.
+    </p>
+    <p class="body-text">
+      A demanding and beautiful course that rewards runners who respect the terrain. A WRECKd event, proudly put on by the <a href="https://wreckd.runs.nz" style="color: var(--blue);">Wilderness Running and Endurance Collective Inc.</a>
+    </p>
+  </section>
+
+  <section>
+    <div class="date-row">
+      <span class="section-label" style="margin-bottom:0;">September 20th 2026</span>
+      <a href="https://wreckd.runs.nz" class="tag-link">A WRECKd Event</a>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">The Course | ~38km / 1,450m △</span>
+    <table class="route-table">
+      <tr>
+        <td>Ridge</td>
+        <td>Starting at Putangirua Pinnacles, the route immediately climbs onto the main Aorangi Ridge. The views open fast — coast to the east, Wairarapa to the north. A long undulating traverse rewards those who find their rhythm early.</td>
+      </tr>
+      <tr>
+        <td>Forest</td>
+        <td>Dropping into the forest interior, this is the wild heart of the course. Dense podocarp canopy, rooted tracks, and creek crossings that demand full attention. Navigation is essential — markers are sparse by design.</td>
+      </tr>
+      <tr>
+        <td>Saddle</td>
+        <td>The climb to Aorangi Peak is the high point in every sense. At 983m, the summit saddle offers panoramic views. The descent is technical and steep — loose shingle and rooted gullies leading to the valley floor.</td>
+      </tr>
+      <tr>
+        <td>River</td>
+        <td>The final leg follows the Mangatoetoe Stream through broad flats and river bends, easing you toward the finish at Kaitoke. Legs tired, spirits restored by the sound of moving water.</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="map-header">
+      <span class="section-label" style="margin-bottom: 0;">Course Map</span>
+      <a href="aorangi-undulator.gpx" download="aorangi-undulator.gpx" class="tag-link">.GPX Download ↓</a>
+    </div>
+    <div id="map"></div>
+  </section>
+
+  <section class="gpx-section">
+    <a href="https://wreckd.runs.nz/join" class="register-button">Join Us and Register</a>
+  </section>
+
+  <div class="wreckd-box">
+    <p>WREC'kd is an Incorporated Society in Aotearoa that promotes endurance and adventure running activities in New Zealand's hills and mountains. We put on events for our members, and collaborate with others doing like-minded things.<br>
+    wreckd.runs.nz</p>
+  </div>
+
+  <footer>
+    <p>© Wilderness Running and Endurance Collective Inc. 2026.</p>
+    <p>
+      <a href="https://docs.google.com/spreadsheets/d/1qWbxwFqUFEQCO8JqJBO8ZSMTu-GrrKZMtKh5BTHAw4w/edit?gid=2030920892#gid=2030920892"
+         class="footer-link"
+         target="_blank">
+         Past results
+      </a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+(function() {
+  var map = L.map('map', { zoomControl: true, scrollWheelZoom: false });
+  var KEY = 'ac0b45ad4df545989a25eddd3c77ab6e';
+
+  L.tileLayer('https://basemaps.linz.govt.nz/v1/tiles/scanned-aerial-imagery-pre-1990-01-01/WebMercatorQuad/{z}/{x}/{y}.webp?api=' + KEY, {
+    attribution: 'Imagery &copy; LINZ',
+    maxZoom: 20
+  }).addTo(map);
+
+  // Approximate route through Aorangi Forest Park: Putangirua Pinnacles → Aorangi Ridge → Kaitoke
+  var routeCoords = [
+    [-41.4135,175.2580],[-41.4148,175.2561],[-41.4162,175.2540],[-41.4179,175.2515],
+    [-41.4198,175.2489],[-41.4217,175.2463],[-41.4238,175.2438],[-41.4260,175.2414],
+    [-41.4282,175.2391],[-41.4305,175.2371],[-41.4328,175.2352],[-41.4350,175.2330],
+    [-41.4370,175.2305],[-41.4388,175.2278],[-41.4403,175.2249],[-41.4415,175.2219],
+    [-41.4424,175.2187],[-41.4431,175.2153],[-41.4436,175.2118],[-41.4439,175.2082],
+    [-41.4440,175.2046],[-41.4439,175.2010],[-41.4436,175.1975],[-41.4430,175.1941],
+    [-41.4422,175.1908],[-41.4412,175.1876],[-41.4399,175.1846],[-41.4385,175.1818],
+    [-41.4369,175.1792],[-41.4352,175.1768],[-41.4333,175.1745],[-41.4313,175.1724],
+    [-41.4291,175.1705],[-41.4268,175.1688],[-41.4244,175.1673],[-41.4219,175.1660],
+    [-41.4193,175.1649],[-41.4167,175.1640],[-41.4140,175.1633],[-41.4113,175.1628],
+    [-41.4086,175.1625],[-41.4059,175.1624],[-41.4032,175.1625],[-41.4005,175.1628],
+    [-41.3979,175.1633],[-41.3953,175.1640],[-41.3928,175.1649],[-41.3904,175.1660],
+    [-41.3881,175.1673],[-41.3859,175.1688],[-41.3838,175.1705],[-41.3818,175.1723],
+    [-41.3800,175.1743],[-41.3783,175.1765],[-41.3767,175.1788],[-41.3753,175.1812],
+    [-41.3741,175.1837],[-41.3730,175.1864],[-41.3721,175.1891],[-41.3714,175.1919],
+    [-41.3709,175.1948],[-41.3706,175.1977],[-41.3704,175.2006],[-41.3704,175.2035],
+    [-41.3706,175.2064],[-41.3710,175.2093],[-41.3716,175.2121],[-41.3724,175.2148],
+    [-41.3734,175.2174],[-41.3746,175.2199],[-41.3760,175.2222],[-41.3775,175.2244],
+    [-41.3792,175.2264],[-41.3810,175.2283],[-41.3829,175.2300],[-41.3849,175.2315],
+    [-41.3870,175.2329],[-41.3891,175.2341],[-41.3913,175.2352],[-41.3935,175.2361],
+    [-41.3957,175.2369],[-41.3980,175.2375],[-41.4002,175.2379],[-41.4025,175.2382]
+  ];
+
+  L.polyline(routeCoords, { color: '#1a4a8a', weight: 4 }).addTo(map);
+  map.setView([-41.407, 175.210], 11);
+})();
+</script>
+
+<script>
+(function() {
+  var grid = document.querySelector('.grid-overlay');
+  var scrollTimer = null;
+  window.addEventListener('scroll', function() {
+    grid.classList.add('scrolling');
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function() {
+      grid.classList.remove('scrolling');
+    }, 150);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

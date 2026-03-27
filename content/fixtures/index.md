@@ -15,8 +15,7 @@ Course: ~30km / 1040m\
 Route: Point to Point\
 Difficulty: (Mostly) runnable
 
-[Fixture Card - TBC
-](/fixtures/Mukamuka%20Munter.pdf)
+[Fixture Card](/fixtures/Mukamuka%20Munter.pdf)
 
 ### [Aorangi Undulator](/undulator/)
 Not for the Weak!

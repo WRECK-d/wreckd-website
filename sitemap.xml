@@ -2,37 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://wreckd.runs.nz/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://wreckd.org.nz/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://wreckd.runs.nz/about</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://wreckd.org.nz/about/</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>quarterly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://wreckd.runs.nz/faqr</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://wreckd.org.nz/join/</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>quarterly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://wreckd.runs.nz/fixtures</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://wreckd.org.nz/fixtures/</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
-    <url>
-    <loc>https://wreckd.runs.nz/join</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>yearly</changefreq>
+  <url>
+    <loc>https://wreckd.org.nz/mukamuka</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wreckd.org.nz/undulator</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wreckd.org.nz/faq/</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 

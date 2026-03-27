@@ -5,7 +5,7 @@ description: "Upcoming \"runs\". Mukamuka Munter, Wellington Trail and Adventure
 
 WREC'kd organises grassroots running activities for its [members](/join/).
 
-### Mukamuka Munter
+### [Mukamuka Munter](/mukamuka/)
 ...is back
 
 Date: Saturday 15 August\
@@ -18,7 +18,7 @@ Difficulty: (Mostly) runnable
 [Fixture Card - TBC
 ](/fixtures/Mukamuka%20Munter.pdf)
 
-### Aorangi Undulator
+### [Aorangi Undulator](/undulator/)
 Not for the Weak!
 
 Date: (1st pencil) 31st October

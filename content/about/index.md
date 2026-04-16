@@ -21,5 +21,7 @@ Callum Mallett + Bogdan State +  Chris Martin + Liz Palmer + Allira Hanczakowski
 
 [Contact Us](mailto:office@runs.nz)
 
-#### [Our Constitution](https://drive.google.com/file/d/13xENDM4tiLIc8xLUrKV9za-UpddFyDmD/view?usp=drivesdk)
+{{< highlight-box link="/boring/" >}}
+Boring Stuff →
+{{< /highlight-box >}}
 

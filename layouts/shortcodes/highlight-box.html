@@ -1,0 +1,10 @@
+{{ $link := .Get "link" }}
+{{ if $link }}
+  <a href="{{ $link }}" class="highlight-box highlight-box--block">
+    {{ .Inner | markdownify }}
+  </a>
+{{ else }}
+  <div class="highlight-box highlight-box--block">
+    {{ .Inner | markdownify }}
+  </div>
+{{ end }}

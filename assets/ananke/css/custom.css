@@ -81,6 +81,43 @@ nav a {
   color: #2d4217 !important;
 }
 
+.highlight-box {
+  display: block;
+  max-width: 28rem;
+  border: 1.5px dashed #2d4217;
+  padding: 0.75rem 1.25rem;
+  margin: 1rem 0;
+  background: #fff;
+  color: #2d4217 !important;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  text-decoration: none !important;
+  line-height: 1.4;
+}
+
+.highlight-box:hover {
+  background: #2d4217;
+  color: #fff !important;
+  opacity: 1;
+}
+
+.highlight-box:hover p,
+.highlight-box:hover strong,
+.highlight-box:hover a {
+  color: #fff !important;
+}
+
+.highlight-box p {
+  margin: 0;
+  color: inherit;
+}
+
+.highlight-box strong {
+  color: inherit;
+}
+
+
+
 /* Footer text */
 footer, footer a, footer span {
   color: #2d4217 !important;

@@ -1,5 +1,5 @@
 ### Rules 
-Our Constitution
+[Our Constitution](https://app.businessregisters.govt.nz/sber-businesses/viewInstance/view.html?id=229a78e05307b6d8bf1b29667f00cb173076778c13b25d39#scrollTop)
 
 ### Annual Report
 Interim FY26

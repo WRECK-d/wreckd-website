@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fixture Registration — WREC'kd</title>
+<style>
+:root {
+  --red: #cc0000;
+  --ink: #111111;
+  --paper: #ffffff;
+  --font: 'Courier New', Courier, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: var(--font);
+  background: var(--paper);
+  color: var(--ink);
+  margin: 0;
+  padding: 0;
+}
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 32px 120px;
+}
+h1 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.subtitle {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  border-bottom: 1px solid var(--red);
+  padding-bottom: 4px;
+  margin: 36px 0 16px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+input[type=text],
+input[type=email],
+input[type=date],
+input[type=tel],
+select,
+textarea {
+  width: 100%;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  border: 1px solid #aaa;
+  padding: 8px 10px;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 0;
+  outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--red);
+}
+textarea { resize: vertical; min-height: 80px; }
+.radio-group, .checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+.radio-label, .checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+.radio-label input, .checkbox-label input {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.event-info {
+  display: none;
+  background: #f8f8f8;
+  border-left: 3px solid var(--red);
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+.event-info.visible { display: block; }
+.event-info table { border-collapse: collapse; width: 100%; }
+.event-info td { padding: 3px 8px 3px 0; vertical-align: top; }
+.event-info td:first-child { font-weight: bold; color: var(--red); width: 120px; }
+.hidden { display: none; }
+.fee-box {
+  border: 1px solid var(--red);
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  margin-top: 8px;
+}
+.fee-box strong { color: var(--red); }
+button[type=submit] {
+  font-family: var(--font);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 14px 32px;
+  cursor: pointer;
+  margin-top: 32px;
+}
+button[type=submit]:disabled { opacity: 0.5; cursor: default; }
+.form-status {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.form-status.error { color: var(--red); }
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--paper);
+  max-width: 600px;
+  width: calc(100% - 40px);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  font-family: var(--font);
+}
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--red);
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  flex-shrink: 0;
+}
+.modal-body {
+  overflow-y: scroll;
+  padding: 20px;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  flex: 1;
+}
+.modal-body h3 { font-size: 0.85rem; text-transform: uppercase; }
+.modal-body p { margin: 0 0 12px; }
+.modal-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #ddd;
+  flex-shrink: 0;
+}
+.modal-footer label {
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+.modal-footer input[type=text] {
+  margin-bottom: 12px;
+}
+.scroll-notice {
+  font-size: 0.78rem;
+  color: #888;
+  margin-bottom: 8px;
+}
+.modal-sign-btn {
+  font-family: var(--font);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 10px 24px;
+  cursor: pointer;
+}
+.modal-sign-btn:disabled { opacity: 0.4; cursor: default; }
+
+/* Success */
+#success {
+  display: none;
+  padding: 40px 0;
+}
+#success.visible { display: block; }
+.success-title {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.success-title::before { content: "✓ "; color: var(--red); }
+.ref-box {
+  border: 1px solid var(--red);
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  margin: 16px 0;
+}
+.ref-box strong { color: var(--red); }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Fixture Registration</h1>
+  <p class="subtitle">Complete all required fields. Contact us if your membership details have changed.</p>
+
+  <div id="form-wrapper">
+    <form id="reg-form">
+
+      <!-- EVENT SELECTION -->
+      <h2>Select your fixture</h2>
+      <div class="form-group">
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="fixture" value="mukamuka-munter" required>
+            Mukamuka Munter — 15 August 2026
+          </label>
+          <div id="info-mukamuka" class="event-info">
+            <table>
+              <tr><td>Date</td><td>Saturday 15 August</td></tr>
+              <tr><td>Location</td><td>Orongorongo &amp; South Coast</td></tr>
+              <tr><td>Distance</td><td>~30 km / 1,040 m elevation</td></tr>
+              <tr><td>Route</td><td>Point to point — mostly runnable</td></tr>
+            </table>
+          </div>
+          <label class="radio-label">
+            <input type="radio" name="fixture" value="aorangi-undulator">
+            Aorangi Undulator — 31 October 2026
+          </label>
+          <div id="info-undulator" class="event-info">
+            <table>
+              <tr><td>Date</td><td>Friday 31 October</td></tr>
+              <tr><td>Location</td><td>Mangatoetoe, Cape Palliser</td></tr>
+              <tr><td>Distance</td><td>~27 km / 2,000 m elevation</td></tr>
+              <tr><td>Route</td><td>Point to point — undulations better described as big hills!</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- RACE OR VOLUNTEER -->
+      <h2>Race or volunteer?</h2>
+      <div class="form-group">
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="type" value="race" required>
+            Race — I am entering as a competitor
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="type" value="volunteer">
+            Volunteer — I am giving my time to support the event
+          </label>
+        </div>
+      </div>
+
+      <!-- VOLUNTEER ROLES (conditional) -->
+      <div id="volunteer-roles-section" class="hidden">
+        <h2>Volunteer role preference</h2>
+        <div class="form-group">
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" name="volunteer_roles" value="marshalling"> Marshalling</label>
+            <label class="checkbox-label"><input type="checkbox" name="volunteer_roles" value="start-finish"> Start / Finish helper</label>
+            <label class="checkbox-label"><input type="checkbox" name="volunteer_roles" value="tail-end-charlie"> Tail-end Charlie</label>
+            <label class="checkbox-label"><input type="checkbox" name="volunteer_roles" value="media"> Media / Photography</label>
+            <label class="checkbox-label"><input type="checkbox" name="volunteer_roles" value="race-coordination"> Race Coordination</label>
+            <label class="checkbox-label"><input type="checkbox" name="volunteer_roles" value="good-vibes"> Good Vibes</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONAL DETAILS -->
+      <h2>Personal details</h2>
+      <div class="form-group">
+        <label for="name">First and last name *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email address *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of birth *</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender *</label>
+        <input type="text" id="gender" name="gender" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Street address *</label>
+        <input type="text" id="address" name="address" required>
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile number *</label>
+        <input type="tel" id="mobile" name="mobile" required>
+      </div>
+      <div class="form-group">
+        <label for="alt_contact">Alternative contact</label>
+        <input type="text" id="alt_contact" name="alt_contact">
+      </div>
+
+      <!-- EMERGENCY CONTACT -->
+      <h2>Emergency contact</h2>
+      <div class="form-group">
+        <label for="emergency_name">Contact name *</label>
+        <input type="text" id="emergency_name" name="emergency_name" required>
+      </div>
+      <div class="form-group">
+        <label for="emergency_phone">Contact phone *</label>
+        <input type="tel" id="emergency_phone" name="emergency_phone" required>
+      </div>
+
+      <!-- MEDICAL -->
+      <h2>Medical</h2>
+      <div class="form-group">
+        <label for="medical">Medical conditions / allergies</label>
+        <textarea id="medical" name="medical" placeholder="Leave blank if none"></textarea>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <h2>Backcountry &amp; event experience</h2>
+      <div class="form-group">
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" id="exp-backcountry" name="experience" value="backcountry"> I have experience running in New Zealand backcountry, or with navigation and multi-day tramping / hiking</label>
+          <label class="checkbox-label"><input type="checkbox" name="experience" value="mukamuka"> I have previously completed Mukamuka Munter</label>
+          <label class="checkbox-label"><input type="checkbox" name="experience" value="undulator"> I have previously completed Aorangi Undulator</label>
+          <label class="checkbox-label"><input type="checkbox" id="exp-none" name="experience" value="none"> None of the above — this may be my first backcountry event</label>
+        </div>
+        <div id="experience-detail-section" class="hidden" style="margin-top:12px;">
+          <label for="experience_detail">Please describe your relevant experience</label>
+          <textarea id="experience_detail" name="experience_detail"></textarea>
+        </div>
+      </div>
+
+      <!-- PLB -->
+      <h2>PLB / satellite tracking device</h2>
+      <div class="form-group">
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="plb" value="registered-plb" required> Yes — registered PLB (Personal Locator Beacon)</label>
+          <label class="radio-label"><input type="radio" name="plb" value="satellite-tracker"> Yes — satellite tracker (e.g. Garmin inReach, SPOT)</label>
+          <label class="radio-label"><input type="radio" name="plb" value="both"> Yes — both</label>
+          <label class="radio-label"><input type="radio" name="plb" value="none"> No — I do not have one</label>
+        </div>
+      </div>
+
+      <!-- DECLARATION (opens modal on submit) -->
+      <div id="declaration-section" class="hidden">
+        <h2>Declaration</h2>
+        <p style="font-size:0.85rem;">You will be asked to read and sign a declaration before submitting.</p>
+      </div>
+
+      <!-- ENTRY FEE (racers only) -->
+      <div id="fee-section" class="hidden">
+        <h2>Entry fee</h2>
+        <div class="fee-box">
+          <div id="fee-amount">Select a fixture above to see the fee.</div>
+          <br>
+          <strong>Payment via Stripe</strong><br>
+          You will be redirected to Stripe to pay after signing the declaration.<br>
+          Your entry is confirmed once payment is received.
+        </div>
+      </div>
+
+      <button type="submit" id="submit-btn">Review &amp; Sign Declaration</button>
+      <div id="form-status" class="form-status"></div>
+    </form>
+  </div>
+
+  <!-- SUCCESS -->
+  <div id="success">
+    <div id="success-racer" class="hidden">
+      <div class="success-title">Registration submitted. Thank you!</div>
+      <div class="ref-box">
+        <strong>Reference:</strong> <span id="success-ref"></span><br>
+        <strong>Amount due:</strong> <span id="success-amount"></span> NZD<br><br>
+        Please transfer to:<br>
+        Bank: BNZ<br>
+        Account name: WRECkd<br>
+        Account number: 02-0688-0269592-000<br>
+        Reference: <span id="success-ref-2"></span><br><br>
+        Your entry will be confirmed once payment is received.
+      </div>
+    </div>
+    <div id="success-volunteer" class="hidden">
+      <div class="success-title">Thank you for volunteering!</div>
+      <div class="ref-box">
+        <strong>Reference:</strong> <span id="success-ref-vol"></span><br><br>
+        No payment required. We'll be in touch with arrangements.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RACE DECLARATION MODAL -->
+<div id="modal-race" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">Race Conditions &amp; Code of Conduct</div>
+    <div class="modal-body" id="modal-race-body">
+      <p>This event takes place in remote New Zealand backcountry terrain. Conditions may be challenging, wet, cold, and unpredictable. Participants must be self-sufficient and capable of navigating and managing their own safety for the full duration of the event.</p>
+      <p>All participants must carry the mandatory gear list as published on the website. Spot-checks may be conducted at any time. Failure to carry mandatory gear is grounds for immediate disqualification without refund.</p>
+      <p>Navigation is the participant's responsibility. Course markings are provided as a guide only and are not guaranteed to be complete or unaltered by weather, stock, or third parties. Participants must carry a physical map and compass and be competent in their use.</p>
+      <p>All participants must respect private land and conservation areas. Stay on defined tracks where instructed, leave gates as found, and carry out all waste. Any participant found causing damage to the environment may be disqualified and reported to the relevant authority or DOC.</p>
+      <p>If cut-off times are enforced, participants who have not reached each checkpoint by the specified cut-off will be withdrawn from the event, and no exceptions will be made.</p>
+      <p>By entering this event you confirm you are medically fit to participate and accept all inherent risks associated with remote backcountry running. WREC'kd Inc. and its volunteers accept no liability for injury, illness, loss, or death arising from participation. The Race Director reserves the right to modify, delay, shorten, or cancel the event at any time for safety reasons. Entry fees will not be refunded in the event of cancellation due to safety or weather. If you are unable to participate in the fixture for medical reasons your fees may be refunded at the Treasurer's discretion.</p>
+      <h3>Code of Conduct</h3>
+      <p>WREC'kd is committed to providing a safe, welcoming, and inclusive environment for all participants, volunteers, and spectators. All participants are expected to conduct themselves with respect and integrity at all times.</p>
+      <p>A member may face disciplinary action, up to and including suspension or termination of membership, if the Committee determines that the member has brought the Society into disrepute, or repeatedly or seriously acted in a manner that poses a risk to the safety, health, or welfare of themselves or others involved in Society activities. Littering on course or in the surrounding environment is a serious breach of this code. Any participant observed littering will be disqualified.</p>
+      <p>If you withdraw for any reason, notify Race Control immediately via the number on your race bib. Do not leave the course without notifying race officials — doing so may trigger a search and rescue response, the cost of which may be recovered from you.</p>
+      <h3>Safety Declaration</h3>
+      <p>By signing below, you confirm that you have disclosed any medical conditions or medications relevant to participation, either on this form or in prior correspondence with the Race Director.</p>
+      <p>You will carry your own essential gear (minimums), and this list is a guide to keep yourself safe. You can provide your own first aid, and will have access to a personal locator beacon (PLB) when participating in this fixture. You have kept your emergency contact informed of your participation in this activity.</p>
+      <p>You confirm you are aware of the risks as stated on the RAMS, and are entering of your own free will.</p>
+    </div>
+    <div class="modal-footer">
+      <div class="scroll-notice" id="race-scroll-notice">↓ Scroll to the bottom to sign</div>
+      <label for="race-sig">Sign your name to confirm *</label>
+      <input type="text" id="race-sig" placeholder="Full name" disabled>
+      <br>
+      <button class="modal-sign-btn" id="race-sign-btn" disabled>Confirm &amp; Proceed to Payment</button>
+    </div>
+  </div>
+</div>
+
+<!-- VOLUNTEER DECLARATION MODAL -->
+<div id="modal-volunteer" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">Volunteer Arrangements</div>
+    <div class="modal-body" id="modal-volunteer-body">
+      <p>Thank you for volunteering with WREC'kd. Volunteers are the backbone of our events and we are grateful for your time and energy.</p>
+      <p>This event takes place in and around remote New Zealand backcountry terrain. As a volunteer you may be stationed in exposed locations for extended periods. Please ensure you are appropriately dressed and equipped for the conditions on the day. The Race Director will be in touch with further details.</p>
+      <p>WREC'kd is committed to providing a safe, welcoming, and inclusive environment for all participants, volunteers, and spectators. All participants are expected to conduct themselves with respect and integrity at all times, to look after themselves and others, and know their limits when in the backcountry.</p>
+      <h3>Declaration</h3>
+      <p>By signing below, you confirm that you have disclosed any medical conditions or medications relevant to participation, either on this form or in prior correspondence with the Race Director.</p>
+      <p>You have kept your emergency contact informed of your participation in this activity. You are aware of the risks associated with the environment in which this event takes place, and confirm you are aware of the risks as stated on the RAMS, and are volunteering of your own free will.</p>
+    </div>
+    <div class="modal-footer">
+      <div class="scroll-notice" id="vol-scroll-notice">↓ Scroll to the bottom to sign</div>
+      <label for="vol-sig">Sign your name to confirm *</label>
+      <input type="text" id="vol-sig" placeholder="Full name" disabled>
+      <br>
+      <button class="modal-sign-btn" id="vol-sign-btn" disabled>Confirm &amp; Submit Registration</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WORKER_URL = "https://wreckd-fixtures-worker.wreckd.workers.dev";
+const FEES = { "mukamuka-munter": 10, "aorangi-undulator": 20 };
+
+// Show event info blurbs
+document.querySelectorAll('input[name="fixture"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    document.getElementById("info-mukamuka").classList.toggle("visible", radio.value === "mukamuka-munter" && radio.checked);
+    document.getElementById("info-undulator").classList.toggle("visible", radio.value === "aorangi-undulator" && radio.checked);
+    updateFeeDisplay();
+  });
+});
+
+function getFixture() {
+  const r = document.querySelector('input[name="fixture"]:checked');
+  return r ? r.value : null;
+}
+
+function getType() {
+  const r = document.querySelector('input[name="type"]:checked');
+  return r ? r.value : null;
+}
+
+function updateFeeDisplay() {
+  const fixture = getFixture();
+  const type = getType();
+  const feeSection = document.getElementById("fee-section");
+  const feeAmount = document.getElementById("fee-amount");
+  if (type === "race") {
+    feeSection.classList.remove("hidden");
+    if (fixture && FEES[fixture]) {
+      feeAmount.innerHTML = `Entry fee: <strong>$${FEES[fixture]} NZD</strong>`;
+    } else {
+      feeAmount.textContent = "Select a fixture above to see the fee.";
+    }
+  } else {
+    feeSection.classList.add("hidden");
+  }
+}
+
+// Show/hide volunteer roles and fee section
+document.querySelectorAll('input[name="type"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    const isVolunteer = radio.value === "volunteer" && radio.checked;
+    document.getElementById("volunteer-roles-section").classList.toggle("hidden", !isVolunteer);
+    document.getElementById("declaration-section").classList.remove("hidden");
+    updateFeeDisplay();
+  });
+});
+
+// Experience: show free-text if backcountry checked but no prior fixture
+function updateExperienceDetail() {
+  const backcountry = document.getElementById("exp-backcountry").checked;
+  const mukamuka = document.querySelector('input[name="experience"][value="mukamuka"]').checked;
+  const undulator = document.querySelector('input[name="experience"][value="undulator"]').checked;
+  const show = backcountry && !mukamuka && !undulator;
+  document.getElementById("experience-detail-section").classList.toggle("hidden", !show);
+}
+document.querySelectorAll('input[name="experience"]').forEach(cb => {
+  cb.addEventListener("change", () => {
+    // "None" is mutually exclusive
+    if (cb.value === "none" && cb.checked) {
+      document.querySelectorAll('input[name="experience"]:not([value="none"])').forEach(o => o.checked = false);
+    } else if (cb.checked) {
+      document.getElementById("exp-none").checked = false;
+    }
+    updateExperienceDetail();
+  });
+});
+
+// Modal scroll-to-bottom logic
+function setupModalScroll(bodyId, noticeId, sigId, btnId) {
+  const body = document.getElementById(bodyId);
+  const notice = document.getElementById(noticeId);
+  const sig = document.getElementById(sigId);
+  const btn = document.getElementById(btnId);
+  let scrolled = false;
+
+  body.addEventListener("scroll", () => {
+    if (!scrolled && body.scrollTop + body.clientHeight >= body.scrollHeight - 10) {
+      scrolled = true;
+      notice.style.display = "none";
+      sig.disabled = false;
+      sig.focus();
+    }
+  });
+
+  sig.addEventListener("input", () => {
+    btn.disabled = sig.value.trim().length < 2;
+  });
+
+  return { getScrolled: () => scrolled };
+}
+
+const raceModal = setupModalScroll("modal-race-body", "race-scroll-notice", "race-sig", "race-sign-btn");
+const volModal = setupModalScroll("modal-volunteer-body", "vol-scroll-notice", "vol-sig", "vol-sign-btn");
+
+// Close modal on overlay click
+document.querySelectorAll(".modal-overlay").forEach(overlay => {
+  overlay.addEventListener("click", e => {
+    if (e.target === overlay) overlay.classList.remove("open");
+  });
+});
+
+// Form submit — open correct modal
+document.getElementById("reg-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const type = getType();
+  if (!type) {
+    showError("Please select Race or Volunteer.");
+    return;
+  }
+  clearError();
+  if (type === "race") {
+    document.getElementById("modal-race").classList.add("open");
+  } else {
+    document.getElementById("modal-volunteer").classList.add("open");
+  }
+});
+
+// Race sign button
+document.getElementById("race-sign-btn").addEventListener("click", async () => {
+  const sig = document.getElementById("race-sig").value.trim();
+  if (!sig) return;
+  document.getElementById("modal-race").classList.remove("open");
+  await submitForm({ race_declaration_name: sig });
+});
+
+// Volunteer sign button
+document.getElementById("vol-sign-btn").addEventListener("click", async () => {
+  const sig = document.getElementById("vol-sig").value.trim();
+  if (!sig) return;
+  document.getElementById("modal-volunteer").classList.remove("open");
+  await submitForm({ volunteer_declaration_name: sig });
+});
+
+async function submitForm(extra) {
+  const form = document.getElementById("reg-form");
+  const btn = document.getElementById("submit-btn");
+  const status = document.getElementById("form-status");
+
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+  clearError();
+
+  const experience = Array.from(document.querySelectorAll('input[name="experience"]:checked'))
+    .map(c => c.value).join(",");
+  const volunteer_roles = Array.from(document.querySelectorAll('input[name="volunteer_roles"]:checked'))
+    .map(c => c.value).join(",");
+
+  const data = {
+    type: getType(),
+    fixture: getFixture(),
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    dob: form.dob.value,
+    gender: form.gender.value.trim(),
+    address: form.address.value.trim(),
+    mobile: form.mobile.value.trim(),
+    alt_contact: form.alt_contact.value.trim(),
+    emergency_name: form.emergency_name.value.trim(),
+    emergency_phone: form.emergency_phone.value.trim(),
+    medical: form.medical.value.trim(),
+    experience,
+    experience_detail: document.getElementById("experience_detail").value.trim(),
+    plb: form.plb.value,
+    volunteer_roles,
+    ...extra,
+  };
+
+  try {
+    const resp = await fetch(`${WORKER_URL}/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const result = await resp.json();
+
+    if (!resp.ok) {
+      showError(result.error || "Something went wrong. Please try again.");
+      btn.disabled = false;
+      btn.textContent = "Review & Sign Declaration";
+      return;
+    }
+
+    if (result.url) {
+      // Racer — redirect to Stripe
+      window.location.href = result.url;
+    } else {
+      // Volunteer — inline success
+      document.getElementById("form-wrapper").style.display = "none";
+      const s = document.getElementById("success");
+      s.classList.add("visible");
+      document.getElementById("success-volunteer").classList.remove("hidden");
+      document.getElementById("success-ref-vol").textContent = result.ref;
+    }
+  } catch (err) {
+    showError("Network error. Please try again.");
+    btn.disabled = false;
+    btn.textContent = "Review & Sign Declaration";
+  }
+}
+
+function showError(msg) {
+  const s = document.getElementById("form-status");
+  s.textContent = msg;
+  s.className = "form-status error";
+}
+function clearError() {
+  const s = document.getElementById("form-status");
+  s.textContent = "";
+  s.className = "form-status";
+}
+</script>
+</body>
+</html>

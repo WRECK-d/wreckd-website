@@ -383,8 +383,9 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         <div class="fee-box">
           <div id="fee-amount">Select a fixture above to see the fee.</div>
           <br>
-          <strong>Payment via Stripe</strong><br>
-          You will be redirected to Stripe to pay after signing the declaration.<br>
+          <strong>Bank transfer only</strong><br>
+          Bank: BNZ — Account name: WRECKd — 02-0688-0269592-000<br>
+          Use your registration reference as the payment reference.<br>
           Your entry is confirmed once payment is received.
         </div>
       </div>
@@ -656,14 +657,16 @@ async function submitForm(extra) {
       return;
     }
 
-    if (result.url) {
-      // Racer — redirect to Stripe
-      window.location.href = result.url;
+    document.getElementById("form-wrapper").style.display = "none";
+    const s = document.getElementById("success");
+    s.classList.add("visible");
+
+    if (result.type === "race") {
+      document.getElementById("success-racer").classList.remove("hidden");
+      document.getElementById("success-ref").textContent = result.ref;
+      document.getElementById("success-ref-2").textContent = result.ref;
+      document.getElementById("success-amount").textContent = result.fee;
     } else {
-      // Volunteer — inline success
-      document.getElementById("form-wrapper").style.display = "none";
-      const s = document.getElementById("success");
-      s.classList.add("visible");
       document.getElementById("success-volunteer").classList.remove("hidden");
       document.getElementById("success-ref-vol").textContent = result.ref;
     }

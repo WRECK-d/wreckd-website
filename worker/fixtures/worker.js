@@ -3,11 +3,10 @@ const ALLOWED_ORIGINS = [
   "http://wreckd.org.nz",
 ];
 const GITHUB_REPO = "WRECK-d/form-submissions";
-const STRIPE_API_BASE = "https://api.stripe.com/v1";
 
 const FIXTURES = {
-  "mukamuka-munter": { label: "Mukamuka Munter", amount: 1000, currency: "nzd" },
-  "aorangi-undulator": { label: "Aorangi Undulator", amount: 2000, currency: "nzd" },
+  "mukamuka-munter": { label: "Mukamuka Munter", fee: 10 },
+  "aorangi-undulator": { label: "Aorangi Undulator", fee: 20 },
 };
 
 const REQUIRED_FIELDS = [
@@ -51,60 +50,6 @@ function base64Encode(str) {
   const bytes = encoder.encode(str);
   const binString = Array.from(bytes, (b) => String.fromCodePoint(b)).join("");
   return btoa(binString);
-}
-
-async function stripeRequest(endpoint, params, stripeSecretKey) {
-  const response = await fetch(`${STRIPE_API_BASE}${endpoint}`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${stripeSecretKey}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams(params).toString(),
-  });
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(`Stripe API error: ${data.error?.message || response.statusText}`);
-  }
-  return data;
-}
-
-async function verifyStripeWebhook(payload, signatureHeader, secret) {
-  const parts = {};
-  for (const part of signatureHeader.split(",")) {
-    const [key, ...rest] = part.split("=");
-    parts[key.trim()] = rest.join("=").trim();
-  }
-  const timestamp = parts["t"];
-  const expectedSignature = parts["v1"];
-  if (!timestamp || !expectedSignature) return null;
-
-  const currentTime = Math.floor(Date.now() / 1000);
-  if (Math.abs(currentTime - parseInt(timestamp)) > 300) return null;
-
-  const signedPayload = `${timestamp}.${payload}`;
-  const encoder = new TextEncoder();
-  const key = await crypto.subtle.importKey(
-    "raw", encoder.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
-  );
-  const signatureBytes = await crypto.subtle.sign("HMAC", key, encoder.encode(signedPayload));
-  const computedSignature = Array.from(new Uint8Array(signatureBytes))
-    .map((b) => b.toString(16).padStart(2, "0")).join("");
-
-  if (computedSignature.length !== expectedSignature.length) return null;
-
-  const compareKey = await crypto.subtle.importKey(
-    "raw", encoder.encode("webhook-compare"), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
-  );
-  const sig1 = new Uint8Array(await crypto.subtle.sign("HMAC", compareKey, encoder.encode(computedSignature)));
-  const sig2 = new Uint8Array(await crypto.subtle.sign("HMAC", compareKey, encoder.encode(expectedSignature)));
-
-  let equal = true;
-  for (let i = 0; i < sig1.length; i++) {
-    if (sig1[i] !== sig2[i]) equal = false;
-  }
-  if (!equal) return null;
-  return JSON.parse(payload);
 }
 
 async function isMember(email, env) {
@@ -203,7 +148,9 @@ async function handleRegister(request, env) {
   }
 
   const ref = generateRef();
-  const base = {
+  const fixture = FIXTURES[data.fixture];
+
+  const submission = {
     ref,
     type: data.type,
     fixture: data.fixture,
@@ -218,137 +165,35 @@ async function handleRegister(request, env) {
     emergency_phone: data.emergency_phone.trim(),
     medical: data.medical || "",
     experience: data.experience || "",
+    experience_detail: data.experience_detail || "",
     plb: data.plb,
+    ...(data.type === "volunteer" ? {
+      volunteer_roles: data.volunteer_roles || "",
+      volunteer_declaration_name: data.volunteer_declaration_name || "",
+    } : {
+      race_declaration_name: data.race_declaration_name || "",
+      fee: String(fixture.fee),
+      payment_status: "pending",
+    }),
     submitted_at: new Date().toISOString(),
   };
 
-  if (data.type === "volunteer") {
-    const submission = {
-      ...base,
-      volunteer_roles: data.volunteer_roles || "",
-      volunteer_declaration_name: data.volunteer_declaration_name || "",
-    };
-    try {
-      await saveToGitHub(submission, env);
-    } catch (err) {
-      return new Response(JSON.stringify({ error: "Failed to save registration" }), {
-        status: 500,
-        headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
-      });
-    }
-    return new Response(JSON.stringify({ ref, type: "volunteer" }), {
-      status: 200,
-      headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
-    });
-  }
-
-  // Racer — create Stripe checkout
-  if (!data.race_declaration_name) {
-    return new Response(JSON.stringify({ error: "Race declaration signature is required" }), {
-      status: 400,
-      headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
-    });
-  }
-
-  const fixture = FIXTURES[data.fixture];
-  const priceId = data.fixture === "mukamuka-munter" ? env.STRIPE_PRICE_MUKAMUKA : env.STRIPE_PRICE_UNDULATOR;
-
   try {
-    const session = await stripeRequest(
-      "/checkout/sessions",
-      {
-        mode: "payment",
-        "line_items[0][price]": priceId,
-        "line_items[0][quantity]": "1",
-        customer_email: data.email.trim(),
-        success_url: `https://wreckd.org.nz/fixtures/register/success/?ref=${ref}&fixture=${data.fixture}`,
-        cancel_url: `https://wreckd.org.nz/fixtures/register/`,
-        "metadata[ref]": ref,
-        "metadata[type]": "race",
-        "metadata[fixture]": data.fixture,
-        "metadata[name]": data.name.trim(),
-        "metadata[email]": data.email.trim(),
-        "metadata[dob]": data.dob,
-        "metadata[gender]": data.gender,
-        "metadata[address]": data.address.trim(),
-        "metadata[mobile]": data.mobile.trim(),
-        "metadata[alt_contact]": data.alt_contact || "",
-        "metadata[emergency_name]": data.emergency_name.trim(),
-        "metadata[emergency_phone]": data.emergency_phone.trim(),
-        "metadata[medical]": data.medical || "",
-        "metadata[experience]": data.experience || "",
-        "metadata[plb]": data.plb,
-        "metadata[race_declaration_name]": data.race_declaration_name,
-      },
-      env.STRIPE_SECRET_KEY
-    );
-    return new Response(JSON.stringify({ url: session.url }), {
-      status: 200,
-      headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
-    });
+    await saveToGitHub(submission, env);
   } catch (err) {
-    console.error("Stripe error:", err.message);
-    return new Response(JSON.stringify({ error: "Failed to create payment session" }), {
+    return new Response(JSON.stringify({ error: "Failed to save registration" }), {
       status: 500,
       headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
     });
   }
-}
 
-async function handleWebhook(request, env) {
-  const body = await request.text();
-  const signature = request.headers.get("stripe-signature");
-  if (!signature) {
-    return new Response(JSON.stringify({ error: "Missing signature" }), {
-      status: 400, headers: { "Content-Type": "application/json" },
-    });
-  }
-
-  const event = await verifyStripeWebhook(body, signature, env.STRIPE_WEBHOOK_SECRET_FIXTURES);
-  if (!event) {
-    return new Response(JSON.stringify({ error: "Invalid signature" }), {
-      status: 400, headers: { "Content-Type": "application/json" },
-    });
-  }
-
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
-    const m = session.metadata;
-    const submission = {
-      ref: m.ref,
-      type: "race",
-      fixture: m.fixture,
-      name: m.name,
-      email: m.email,
-      dob: m.dob,
-      gender: m.gender,
-      address: m.address,
-      mobile: m.mobile,
-      alt_contact: m.alt_contact,
-      emergency_name: m.emergency_name,
-      emergency_phone: m.emergency_phone,
-      medical: m.medical,
-      experience: m.experience,
-      plb: m.plb,
-      race_declaration_name: m.race_declaration_name,
-      payment_status: session.payment_status,
-      stripe_session_id: session.id,
-      amount_total: String(session.amount_total),
-      currency: session.currency,
-      submitted_at: new Date().toISOString(),
-    };
-    try {
-      await saveToGitHub(submission, env);
-    } catch (err) {
-      console.error("Failed to save:", err.message);
-      return new Response(JSON.stringify({ error: "Failed to save" }), {
-        status: 500, headers: { "Content-Type": "application/json" },
-      });
-    }
-  }
-
-  return new Response(JSON.stringify({ received: true }), {
-    status: 200, headers: { "Content-Type": "application/json" },
+  return new Response(JSON.stringify({
+    ref,
+    type: data.type,
+    fee: data.type === "race" ? fixture.fee : 0,
+  }), {
+    status: 200,
+    headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
   });
 }
 
@@ -359,10 +204,6 @@ export default {
 
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders(origin) });
-    }
-
-    if (url.pathname === "/webhook" && request.method === "POST") {
-      return handleWebhook(request, env);
     }
 
     if (url.pathname === "/register" && request.method === "POST") {

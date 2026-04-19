@@ -32,17 +32,57 @@ function toYaml(obj) {
     .join("\n");
 }
 
-function generateRef() {
-  const now = new Date();
-  const date = now.toISOString().slice(0, 10).replace(/-/g, "");
-  const rand = Math.random().toString(36).slice(2, 8);
-  return `FIX-${date}-${rand}`;
+const FIXTURE_PREFIX = {
+  "mukamuka-munter": "MM",
+  "aorangi-undulator": "AU",
+};
+
+function baseRef(fixture, lastName) {
+  const prefix = FIXTURE_PREFIX[fixture] || "FX";
+  const suffix = lastName.replace(/[^a-zA-Z]/g, "").slice(0, 4).toUpperCase();
+  return `${prefix}-${suffix}`;
+}
+
+async function generateRef(fixture, lastName, env) {
+  const base = baseRef(fixture, lastName);
+  // List existing fixtures dir to check for collisions
+  const response = await fetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/contents/fixtures`,
+    {
+      headers: {
+        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "User-Agent": "wreckd-fixtures-worker",
+      },
+    }
+  );
+  if (!response.ok) return base;
+  const files = await response.json();
+  // Extract refs from existing YAML filenames isn't reliable, so fetch and scan content
+  // Instead, check refs by fetching the fixtures listing and reading each file would be too slow.
+  // We store ref in the filename suffix — but simplest: just scan existing refs via a lightweight approach.
+  // Since files are small and infrequent, fetch the tree.
+  const usedRefs = new Set();
+  for (const file of files) {
+    if (!file.name.endsWith(".yml")) continue;
+    const r = await fetch(file.download_url);
+    const text = await r.text();
+    const m = text.match(/^ref: "([^"]+)"/m);
+    if (m) usedRefs.add(m[1]);
+  }
+  if (!usedRefs.has(base)) return base;
+  for (let i = 2; i <= 99; i++) {
+    const candidate = `${base}-${String(i).padStart(2, "0")}`;
+    if (!usedRefs.has(candidate)) return candidate;
+  }
+  return base; // fallback, shouldn't happen
 }
 
 function generateFilename(ref) {
   const now = new Date();
   const ts = now.toISOString().replace(/[-:T]/g, "").slice(0, 14);
-  return `fixtures/${ts}-${ref.slice(-6)}.yml`;
+  const slug = ref.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
+  return `fixtures/${ts}-${slug}.yml`;
 }
 
 function base64Encode(str) {
@@ -52,9 +92,11 @@ function base64Encode(str) {
   return btoa(binString);
 }
 
-async function isMember(email, env) {
+async function fetchListEmails(listName, env, seen = new Set()) {
+  if (seen.has(listName)) return new Set();
+  seen.add(listName);
   const response = await fetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/contents/submissions.csv`,
+    `https://api.github.com/repos/${GITHUB_REPO}/contents/email/lists/${listName}.yml`,
     {
       headers: {
         Authorization: `Bearer ${env.GITHUB_TOKEN}`,
@@ -63,16 +105,26 @@ async function isMember(email, env) {
       },
     }
   );
-  if (!response.ok) return false;
+  if (!response.ok) return new Set();
   const { content } = await response.json();
-  const csv = atob(content.replace(/\n/g, ""));
-  const normalised = email.trim().toLowerCase();
-  for (const line of csv.split("\n").slice(1)) {
-    const cols = line.split(",").map((c) => c.replace(/^"|"$/g, "").trim().toLowerCase());
-    // cols: name, email, membership, payment_status, amount_total, currency, submitted_at
-    if (cols[1] === normalised && cols[3] === "paid") return true;
+  const yaml = atob(content.replace(/\n/g, ""));
+  const emails = new Set();
+  for (const line of yaml.split("\n")) {
+    const includeMatch = line.match(/^\s*-\s+include:\s+(\S+)/);
+    if (includeMatch) {
+      const nested = await fetchListEmails(includeMatch[1], env, seen);
+      for (const e of nested) emails.add(e);
+      continue;
+    }
+    const emailMatch = line.match(/^\s+email:\s+"?([^"]+)"?\s*$/);
+    if (emailMatch) emails.add(emailMatch[1].trim().toLowerCase());
   }
-  return false;
+  return emails;
+}
+
+async function isMember(email, env) {
+  const emails = await fetchListEmails("all-members", env);
+  return emails.has(email.trim().toLowerCase());
 }
 
 async function saveToGitHub(submission, env) {
@@ -147,7 +199,9 @@ async function handleRegister(request, env) {
     });
   }
 
-  const ref = generateRef();
+  const nameParts = data.name.trim().split(/\s+/);
+  const lastName = nameParts[nameParts.length - 1];
+  const ref = await generateRef(data.fixture, lastName, env);
   const fixture = FIXTURES[data.fixture];
 
   const submission = {

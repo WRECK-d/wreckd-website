@@ -3,7 +3,7 @@ title: "Fixtures"
 description: "Upcoming \"runs\". Mukamuka Munter, Wellington Trail and Adventure Running. Local Grassroots sport. Aorangi Undulator. Orongorongo,Remutaka, Tararua, Aorangi Ranges events"
 ---
 
-WREC'kd organises grassroots running activities for its [members](/join/).
+WREC'kd organises grassroots running activities for its [members](/join/). See our [T+Cs](/boring/) for the fine print.
 
 {{< highlight-box >}} ### [Mukamuka Munter →](/mukamuka/) {{< /highlight-box >}}
 

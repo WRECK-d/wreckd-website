@@ -28,7 +28,7 @@ Basic first aid – (min: self-adhering crepe bandage, strapping tape (minimum 1
 Personal Locator Beacon, or satellite tracking device (available; this could be one per team)\
 Dry bag for all thermal clothing\
 Surplus nutrition for emergency\
-Whistle/
+Whistle
 
 
 The list above is the minimum gear requirement. The race director reserves the right to amend or add items as conditions may require.

@@ -5,11 +5,11 @@ description: "Upcoming \"runs\". Mukamuka Munter, Wellington Trail and Adventure
 
 WREC'kd organises grassroots running activities for its [members](/join/).
 
-{{< highlight-box >}} ### [Mukamuka Munter](/mukamuka/) {{< /highlight-box >}}
+{{< highlight-box >}} ### [Mukamuka Munter →](/mukamuka/) {{< /highlight-box >}}
 
 ...is back
 
-Date: Saturday 15 August\
+Date: Saturday 15 August 2026\
 Location: Orongorongo and South Coast.\
 Events Fee: TBC. $10-20?\
 Course: ~30km / 1040m\
@@ -18,10 +18,11 @@ Difficulty: (Mostly) runnable
 
 [Fixture Card](/fixtures/Mukamuka%20Munter.pdf)
 
-### [Aorangi Undulator](/undulator/)
+{{< highlight-box >}} ### [Aorangi Undulator →](/undulator/) {{< /highlight-box >}}
+
 Not for the Weak!
 
-Date: (1st pencil) 31st October
+Date: 31st October 2026
 
 Location: Mangatoetoe, Cape Palliser.\
 Events Fee: TBC $20-30?\

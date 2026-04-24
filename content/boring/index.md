@@ -45,7 +45,7 @@ As a member, you are entitled to participate in fixtures. However, participation
 [] Provide your emergency contact details with rego, and ensure they are aware of you planned activities\
 [] Bring the required gear and appropriate nutrition\
 [] Look after yourself and the other members\ 
-[] Know where are PLB is located (or carry one yourself)\
+[] Know where are PLB is located (or carry one yourself)
 [] Listen/read the organisers' instruction.
 
 

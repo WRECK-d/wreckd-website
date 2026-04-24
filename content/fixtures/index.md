@@ -5,7 +5,8 @@ description: "Upcoming \"runs\". Mukamuka Munter, Wellington Trail and Adventure
 
 WREC'kd organises grassroots running activities for its [members](/join/).
 
-### [Mukamuka Munter](/mukamuka/)
+{{< highlight-box >}} ### [Mukamuka Munter](/mukamuka/) {{< /highlight-box >}}
+
 ...is back
 
 Date: Saturday 15 August\

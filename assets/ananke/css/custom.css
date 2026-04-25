@@ -95,17 +95,6 @@ nav a {
   line-height: 1.4;
 }
 
-.highlight-box:hover {
-  background: #2d4217;
-  color: #fff !important;
-  opacity: 1;
-}
-
-.highlight-box:hover p,
-.highlight-box:hover strong,
-.highlight-box:hover a {
-  color: #fff !important;
-}
 
 .highlight-box p {
   margin: 0;

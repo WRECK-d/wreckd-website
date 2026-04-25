@@ -17,24 +17,25 @@ Our events take place in remote New Zealand backcountry terrain. Conditions may 
 All participants must carry the essential gear as published on the website. The organiser reserves the right to check gear or delegate gear checks to volunteers, including spot-checks that can be conducted at any time. Failure to carry mandatory gear is grounds for immediate disqualification without refund.
 
 {{< highlight-box >}}
-Essential Gear:\
-Seam-sealed jacket – with hood\
-Thermal leggings & Thermal top\
-Beanie and Gloves\
-Phone with .GPX file and cached maps such as NZTOPO. with a plastic-sealed dry bag\
-Emergency Biv Bag (not a blanket)\
-Headlamp – plus spare batteries or a second lamp unit\
-Basic first aid – (min: self-adhering crepe bandage, strapping tape (minimum 100 cm x 6 cm / 40 inches x 2,5 inches) and 2 gauze (10cm square), personal medication and painkillers)\
-Personal Locator Beacon, or satellite tracking device (available; this could be one per team)\
-Dry bag for all thermal clothing\
-Surplus nutrition for emergency\
-Whistle
+### Essential Gear:\
+*Seam-sealed jacket – with hood\
+*Thermal leggings & Thermal top\
+*Beanie and Gloves\
+*Phone with .GPX file and cached maps such as NZTOPO. with a plastic-sealed dry bag\
+*Printed Topo50 map and compass in sealed dry bag
+*Emergency Biv Bag (not a blanket)\
+*Headlamp with spare batteries or a second lamp unit\
+*Basic first aid – (min: self-adhering crepe bandage, strapping tape (minimum 100 cm x 6 cm / 40 inches x 2,5 inches) and 2 gauze (10cm square), personal medication and painkillers)\
+*Personal Locator Beacon, or satellite tracking device (available; this could be one per team)\
+*Dry bag for all thermal clothing\
+*Surplus nutrition for emergency\
+*Whistle
 
 
-The list above is the minimum gear requirement. The race director reserves the right to amend or add items as conditions may require.
+/The list above is the minimum gear requirement. The race director reserves the right to amend or add items as conditions may require.
 Such things may include an additional layering system (tech-mid or alpha-tech), Overtrou (seam-sealed rain pants), high-vis, additional water
 
-Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. 
+/Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. 
 
 {{< /highlight-box >}}
 

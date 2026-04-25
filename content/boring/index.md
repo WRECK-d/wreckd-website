@@ -17,7 +17,7 @@ Our events take place in remote New Zealand backcountry terrain. Conditions may 
 All participants must carry the essential gear as published on the website. The organiser reserves the right to check gear or delegate gear checks to volunteers, including spot-checks that can be conducted at any time. Failure to carry mandatory gear is grounds for immediate disqualification without refund.
 
 {{< highlight-box >}}
-### Essential Gear:\
+### Essential Gear:
 *Seam-sealed jacket – with hood\
 *Thermal leggings & Thermal top\
 *Beanie and Gloves\
@@ -29,13 +29,13 @@ All participants must carry the essential gear as published on the website. The 
 *Personal Locator Beacon, or satellite tracking device (available; this could be one per team)\
 *Dry bag for all thermal clothing\
 *Surplus nutrition for emergency\
-*Whistle
+*Whistle  
 
 
-/The list above is the minimum gear requirement. The race director reserves the right to amend or add items as conditions may require.
-Such things may include an additional layering system (tech-mid or alpha-tech), Overtrou (seam-sealed rain pants), high-vis, additional water
+The list above is the minimum gear requirement. The race director reserves the right to amend or add items as conditions may require.
+Such things may include an additional layering system (tech-mid or alpha-tech), Overtrou (seam-sealed rain pants), high-vis, additional water.  
 
-/Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. 
+Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. 
 
 {{< /highlight-box >}}
 

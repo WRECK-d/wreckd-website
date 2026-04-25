@@ -29,11 +29,11 @@ All participants must carry the essential gear as published on the website. The 
 *Personal Locator Beacon, or satellite tracking device (available; this could be one per team)\
 *Dry bag for all thermal clothing\
 *Surplus nutrition for emergency\
-*Whistle  
+*Whistle  <br>
 
 
 The list above is the minimum gear requirement. The race director reserves the right to amend or add items as conditions may require.
-Such things may include an additional layering system (tech-mid or alpha-tech), Overtrou (seam-sealed rain pants), high-vis, additional water.  
+Such things may include an additional layering system (tech-mid or alpha-tech), Overtrou (seam-sealed rain pants), high-vis, additional water.  <br>
 
 Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. 
 

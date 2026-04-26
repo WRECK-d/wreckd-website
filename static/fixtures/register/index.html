@@ -104,6 +104,22 @@ textarea { resize: vertical; min-height: 80px; }
 .event-info table { border-collapse: collapse; width: 100%; }
 .event-info td { padding: 3px 8px 3px 0; vertical-align: top; }
 .event-info td:first-child { font-weight: bold; color: var(--red); width: 120px; }
+.fixture-link {
+  margin-left: 28px;
+  margin-top: -4px;
+  font-size: 0.78rem;
+}
+.fixture-link a {
+  color: var(--red);
+  text-decoration: none;
+}
+.fixture-link a:hover { text-decoration: underline; }
+.field-help {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
 .hidden { display: none; }
 .fee-box {
   border: 1px solid var(--red);
@@ -243,6 +259,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
             <input type="radio" name="fixture" value="mukamuka-munter" required>
             Mukamuka Munter — 15 August 2026
           </label>
+          <div class="fixture-link"><a href="/mukamuka" target="_blank" rel="noopener">Open Mukamuka details in new tab ↗</a></div>
           <div id="info-mukamuka" class="event-info">
             <table>
               <tr><td>Date</td><td>Saturday 15 August</td></tr>
@@ -255,6 +272,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
             <input type="radio" name="fixture" value="aorangi-undulator">
             Aorangi Undulator — 31 October 2026
           </label>
+          <div class="fixture-link"><a href="/undulator" target="_blank" rel="noopener">Open Undulator details in new tab ↗</a></div>
           <div id="info-undulator" class="event-info">
             <table>
               <tr><td>Date</td><td>Friday 31 October</td></tr>
@@ -293,6 +311,17 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
             <label class="checkbox-label"><input type="checkbox" name="volunteer_roles" value="race-coordination"> Race Coordination</label>
             <label class="checkbox-label"><input type="checkbox" name="volunteer_roles" value="good-vibes"> Good Vibes</label>
           </div>
+        </div>
+      </div>
+
+      <!-- TEAM ENTRY (racers only) -->
+      <div id="team-section" class="hidden">
+        <h2>Team entry</h2>
+        <div class="form-group">
+          <label for="team">Team name</label>
+          <div class="field-help">Optional. If a team with this name already exists, you'll be added to it. Otherwise a new team is created. Letters, numbers and spaces only.</div>
+          <input type="text" id="team" name="team" list="teams-list" autocomplete="off">
+          <datalist id="teams-list"></datalist>
         </div>
       </div>
 
@@ -346,7 +375,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       </div>
 
       <!-- EXPERIENCE -->
-      <h2>Backcountry &amp; event experience</h2>
+      <h2>Backcountry &amp; event experience *</h2>
       <div class="form-group">
         <div class="checkbox-group">
           <label class="checkbox-label"><input type="checkbox" id="exp-backcountry" name="experience" value="backcountry"> I have experience running in New Zealand backcountry, or with navigation and multi-day tramping / hiking</label>
@@ -361,7 +390,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       </div>
 
       <!-- PLB -->
-      <h2>PLB / satellite tracking device</h2>
+      <h2>PLB / satellite tracking device *</h2>
       <div class="form-group">
         <div class="radio-group">
           <label class="radio-label"><input type="radio" name="plb" value="registered-plb" required> Yes — registered PLB (Personal Locator Beacon)</label>
@@ -512,15 +541,48 @@ function updateFeeDisplay() {
   }
 }
 
-// Show/hide volunteer roles and fee section
+// Show/hide volunteer roles, team entry, and fee section
 document.querySelectorAll('input[name="type"]').forEach(radio => {
   radio.addEventListener("change", () => {
     const isVolunteer = radio.value === "volunteer" && radio.checked;
+    const isRace = radio.value === "race" && radio.checked;
     document.getElementById("volunteer-roles-section").classList.toggle("hidden", !isVolunteer);
+    document.getElementById("team-section").classList.toggle("hidden", !isRace);
     document.getElementById("declaration-section").classList.remove("hidden");
     updateFeeDisplay();
   });
 });
+
+// Team name: normalize (title case, single spaces, alphanumeric+space only)
+function normalizeTeamName(name) {
+  if (!name) return "";
+  return name
+    .replace(/[^A-Za-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(" ")
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
+}
+
+// Fetch existing team names for autocomplete
+async function loadTeams() {
+  try {
+    const resp = await fetch(`${WORKER_URL}/teams`);
+    if (!resp.ok) return;
+    const { teams } = await resp.json();
+    const list = document.getElementById("teams-list");
+    list.innerHTML = "";
+    for (const t of teams) {
+      const opt = document.createElement("option");
+      opt.value = t;
+      list.appendChild(opt);
+    }
+  } catch (e) {
+    // Non-fatal — autocomplete just won't be populated
+  }
+}
+loadTeams();
 
 // Experience: show free-text if backcountry checked but no prior fixture
 function updateExperienceDetail() {
@@ -584,6 +646,11 @@ document.getElementById("reg-form").addEventListener("submit", e => {
     showError("Please select Race or Volunteer.");
     return;
   }
+  const experienceChecked = document.querySelectorAll('input[name="experience"]:checked').length;
+  if (experienceChecked === 0) {
+    showError("Please select at least one option for backcountry & event experience.");
+    return;
+  }
   clearError();
   if (type === "race") {
     document.getElementById("modal-race").classList.add("open");
@@ -622,9 +689,12 @@ async function submitForm(extra) {
   const volunteer_roles = Array.from(document.querySelectorAll('input[name="volunteer_roles"]:checked'))
     .map(c => c.value).join(",");
 
+  const team = getType() === "race" ? normalizeTeamName(form.team.value) : "";
+
   const data = {
     type: getType(),
     fixture: getFixture(),
+    team,
     name: form.name.value.trim(),
     email: form.email.value.trim(),
     dob: form.dob.value,

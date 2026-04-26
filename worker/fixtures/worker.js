@@ -21,9 +21,48 @@ function isAllowedOrigin(origin) {
 function corsHeaders(origin) {
   return {
     "Access-Control-Allow-Origin": isAllowedOrigin(origin) ? origin : "",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
+}
+
+function normalizeTeamName(name) {
+  if (!name) return "";
+  return String(name)
+    .replace(/[^A-Za-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(" ")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
+}
+
+async function fetchExistingTeams(env) {
+  const response = await fetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/contents/fixtures`,
+    {
+      headers: {
+        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "User-Agent": "wreckd-fixtures-worker",
+      },
+    }
+  );
+  if (!response.ok) return [];
+  const files = await response.json();
+  const seen = new Map(); // lowercase -> canonical
+  for (const file of files) {
+    if (!file.name.endsWith(".yml")) continue;
+    const r = await fetch(file.download_url);
+    const text = await r.text();
+    const m = text.match(/^team: "([^"]*)"/m);
+    if (m && m[1]) {
+      const canonical = normalizeTeamName(m[1]);
+      const key = canonical.toLowerCase();
+      if (canonical && !seen.has(key)) seen.set(key, canonical);
+    }
+  }
+  return Array.from(seen.values()).sort();
 }
 
 function toYaml(obj) {
@@ -204,10 +243,23 @@ async function handleRegister(request, env) {
   const ref = await generateRef(data.fixture, lastName, env);
   const fixture = FIXTURES[data.fixture];
 
+  // Normalize team name; if a team with the same canonical name already exists,
+  // use the existing canonical spelling so registrants are grouped consistently.
+  let team = "";
+  if (data.type === "race") {
+    const normalized = normalizeTeamName(data.team);
+    if (normalized) {
+      const existingTeams = await fetchExistingTeams(env);
+      const match = existingTeams.find((t) => t.toLowerCase() === normalized.toLowerCase());
+      team = match || normalized;
+    }
+  }
+
   const submission = {
     ref,
     type: data.type,
     fixture: data.fixture,
+    team,
     name: data.name.trim(),
     email: data.email.trim(),
     dob: data.dob,
@@ -267,6 +319,19 @@ export default {
         });
       }
       return handleRegister(request, env);
+    }
+
+    if (url.pathname === "/teams" && request.method === "GET") {
+      if (origin && !isAllowedOrigin(origin)) {
+        return new Response(JSON.stringify({ error: "Forbidden" }), {
+          status: 403, headers: { "Content-Type": "application/json" },
+        });
+      }
+      const teams = await fetchExistingTeams(env);
+      return new Response(JSON.stringify({ teams }), {
+        status: 200,
+        headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
+      });
     }
 
     return new Response(JSON.stringify({ error: "Not found" }), {

@@ -120,6 +120,39 @@ textarea { resize: vertical; min-height: 80px; }
   margin-top: 2px;
   margin-bottom: 6px;
 }
+.autocomplete {
+  position: relative;
+}
+.autocomplete-list {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: var(--paper);
+  border: 1px solid #aaa;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+.autocomplete-list.open { display: block; }
+.autocomplete-item {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.autocomplete-item:hover, .autocomplete-item.active {
+  background: var(--red);
+  color: var(--paper);
+}
+.autocomplete-item.is-new {
+  font-style: italic;
+  color: #555;
+}
+.autocomplete-item.is-new:hover {
+  color: var(--paper);
+}
 .hidden { display: none; }
 .fee-box {
   border: 1px solid var(--red);
@@ -320,8 +353,10 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         <div class="form-group">
           <label for="team">Team name</label>
           <div class="field-help">Optional. If a team with this name already exists, you'll be added to it. Otherwise a new team is created. Letters, numbers and spaces only.</div>
-          <input type="text" id="team" name="team" list="teams-list" autocomplete="off">
-          <datalist id="teams-list"></datalist>
+          <div class="autocomplete">
+            <input type="text" id="team" name="team" autocomplete="off">
+            <div id="team-suggestions" class="autocomplete-list"></div>
+          </div>
         </div>
       </div>
 
@@ -608,24 +643,98 @@ async function checkMembership() {
 }
 document.getElementById("email").addEventListener("blur", checkMembership);
 
-// Fetch existing team names for autocomplete
+// Team autocomplete: fetch teams, render filtered dropdown
+let allTeams = [];
+
 async function loadTeams() {
   try {
     const resp = await fetch(`${WORKER_URL}/teams`);
     if (!resp.ok) return;
     const { teams } = await resp.json();
-    const list = document.getElementById("teams-list");
-    list.innerHTML = "";
-    for (const t of teams) {
-      const opt = document.createElement("option");
-      opt.value = t;
-      list.appendChild(opt);
-    }
+    allTeams = teams || [];
   } catch (e) {
     // Non-fatal — autocomplete just won't be populated
   }
 }
 loadTeams();
+
+(function setupTeamAutocomplete() {
+  const input = document.getElementById("team");
+  const list = document.getElementById("team-suggestions");
+  let activeIdx = -1;
+
+  function render() {
+    const query = input.value.trim();
+    const queryNorm = normalizeTeamName(query);
+    const queryLower = queryNorm.toLowerCase();
+    const matches = queryLower
+      ? allTeams.filter((t) => t.toLowerCase().includes(queryLower))
+      : allTeams.slice();
+
+    list.innerHTML = "";
+    activeIdx = -1;
+
+    for (const t of matches) {
+      const item = document.createElement("div");
+      item.className = "autocomplete-item";
+      item.textContent = t;
+      item.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        input.value = t;
+        close();
+      });
+      list.appendChild(item);
+    }
+
+    // If user has typed something that doesn't match any existing team, show "new team" hint
+    if (queryNorm && !matches.some((t) => t.toLowerCase() === queryLower)) {
+      const item = document.createElement("div");
+      item.className = "autocomplete-item is-new";
+      item.textContent = `Create new team: "${queryNorm}"`;
+      item.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        input.value = queryNorm;
+        close();
+      });
+      list.appendChild(item);
+    }
+
+    list.classList.toggle("open", list.children.length > 0);
+  }
+
+  function close() {
+    list.classList.remove("open");
+  }
+
+  function setActive(idx) {
+    const items = list.querySelectorAll(".autocomplete-item");
+    items.forEach((el, i) => el.classList.toggle("active", i === idx));
+    if (idx >= 0 && items[idx]) {
+      items[idx].scrollIntoView({ block: "nearest" });
+    }
+    activeIdx = idx;
+  }
+
+  input.addEventListener("focus", render);
+  input.addEventListener("input", render);
+  input.addEventListener("blur", () => setTimeout(close, 100));
+
+  input.addEventListener("keydown", (e) => {
+    const items = list.querySelectorAll(".autocomplete-item");
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (items.length) setActive((activeIdx + 1) % items.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (items.length) setActive((activeIdx - 1 + items.length) % items.length);
+    } else if (e.key === "Enter" && activeIdx >= 0) {
+      e.preventDefault();
+      items[activeIdx].dispatchEvent(new MouseEvent("mousedown"));
+    } else if (e.key === "Escape") {
+      close();
+    }
+  });
+})();
 
 // Experience: show free-text if backcountry checked but no prior fixture
 function updateExperienceDetail() {

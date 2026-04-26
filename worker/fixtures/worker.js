@@ -37,6 +37,20 @@ function normalizeTeamName(name) {
     .join(" ");
 }
 
+// Extract a scalar YAML field's value, tolerant of quoting (none, "...", '...').
+function extractYamlField(text, field) {
+  const m = text.match(new RegExp(`^${field}:\\s*(.*)$`, "m"));
+  if (!m) return null;
+  let val = m[1].trim();
+  if (val.length >= 2) {
+    const first = val[0], last = val[val.length - 1];
+    if ((first === '"' && last === '"') || (first === "'" && last === "'")) {
+      val = val.slice(1, -1);
+    }
+  }
+  return val;
+}
+
 async function fetchExistingTeams(env) {
   const response = await fetch(
     `https://api.github.com/repos/${GITHUB_REPO}/contents/fixtures`,
@@ -55,9 +69,9 @@ async function fetchExistingTeams(env) {
     if (!file.name.endsWith(".yml")) continue;
     const r = await fetch(file.download_url);
     const text = await r.text();
-    const m = text.match(/^team: "([^"]*)"/m);
-    if (m && m[1]) {
-      const canonical = normalizeTeamName(m[1]);
+    const raw = extractYamlField(text, "team");
+    if (raw) {
+      const canonical = normalizeTeamName(raw);
       const key = canonical.toLowerCase();
       if (canonical && !seen.has(key)) seen.set(key, canonical);
     }
@@ -106,8 +120,8 @@ async function generateRef(fixture, lastName, env) {
     if (!file.name.endsWith(".yml")) continue;
     const r = await fetch(file.download_url);
     const text = await r.text();
-    const m = text.match(/^ref: "([^"]+)"/m);
-    if (m) usedRefs.add(m[1]);
+    const ref = extractYamlField(text, "ref");
+    if (ref) usedRefs.add(ref);
   }
   if (!usedRefs.has(base)) return base;
   for (let i = 2; i <= 99; i++) {

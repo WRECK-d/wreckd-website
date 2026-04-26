@@ -256,8 +256,21 @@ header {
   cursor: pointer;
 }
 
+.register-button.secondary {
+  background: white;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  padding: 23px 38px;
+}
+
+.register-button + .register-button {
+  margin-top: 12px;
+}
+
 .register-button:hover {
   background: var(--blue-light);
+  color: white;
+  border-color: var(--blue-light);
   transform: translateY(-2px);
 }
 
@@ -359,7 +372,8 @@ footer {
   </section>
 
   <section class="gpx-section">
-    <a href="https://wreckd.runs.nz/join" class="register-button">Join Us and Register</a>
+    <a href="/fixtures/register/" class="register-button">Register for this fixture</a>
+    <a href="https://wreckd.runs.nz/join" class="register-button secondary">Become a member</a>
   </section>
 
   <div class="wreckd-box">

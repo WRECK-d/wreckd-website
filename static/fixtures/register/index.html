@@ -334,6 +334,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       <div class="form-group">
         <label for="email">Email address *</label>
         <input type="email" id="email" name="email" required>
+        <div id="member-status" class="field-help"></div>
       </div>
       <div class="form-group">
         <label for="dob">Date of birth *</label>
@@ -565,6 +566,37 @@ function normalizeTeamName(name) {
     .join(" ");
 }
 
+// Check membership when the user finishes typing their email
+let memberStatus = null; // null=unknown, true=member, false=non-member
+async function checkMembership() {
+  const email = document.getElementById("email").value.trim();
+  const status = document.getElementById("member-status");
+  if (!email || !email.includes("@")) {
+    memberStatus = null;
+    status.textContent = "";
+    status.style.color = "";
+    return;
+  }
+  status.textContent = "Checking membership…";
+  status.style.color = "#666";
+  try {
+    const resp = await fetch(`${WORKER_URL}/check-member?email=${encodeURIComponent(email)}`);
+    const { member } = await resp.json();
+    memberStatus = member;
+    if (member) {
+      status.innerHTML = "✓ Membership confirmed.";
+      status.style.color = "#0a7d2f";
+    } else {
+      status.innerHTML = "Not a member. Please <a href=\"/join\" target=\"_blank\" rel=\"noopener\">join WREC'kd</a> before registering for a fixture.";
+      status.style.color = "var(--red)";
+    }
+  } catch (e) {
+    memberStatus = null;
+    status.textContent = "";
+  }
+}
+document.getElementById("email").addEventListener("blur", checkMembership);
+
 // Fetch existing team names for autocomplete
 async function loadTeams() {
   try {
@@ -649,6 +681,10 @@ document.getElementById("reg-form").addEventListener("submit", e => {
   const experienceChecked = document.querySelectorAll('input[name="experience"]:checked').length;
   if (experienceChecked === 0) {
     showError("Please select at least one option for backcountry & event experience.");
+    return;
+  }
+  if (memberStatus === false) {
+    showError("This email is not a registered WREC'kd member. Please join first at /join.");
     return;
   }
   clearError();

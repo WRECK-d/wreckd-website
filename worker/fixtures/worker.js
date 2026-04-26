@@ -334,6 +334,20 @@ export default {
       });
     }
 
+    if (url.pathname === "/check-member" && request.method === "GET") {
+      if (origin && !isAllowedOrigin(origin)) {
+        return new Response(JSON.stringify({ error: "Forbidden" }), {
+          status: 403, headers: { "Content-Type": "application/json" },
+        });
+      }
+      const email = url.searchParams.get("email") || "";
+      const member = email ? await isMember(email, env) : false;
+      return new Response(JSON.stringify({ member }), {
+        status: 200,
+        headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
+      });
+    }
+
     return new Response(JSON.stringify({ error: "Not found" }), {
       status: 404, headers: { "Content-Type": "application/json" },
     });

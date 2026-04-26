@@ -5,6 +5,8 @@ description: "Upcoming \"runs\". Mukamuka Munter, Wellington Trail and Adventure
 
 WREC'kd organises grassroots running activities for its [members](/join/). See our [T+Cs](/boring/) for the fine print.
 
+**Already a member? [Register for a fixture →](/fixtures/register/)**
+
 {{< highlight-box >}} ### [Mukamuka Munter →](/mukamuka/) {{< /highlight-box >}}
 
 ...is back

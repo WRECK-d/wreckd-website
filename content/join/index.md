@@ -12,7 +12,7 @@ For further details on our activities (including races and trips), see our fixtu
 
 
 WREC'kd annual membership for the 2026/27 season:
-- **Adult:** ~~$120~~ $80 NZD (early bird until May 1)
+- **Adult:** $120 NZD
 - **Youth:** $70 NZD
 
 {{< join-form action="https://wreckd-form-worker.wreckd.workers.dev" >}}

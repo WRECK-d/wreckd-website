@@ -435,7 +435,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       <!-- DECLARATION (opens modal on submit) -->
       <div id="declaration-section" class="hidden">
         <h2>Declaration</h2>
-        <p style="font-size:0.85rem;">You will be asked to read and sign a declaration before submitting.</p>
+        <p style="font-size:0.85rem;">You'll be asked to confirm the declaration before submitting.</p>
       </div>
 
       <!-- ENTRY FEE (racers only) -->
@@ -451,7 +451,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         </div>
       </div>
 
-      <button type="submit" id="submit-btn">Review &amp; Sign Declaration</button>
+      <button type="submit" id="submit-btn">Confirm</button>
       <div id="form-status" class="form-status"></div>
     </form>
   </div>
@@ -486,9 +486,9 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 <!-- RACE DECLARATION MODAL -->
 <div id="modal-race" class="modal-overlay">
   <div class="modal">
-    <div class="modal-header">Sign Declaration</div>
+    <div class="modal-header">Confirm Registration</div>
     <div class="modal-body" id="modal-race-body">
-      <p>By signing below you confirm:</p>
+      <p>By confirming, you agree:</p>
       <ul>
         <li>You have read and agree to the <a href="/fixtures/conditions/" target="_blank" rel="noopener">Race Conditions &amp; Code of Conduct</a>.</li>
         <li>You have disclosed any medical conditions or medications relevant to participation, either on this form or in prior correspondence with the Race Director.</li>
@@ -496,10 +496,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       </ul>
     </div>
     <div class="modal-footer">
-      <label for="race-sig">Sign your name to confirm *</label>
-      <input type="text" id="race-sig" placeholder="Full name">
-      <br>
-      <button class="modal-sign-btn" id="race-sign-btn" disabled>Confirm &amp; Proceed to Payment</button>
+      <button class="modal-sign-btn" id="race-sign-btn">Confirm</button>
     </div>
   </div>
 </div>
@@ -507,9 +504,9 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 <!-- VOLUNTEER DECLARATION MODAL -->
 <div id="modal-volunteer" class="modal-overlay">
   <div class="modal">
-    <div class="modal-header">Sign Declaration</div>
+    <div class="modal-header">Confirm Registration</div>
     <div class="modal-body" id="modal-volunteer-body">
-      <p>By signing below you confirm:</p>
+      <p>By confirming, you agree:</p>
       <ul>
         <li>You have read and agree to the <a href="/fixtures/volunteer-arrangements/" target="_blank" rel="noopener">Volunteer Arrangements</a>.</li>
         <li>You have disclosed any medical conditions or medications relevant to participation, either on this form or in prior correspondence with the Race Director.</li>
@@ -517,10 +514,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       </ul>
     </div>
     <div class="modal-footer">
-      <label for="vol-sig">Sign your name to confirm *</label>
-      <input type="text" id="vol-sig" placeholder="Full name">
-      <br>
-      <button class="modal-sign-btn" id="vol-sign-btn" disabled>Confirm &amp; Submit Registration</button>
+      <button class="modal-sign-btn" id="vol-sign-btn">Confirm</button>
     </div>
   </div>
 </div>
@@ -755,17 +749,6 @@ document.querySelectorAll('input[name="experience"]').forEach(cb => {
   });
 });
 
-function setupSignatureCheck(sigId, btnId) {
-  const sig = document.getElementById(sigId);
-  const btn = document.getElementById(btnId);
-  sig.addEventListener("input", () => {
-    btn.disabled = sig.value.trim().length < 2;
-  });
-}
-
-setupSignatureCheck("race-sig", "race-sign-btn");
-setupSignatureCheck("vol-sig", "vol-sign-btn");
-
 // Close modal on overlay click
 document.querySelectorAll(".modal-overlay").forEach(overlay => {
   overlay.addEventListener("click", e => {
@@ -802,20 +785,14 @@ document.getElementById("reg-form").addEventListener("submit", e => {
   }
 });
 
-// Race sign button
 document.getElementById("race-sign-btn").addEventListener("click", async () => {
-  const sig = document.getElementById("race-sig").value.trim();
-  if (!sig) return;
   document.getElementById("modal-race").classList.remove("open");
-  await submitForm({ race_declaration_name: sig });
+  await submitForm({});
 });
 
-// Volunteer sign button
 document.getElementById("vol-sign-btn").addEventListener("click", async () => {
-  const sig = document.getElementById("vol-sig").value.trim();
-  if (!sig) return;
   document.getElementById("modal-volunteer").classList.remove("open");
-  await submitForm({ volunteer_declaration_name: sig });
+  await submitForm({});
 });
 
 async function submitForm(extra) {
@@ -866,7 +843,7 @@ async function submitForm(extra) {
     if (!resp.ok) {
       showError(result.error || "Something went wrong. Please try again.");
       btn.disabled = false;
-      btn.textContent = "Review & Sign Declaration";
+      btn.textContent = "Confirm";
       return;
     }
 
@@ -886,7 +863,7 @@ async function submitForm(extra) {
   } catch (err) {
     showError("Network error. Please try again.");
     btn.disabled = false;
-    btn.textContent = "Review & Sign Declaration";
+    btn.textContent = "Confirm";
   }
 }
 

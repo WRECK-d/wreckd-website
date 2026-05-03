@@ -235,11 +235,6 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 .modal-footer input[type=text] {
   margin-bottom: 12px;
 }
-.scroll-notice {
-  font-size: 0.78rem;
-  color: #888;
-  margin-bottom: 8px;
-}
 .modal-sign-btn {
   font-family: var(--font);
   font-size: 0.9rem;
@@ -475,6 +470,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         Reference: <span id="success-ref-2"></span><br><br>
         Your entry will be confirmed once payment is received.
       </div>
+      <p>Please review the <a href="/fixtures/conditions/">Race Conditions &amp; Code of Conduct</a> before the event. We've also linked it in your confirmation email.</p>
     </div>
     <div id="success-volunteer" class="hidden">
       <div class="success-title">Thank you for volunteering!</div>
@@ -482,6 +478,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         <strong>Reference:</strong> <span id="success-ref-vol"></span><br><br>
         No payment required. We'll be in touch with arrangements.
       </div>
+      <p>Please review the <a href="/fixtures/volunteer-arrangements/">Volunteer Arrangements</a> before the event. We've also linked it in your confirmation email.</p>
     </div>
   </div>
 </div>
@@ -489,27 +486,18 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 <!-- RACE DECLARATION MODAL -->
 <div id="modal-race" class="modal-overlay">
   <div class="modal">
-    <div class="modal-header">Race Conditions &amp; Code of Conduct</div>
+    <div class="modal-header">Sign Declaration</div>
     <div class="modal-body" id="modal-race-body">
-      <p>This event takes place in remote New Zealand backcountry terrain. Conditions may be challenging, wet, cold, and unpredictable. Participants must be self-sufficient and capable of navigating and managing their own safety for the full duration of the event.</p>
-      <p>All participants must carry the mandatory gear list as published on the website. Spot-checks may be conducted at any time. Failure to carry mandatory gear is grounds for immediate disqualification without refund.</p>
-      <p>Navigation is the participant's responsibility. Course markings are provided as a guide only and are not guaranteed to be complete or unaltered by weather, stock, or third parties. Participants must carry a physical map and compass and be competent in their use.</p>
-      <p>All participants must respect private land and conservation areas. Stay on defined tracks where instructed, leave gates as found, and carry out all waste. Any participant found causing damage to the environment may be disqualified and reported to the relevant authority or DOC.</p>
-      <p>If cut-off times are enforced, participants who have not reached each checkpoint by the specified cut-off will be withdrawn from the event, and no exceptions will be made.</p>
-      <p>By entering this event you confirm you are medically fit to participate and accept all inherent risks associated with remote backcountry running. WREC'kd Inc. and its volunteers accept no liability for injury, illness, loss, or death arising from participation. The Race Director reserves the right to modify, delay, shorten, or cancel the event at any time for safety reasons. Entry fees will not be refunded in the event of cancellation due to safety or weather. If you are unable to participate in the fixture for medical reasons your fees may be refunded at the Treasurer's discretion.</p>
-      <h3>Code of Conduct</h3>
-      <p>WREC'kd is committed to providing a safe, welcoming, and inclusive environment for all participants, volunteers, and spectators. All participants are expected to conduct themselves with respect and integrity at all times.</p>
-      <p>A member may face disciplinary action, up to and including suspension or termination of membership, if the Committee determines that the member has brought the Society into disrepute, or repeatedly or seriously acted in a manner that poses a risk to the safety, health, or welfare of themselves or others involved in Society activities. Littering on course or in the surrounding environment is a serious breach of this code. Any participant observed littering will be disqualified.</p>
-      <p>If you withdraw for any reason, notify Race Control immediately via the number on your race bib. Do not leave the course without notifying race officials — doing so may trigger a search and rescue response, the cost of which may be recovered from you.</p>
-      <h3>Safety Declaration</h3>
-      <p>By signing below, you confirm that you have disclosed any medical conditions or medications relevant to participation, either on this form or in prior correspondence with the Race Director.</p>
-      <p>You will carry your own essential gear (minimums), and this list is a guide to keep yourself safe. You can provide your own first aid, and will have access to a personal locator beacon (PLB) when participating in this fixture. You have kept your emergency contact informed of your participation in this activity.</p>
-      <p>You confirm you are aware of the risks as stated on the RAMS, and are entering of your own free will.</p>
+      <p>By signing below you confirm:</p>
+      <ul>
+        <li>You have read and agree to the <a href="/fixtures/conditions/" target="_blank" rel="noopener">Race Conditions &amp; Code of Conduct</a>.</li>
+        <li>You have disclosed any medical conditions or medications relevant to participation, either on this form or in prior correspondence with the Race Director.</li>
+        <li>You are entering of your own free will and accept the risks set out in the conditions.</li>
+      </ul>
     </div>
     <div class="modal-footer">
-      <div class="scroll-notice" id="race-scroll-notice">↓ Scroll to the bottom to sign</div>
       <label for="race-sig">Sign your name to confirm *</label>
-      <input type="text" id="race-sig" placeholder="Full name" disabled>
+      <input type="text" id="race-sig" placeholder="Full name">
       <br>
       <button class="modal-sign-btn" id="race-sign-btn" disabled>Confirm &amp; Proceed to Payment</button>
     </div>
@@ -519,19 +507,18 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 <!-- VOLUNTEER DECLARATION MODAL -->
 <div id="modal-volunteer" class="modal-overlay">
   <div class="modal">
-    <div class="modal-header">Volunteer Arrangements</div>
+    <div class="modal-header">Sign Declaration</div>
     <div class="modal-body" id="modal-volunteer-body">
-      <p>Thank you for volunteering with WREC'kd. Volunteers are the backbone of our events and we are grateful for your time and energy.</p>
-      <p>This event takes place in and around remote New Zealand backcountry terrain. As a volunteer you may be stationed in exposed locations for extended periods. Please ensure you are appropriately dressed and equipped for the conditions on the day. The Race Director will be in touch with further details.</p>
-      <p>WREC'kd is committed to providing a safe, welcoming, and inclusive environment for all participants, volunteers, and spectators. All participants are expected to conduct themselves with respect and integrity at all times, to look after themselves and others, and know their limits when in the backcountry.</p>
-      <h3>Declaration</h3>
-      <p>By signing below, you confirm that you have disclosed any medical conditions or medications relevant to participation, either on this form or in prior correspondence with the Race Director.</p>
-      <p>You have kept your emergency contact informed of your participation in this activity. You are aware of the risks associated with the environment in which this event takes place, and confirm you are aware of the risks as stated on the RAMS, and are volunteering of your own free will.</p>
+      <p>By signing below you confirm:</p>
+      <ul>
+        <li>You have read and agree to the <a href="/fixtures/volunteer-arrangements/" target="_blank" rel="noopener">Volunteer Arrangements</a>.</li>
+        <li>You have disclosed any medical conditions or medications relevant to participation, either on this form or in prior correspondence with the Race Director.</li>
+        <li>You are volunteering of your own free will.</li>
+      </ul>
     </div>
     <div class="modal-footer">
-      <div class="scroll-notice" id="vol-scroll-notice">↓ Scroll to the bottom to sign</div>
       <label for="vol-sig">Sign your name to confirm *</label>
-      <input type="text" id="vol-sig" placeholder="Full name" disabled>
+      <input type="text" id="vol-sig" placeholder="Full name">
       <br>
       <button class="modal-sign-btn" id="vol-sign-btn" disabled>Confirm &amp; Submit Registration</button>
     </div>
@@ -768,32 +755,16 @@ document.querySelectorAll('input[name="experience"]').forEach(cb => {
   });
 });
 
-// Modal scroll-to-bottom logic
-function setupModalScroll(bodyId, noticeId, sigId, btnId) {
-  const body = document.getElementById(bodyId);
-  const notice = document.getElementById(noticeId);
+function setupSignatureCheck(sigId, btnId) {
   const sig = document.getElementById(sigId);
   const btn = document.getElementById(btnId);
-  let scrolled = false;
-
-  body.addEventListener("scroll", () => {
-    if (!scrolled && body.scrollTop + body.clientHeight >= body.scrollHeight - 10) {
-      scrolled = true;
-      notice.style.display = "none";
-      sig.disabled = false;
-      sig.focus();
-    }
-  });
-
   sig.addEventListener("input", () => {
     btn.disabled = sig.value.trim().length < 2;
   });
-
-  return { getScrolled: () => scrolled };
 }
 
-const raceModal = setupModalScroll("modal-race-body", "race-scroll-notice", "race-sig", "race-sign-btn");
-const volModal = setupModalScroll("modal-volunteer-body", "vol-scroll-notice", "vol-sig", "vol-sign-btn");
+setupSignatureCheck("race-sig", "race-sign-btn");
+setupSignatureCheck("vol-sig", "vol-sign-btn");
 
 // Close modal on overlay click
 document.querySelectorAll(".modal-overlay").forEach(overlay => {

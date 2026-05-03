@@ -37,23 +37,9 @@ function normalizeTeamName(name) {
     .join(" ");
 }
 
-// Extract a scalar YAML field's value, tolerant of quoting (none, "...", '...').
-function extractYamlField(text, field) {
-  const m = text.match(new RegExp(`^${field}:\\s*(.*)$`, "m"));
-  if (!m) return null;
-  let val = m[1].trim();
-  if (val.length >= 2) {
-    const first = val[0], last = val[val.length - 1];
-    if ((first === '"' && last === '"') || (first === "'" && last === "'")) {
-      val = val.slice(1, -1);
-    }
-  }
-  return val;
-}
-
-async function fetchExistingTeams(env) {
+async function fetchRegistry(env) {
   const response = await fetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/contents/fixtures`,
+    `https://api.github.com/repos/${GITHUB_REPO}/contents/fixtures-registry.json`,
     {
       headers: {
         Authorization: `Bearer ${env.GITHUB_TOKEN}`,
@@ -62,21 +48,14 @@ async function fetchExistingTeams(env) {
       },
     }
   );
-  if (!response.ok) return [];
-  const files = await response.json();
-  const seen = new Map(); // lowercase -> canonical
-  for (const file of files) {
-    if (!file.name.endsWith(".yml")) continue;
-    const r = await fetch(file.download_url);
-    const text = await r.text();
-    const raw = extractYamlField(text, "team");
-    if (raw) {
-      const canonical = normalizeTeamName(raw);
-      const key = canonical.toLowerCase();
-      if (canonical && !seen.has(key)) seen.set(key, canonical);
-    }
-  }
-  return Array.from(seen.values()).sort();
+  if (!response.ok) return { refs: [], teams: [] };
+  const { content } = await response.json();
+  return JSON.parse(atob(content.replace(/\n/g, "")));
+}
+
+async function fetchExistingTeams(env) {
+  const reg = await fetchRegistry(env);
+  return Array.from(new Set(reg.teams || [])).sort();
 }
 
 function toYaml(obj) {
@@ -98,31 +77,8 @@ function baseRef(fixture, lastName) {
 
 async function generateRef(fixture, lastName, env) {
   const base = baseRef(fixture, lastName);
-  // List existing fixtures dir to check for collisions
-  const response = await fetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/contents/fixtures`,
-    {
-      headers: {
-        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
-        Accept: "application/vnd.github+json",
-        "User-Agent": "wreckd-fixtures-worker",
-      },
-    }
-  );
-  if (!response.ok) return base;
-  const files = await response.json();
-  // Extract refs from existing YAML filenames isn't reliable, so fetch and scan content
-  // Instead, check refs by fetching the fixtures listing and reading each file would be too slow.
-  // We store ref in the filename suffix — but simplest: just scan existing refs via a lightweight approach.
-  // Since files are small and infrequent, fetch the tree.
-  const usedRefs = new Set();
-  for (const file of files) {
-    if (!file.name.endsWith(".yml")) continue;
-    const r = await fetch(file.download_url);
-    const text = await r.text();
-    const ref = extractYamlField(text, "ref");
-    if (ref) usedRefs.add(ref);
-  }
+  const reg = await fetchRegistry(env);
+  const usedRefs = new Set(reg.refs || []);
   if (!usedRefs.has(base)) return base;
   for (let i = 2; i <= 99; i++) {
     const candidate = `${base}-${String(i).padStart(2, "0")}`;

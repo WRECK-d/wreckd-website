@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vert Day 2026 — Sign Up</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --green: #2d4217;
+  --green-light: #3d5a20;
+  --green-faint: #e8ede2;
+  --ink: #1a2010;
+  --paper: #f5f7f2;
+  --font: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  min-height: 100vh;
+}
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Ccircle cx='24' cy='24' r='1.2' fill='%232d4217' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 96px 96px;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+.grid-overlay.scrolling { opacity: 1; transition: opacity 0.1s ease-in; }
+
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 32px 120px;
+  position: relative;
+  z-index: 5;
+}
+
+header { margin-bottom: 60px; }
+
+.site-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+
+.site-label a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-label a:hover { opacity: 0.6; }
+
+h1 {
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-weight: 500;
+  line-height: 0.9;
+  color: var(--green);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.date-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--green);
+  opacity: 0.25;
+  margin: 40px 0;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  opacity: 0.7;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-group { margin-bottom: 28px; }
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+select {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--green);
+  padding: 12px 14px;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%232d4217'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.radio-option {
+  display: none;
+}
+
+.radio-label {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid var(--green);
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: white;
+  color: var(--ink);
+  user-select: none;
+  transition: background 0.1s, color 0.1s;
+}
+
+.radio-option:checked + .radio-label {
+  background: var(--green);
+  color: white;
+}
+
+.radio-label:hover { background: var(--green-faint); }
+.radio-option:checked + .radio-label:hover { background: var(--green); }
+
+.optional-note {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  margin-left: 6px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.submit-btn {
+  font-family: var(--font);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 16px;
+  transition: background 0.15s;
+}
+
+.submit-btn:hover { background: var(--green-light); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.form-status {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: #c0392b;
+}
+
+/* Success state */
+#success {
+  display: none;
+}
+
+.success-title {
+  font-size: 2rem;
+  color: var(--green);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.entry-url-box {
+  background: white;
+  border: 1px solid var(--green);
+  padding: 16px 20px;
+  font-size: 1rem;
+  word-break: break-all;
+  margin-bottom: 16px;
+  color: var(--green);
+}
+
+.copy-btn {
+  font-family: var(--font);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: white;
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background 0.1s, color 0.1s;
+}
+
+.copy-btn:hover { background: var(--green-faint); }
+.copy-btn.copied { background: var(--green); color: white; }
+
+.go-btn {
+  display: inline-block;
+  font-family: var(--font);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background 0.1s;
+}
+
+.go-btn:hover { background: var(--green-light); }
+
+.success-note {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+footer {
+  margin-top: 80px;
+  padding-top: 20px;
+  border-top: 1px solid var(--green);
+  opacity: 0.4;
+  font-size: 0.75rem;
+}
+</style>
+</head>
+<body>
+<div class="grid-overlay" id="grid"></div>
+
+<div class="page">
+  <header>
+    <div class="site-label"><a href="/leaderboard">Vert Day 2026</a></div>
+    <h1>SIGN UP</h1>
+    <div class="date-label">23 May 2026</div>
+  </header>
+
+  <div id="form-section">
+    <form id="signup-form" novalidate>
+
+      <div class="form-group">
+        <label class="section-label" for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name" />
+      </div>
+
+      <div class="form-group">
+        <label class="section-label" for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+
+      <div class="form-group">
+        <label class="section-label" for="strava">
+          Strava <span class="optional-note">(optional)</span>
+        </label>
+        <input type="url" id="strava" name="strava" placeholder="https://www.strava.com/athletes/..." />
+      </div>
+
+      <div class="form-group">
+        <label class="section-label" for="location">
+          Location <span class="optional-note">(optional)</span>
+        </label>
+        <input type="text" id="location" name="location" placeholder="e.g. Wellington, Christchurch, ..." />
+      </div>
+
+      <div class="form-group">
+        <label class="section-label" for="club">
+          Club <span class="optional-note">(optional)</span>
+        </label>
+        <input type="text" id="club" name="club" placeholder="e.g. BSR Wellington, WoRM, ..." />
+      </div>
+
+      <div class="form-group">
+        <span class="section-label">Category</span>
+        <div class="radio-group">
+          <input class="radio-option" type="radio" name="category" id="cat-male" value="Male" required />
+          <label class="radio-label" for="cat-male">Male</label>
+          <input class="radio-option" type="radio" name="category" id="cat-female" value="Female" />
+          <label class="radio-label" for="cat-female">Female</label>
+          <input class="radio-option" type="radio" name="category" id="cat-machine" value="Machine" />
+          <label class="radio-label" for="cat-machine">Machine</label>
+          <input class="radio-option" type="radio" name="category" id="cat-dog" value="Dog" />
+          <label class="radio-label" for="cat-dog">Dog</label>
+          <input class="radio-option" type="radio" name="category" id="cat-tiny" value="Tiny Human" />
+          <label class="radio-label" for="cat-tiny">Tiny Human</label>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Register</button>
+      <div class="form-status" id="form-status"></div>
+    </form>
+  </div>
+
+  <div id="success">
+    <div class="success-title">You're in!</div>
+    <p style="font-size:0.85rem;margin-bottom:16px;opacity:0.7;">Bookmark your entry page — this is how you log workouts on Vert Day.</p>
+    <div class="entry-url-box" id="entry-url-display"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+      <button class="copy-btn" id="copy-btn">Copy Link</button>
+      <a class="go-btn" id="go-btn" href="#">Go to My Entry Page &rarr;</a>
+    </div>
+    <p class="success-note">
+      Can't find your link later? Look yourself up on the <a href="/leaderboard" style="color:var(--green)">leaderboard</a>.
+    </p>
+  </div>
+
+  <footer>
+    <a href="/leaderboard" style="color:inherit;text-decoration:none;">Vert Day 2026</a> &mdash; wreckd.org.nz
+  </footer>
+</div>
+
+<script>
+const WORKER_URL = 'https://vertday-worker.wreckd.workers.dev';
+
+const form = document.getElementById('signup-form');
+const submitBtn = document.getElementById('submit-btn');
+const formStatus = document.getElementById('form-status');
+const formSection = document.getElementById('form-section');
+const successDiv = document.getElementById('success');
+const entryUrlDisplay = document.getElementById('entry-url-display');
+const copyBtn = document.getElementById('copy-btn');
+const goBtn = document.getElementById('go-btn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  formStatus.textContent = '';
+
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const category = form.querySelector('input[name="category"]:checked');
+
+  if (!name) { formStatus.textContent = 'Please enter your name.'; return; }
+  if (!email) { formStatus.textContent = 'Please enter your email.'; return; }
+  if (!category) { formStatus.textContent = 'Please select a category.'; return; }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Registering...';
+
+  const data = {
+    name,
+    email,
+    strava: form.strava.value.trim(),
+    location: form.location.value.trim(),
+    club: form.club.value.trim(),
+    category: category.value,
+  };
+
+  try {
+    const res = await fetch(WORKER_URL + '/sign-up', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      formStatus.textContent = err.error || 'Something went wrong. Please try again.';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Register';
+      return;
+    }
+
+    const { entry_url } = await res.json();
+    showSuccess(entry_url);
+  } catch {
+    formStatus.textContent = 'Network error — please try again.';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Register';
+  }
+});
+
+function showSuccess(url) {
+  formSection.style.display = 'none';
+  successDiv.style.display = 'block';
+  entryUrlDisplay.textContent = url;
+  goBtn.href = url;
+}
+
+copyBtn.addEventListener('click', () => {
+  const url = entryUrlDisplay.textContent;
+  navigator.clipboard.writeText(url).then(() => {
+    copyBtn.textContent = 'Copied!';
+    copyBtn.classList.add('copied');
+    setTimeout(() => {
+      copyBtn.textContent = 'Copy Link';
+      copyBtn.classList.remove('copied');
+    }, 2000);
+  });
+});
+
+// Grid overlay on scroll
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  document.getElementById('grid').classList.add('scrolling');
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => document.getElementById('grid').classList.remove('scrolling'), 800);
+}, { passive: true });
+</script>
+</body>
+</html>

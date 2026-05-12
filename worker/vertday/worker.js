@@ -148,17 +148,38 @@ async function fetchYaml(file, env) {
 }
 
 // Reads vertday/leaderboard.json (precomputed by the form-submissions Action).
-// Single subrequest; falls back to an empty stub when the file isn't there yet.
+// Uses the raw media type so we skip base64 decode, and caches the parsed
+// object in module scope for the worker isolate's lifetime — Cloudflare reuses
+// isolates across requests, so most hits avoid both the GitHub fetch and the
+// JSON parse (each ~5–10ms on a 237KB payload).
+const PRECOMPUTED_TTL_MS = 20_000;
+let _precomputedCache = null;
 async function loadPrecomputed(env) {
-  try {
-    const data = await githubGet("vertday/leaderboard.json", env);
-    return JSON.parse(base64Decode(data.content));
-  } catch (e) {
-    if (e.status === 404) {
-      return { entries: [], by_category: {}, hills: [], per_hill: {}, per_athlete: {}, updated_at: null };
-    }
-    throw e;
+  const now = Date.now();
+  if (_precomputedCache && now - _precomputedCache.at < PRECOMPUTED_TTL_MS) {
+    return _precomputedCache.data;
   }
+  const res = await fetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/contents/vertday/leaderboard.json`,
+    {
+      headers: {
+        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github.raw",
+        "User-Agent": "vertday-worker",
+      },
+    }
+  );
+  if (res.status === 404) {
+    const empty = { entries: [], by_category: {}, hills: [], per_hill: {}, per_athlete: {}, updated_at: null };
+    _precomputedCache = { at: now, data: empty };
+    return empty;
+  }
+  if (!res.ok) {
+    throw new Error(`GitHub GET leaderboard.json failed: ${res.status}`);
+  }
+  const data = await res.json();
+  _precomputedCache = { at: now, data };
+  return data;
 }
 
 // ── Haversine distance in km ────────────────────────────────────────────────

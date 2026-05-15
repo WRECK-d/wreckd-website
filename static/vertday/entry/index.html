@@ -155,6 +155,7 @@ body {
   padding: 16px 20px;
   background: white;
   margin-bottom: 12px;
+  position: relative;
 }
 
 .workout-header {
@@ -162,6 +163,7 @@ body {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 8px;
+  padding-right: 24px;
 }
 
 .workout-name {
@@ -381,21 +383,22 @@ body {
 }
 
 .delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
   font-family: var(--font);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 1.2rem;
+  line-height: 1;
   background: none;
   border: none;
   color: var(--ink);
-  opacity: 0.25;
+  opacity: 0.3;
   cursor: pointer;
-  padding: 0;
-  margin-top: 10px;
-  display: block;
+  padding: 4px 8px;
   transition: opacity 0.1s, color 0.1s;
 }
 .delete-btn:hover { opacity: 1; color: #c0392b; }
+.delete-btn:disabled { opacity: 0.4; cursor: wait; color: var(--ink); }
 
 .workout-map {
   height: 180px;
@@ -1218,7 +1221,7 @@ function buildWorkoutCard(w) {
     </div>
     ${w.location_name ? `<div class="workout-location">${esc(w.location_name)}</div>` : ''}
     ${(w.gpx_track || w.hill_id) ? `<div class="workout-map" id="wmap-${w.id}"></div>` : ''}
-    <button class="delete-btn" data-id="${esc(w.id)}">Delete</button>
+    <button class="delete-btn" data-id="${esc(w.id)}" title="Delete workout" aria-label="Delete workout">&times;</button>
   `;
   return card;
 }
@@ -1965,10 +1968,9 @@ document.getElementById('workouts-list').addEventListener('click', async (e) => 
   const btn = e.target.closest('.delete-btn');
   if (!btn) return;
   const id = btn.dataset.id;
-  if (!confirm('Delete this workout?')) return;
+  if (!confirm('Are you sure you want to delete this workout?')) return;
 
   btn.disabled = true;
-  btn.textContent = 'Deleting...';
 
   try {
     const res = await fetch(`${WORKER_URL}/entries/${slug}/workouts/${id}`, { method: 'DELETE' });
@@ -1976,7 +1978,6 @@ document.getElementById('workouts-list').addEventListener('click', async (e) => 
       const err = await res.json().catch(() => ({}));
       alert(err.error || 'Failed to delete workout.');
       btn.disabled = false;
-      btn.textContent = 'Delete';
       return;
     }
     const card = btn.closest('.workout-card');
@@ -1990,7 +1991,6 @@ document.getElementById('workouts-list').addEventListener('click', async (e) => 
   } catch {
     alert('Network error — please try again.');
     btn.disabled = false;
-    btn.textContent = 'Delete';
   }
 });
 

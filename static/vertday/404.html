@@ -400,6 +400,30 @@ body {
 .delete-btn:hover { opacity: 1; color: #c0392b; }
 .delete-btn:disabled { opacity: 0.4; cursor: wait; color: var(--ink); }
 
+.delete-all-btn {
+  font-family: var(--font);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  opacity: 0.4;
+  cursor: pointer;
+  padding: 8px 14px;
+  margin-top: 12px;
+  display: none;
+  transition: opacity 0.1s, color 0.1s, border-color 0.1s, background 0.1s;
+}
+.delete-all-btn:hover { opacity: 1; }
+.delete-all-btn.confirming {
+  opacity: 1;
+  color: #c0392b;
+  border-color: #c0392b;
+  background: rgba(192,57,43,0.06);
+}
+.delete-all-btn:disabled { opacity: 0.4; cursor: wait; }
+
 .workout-map {
   height: 180px;
   margin-top: 10px;
@@ -833,6 +857,7 @@ footer {
     </div>
 
     <div id="workouts-list"></div>
+    <button id="delete-all-btn" class="delete-all-btn" type="button">Delete all workouts</button>
 
     <hr class="divider" />
 
@@ -1181,6 +1206,15 @@ function updateStats(workouts) {
   document.getElementById('total-vert').textContent = totalVert.toLocaleString();
   document.getElementById('total-km').textContent = Math.round(totalKm * 10) / 10;
   document.getElementById('workout-count').textContent = workouts.length;
+  updateDeleteAllVisibility();
+}
+
+function updateDeleteAllVisibility() {
+  const btn = document.getElementById('delete-all-btn');
+  if (!btn) return;
+  btn.style.display = currentWorkouts.length >= 2 ? 'inline-block' : 'none';
+  // Only reset the armed state if a delete isn't already in progress.
+  if (!btn.disabled) resetDeleteAllBtn();
 }
 
 function renderWorkouts(workouts) {
@@ -1991,6 +2025,72 @@ document.getElementById('workouts-list').addEventListener('click', async (e) => 
   } catch {
     alert('Network error — please try again.');
     btn.disabled = false;
+  }
+});
+
+// ── Delete-all-workouts: two-stage click + per-workout DELETE loop ──────────
+let deleteAllArmed = false;
+let deleteAllResetTimer = null;
+
+function resetDeleteAllBtn() {
+  const btn = document.getElementById('delete-all-btn');
+  if (!btn) return;
+  deleteAllArmed = false;
+  if (deleteAllResetTimer) { clearTimeout(deleteAllResetTimer); deleteAllResetTimer = null; }
+  btn.classList.remove('confirming');
+  btn.textContent = 'Delete all workouts';
+}
+
+document.getElementById('delete-all-btn').addEventListener('click', async () => {
+  const btn = document.getElementById('delete-all-btn');
+  if (btn.disabled) return;
+
+  if (!deleteAllArmed) {
+    deleteAllArmed = true;
+    btn.classList.add('confirming');
+    btn.textContent = `Click again to permanently delete all ${currentWorkouts.length} workouts`;
+    deleteAllResetTimer = setTimeout(resetDeleteAllBtn, 4000);
+    return;
+  }
+
+  // Armed: proceed with one final native confirm, then loop deletes.
+  if (deleteAllResetTimer) { clearTimeout(deleteAllResetTimer); deleteAllResetTimer = null; }
+  const count = currentWorkouts.length;
+  if (!confirm(`Permanently delete all ${count} workouts? This cannot be undone.`)) {
+    resetDeleteAllBtn();
+    return;
+  }
+
+  btn.disabled = true;
+  btn.classList.remove('confirming');
+  const list = document.getElementById('workouts-list');
+  const toDelete = [...currentWorkouts];
+  let failed = 0;
+
+  for (let i = 0; i < toDelete.length; i++) {
+    const w = toDelete[i];
+    btn.textContent = `Deleting ${i + 1} / ${toDelete.length}…`;
+    try {
+      const res = await fetch(`${WORKER_URL}/entries/${slug}/workouts/${w.id}`, { method: 'DELETE' });
+      if (!res.ok) { failed++; continue; }
+      const card = list.querySelector(`.workout-card[data-id="${CSS.escape(w.id)}"]`);
+      if (workoutMaps[w.id]) { workoutMaps[w.id].remove(); delete workoutMaps[w.id]; }
+      if (card) card.remove();
+      currentWorkouts = currentWorkouts.filter(x => x.id !== w.id);
+      updateStats(currentWorkouts);
+    } catch {
+      failed++;
+    }
+  }
+
+  btn.disabled = false;
+  resetDeleteAllBtn();
+
+  if (currentWorkouts.length === 0) {
+    list.innerHTML = '<p style="opacity:0.4;font-size:0.85rem;padding:20px 0">No workouts logged yet.</p>';
+  }
+  if (failed > 0) {
+    alert(`Failed to delete ${failed} of ${toDelete.length} workouts. The rest were removed.`);
   }
 });
 

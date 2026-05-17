@@ -1194,8 +1194,8 @@ function renderProfile(signup, workouts) {
   if (signup.club) meta.push(signup.club);
   document.getElementById('athlete-meta').textContent = meta.join(' / ');
 
-  updateStats(workouts);
   renderWorkouts(workouts);
+  updateStats(workouts);
   // Load hills now that #profile is visible
   if (!hillsLoaded) { hillsLoaded = true; loadHills(); }
 }

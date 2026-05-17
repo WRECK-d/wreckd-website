@@ -105,8 +105,30 @@ async function githubList(path, env) {
   }
 }
 
+// Status codes that indicate a transient conflict on main and are worth
+// retrying. 409 = ref conflict, 422 = SHA stale, 5xx = upstream blip.
+const RETRYABLE = new Set([409, 422, 500, 502, 503, 504]);
+
+async function githubFetchWithRetry(url, init) {
+  let lastStatus = 0;
+  let lastBody = "";
+  for (let attempt = 0; attempt < 4; attempt++) {
+    if (attempt > 0) {
+      await new Promise((r) => setTimeout(r, 200 * 2 ** attempt));
+    }
+    const res = await fetch(url, init);
+    if (res.ok) return res;
+    lastStatus = res.status;
+    lastBody = await res.text();
+    if (!RETRYABLE.has(res.status)) break;
+  }
+  const err = new Error(`GitHub ${init.method} ${url} failed: ${lastStatus} ${lastBody}`);
+  err.status = lastStatus;
+  throw err;
+}
+
 async function githubPut(path, content, message, env) {
-  const res = await fetch(
+  const res = await githubFetchWithRetry(
     `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`,
     {
       method: "PUT",
@@ -119,10 +141,6 @@ async function githubPut(path, content, message, env) {
       body: JSON.stringify({ message, content: base64Encode(content) }),
     }
   );
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`GitHub PUT ${path} failed: ${err}`);
-  }
   return res.json();
 }
 
@@ -498,34 +516,48 @@ async function handlePostHill(request, env, origin) {
 }
 
 async function handleDeleteWorkout(slug, workoutId, env, origin) {
-  const files = await githubList(`vertday/workouts/${slug}`, env);
   const tsPrefix = workoutId.slice(0, 14);
-  const file = files.find((f) => f.name === `${tsPrefix}.yml`);
-  if (!file) return json({ error: "Workout not found" }, 404, origin);
+  const filename = `${tsPrefix}.yml`;
+  const path = `vertday/workouts/${slug}/${filename}`;
 
-  const res = await fetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/contents/${file.path}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
-        Accept: "application/vnd.github+json",
-        "Content-Type": "application/json",
-        "User-Agent": "vertday-worker",
-      },
-      body: JSON.stringify({
-        message: `Delete workout ${workoutId} for ${slug}`,
-        sha: file.sha,
-      }),
+  // Look up the file SHA, then attempt delete. Re-list and retry on
+  // SHA-mismatch errors so we self-heal if a concurrent commit lands.
+  let lastErr;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    if (attempt > 0) {
+      await new Promise((r) => setTimeout(r, 200 * 2 ** attempt));
     }
-  );
+    const files = await githubList(`vertday/workouts/${slug}`, env);
+    const file = files.find((f) => f.name === filename);
+    if (!file) return json({ error: "Workout not found" }, 404, origin);
 
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`GitHub DELETE failed: ${err}`);
+    try {
+      await githubFetchWithRetry(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/${file.path}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+            Accept: "application/vnd.github+json",
+            "Content-Type": "application/json",
+            "User-Agent": "vertday-worker",
+          },
+          body: JSON.stringify({
+            message: `Delete workout ${workoutId} for ${slug}`,
+            sha: file.sha,
+          }),
+        }
+      );
+      return json({ deleted: true }, 200, origin);
+    } catch (e) {
+      lastErr = e;
+      // 409/422 may indicate a stale file.sha after a concurrent commit —
+      // loop will re-list and try again with a fresh SHA. Other errors
+      // (already retried inside githubFetchWithRetry) are terminal.
+      if (e.status !== 409 && e.status !== 422) throw e;
+    }
   }
-
-  return json({ deleted: true }, 200, origin);
+  throw lastErr;
 }
 
 // ── Router ────────────────────────────────────────────────────────────────────

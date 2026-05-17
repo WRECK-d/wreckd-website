@@ -1212,7 +1212,7 @@ function updateStats(workouts) {
 function updateDeleteAllVisibility() {
   const btn = document.getElementById('delete-all-btn');
   if (!btn) return;
-  btn.style.display = currentWorkouts.length >= 2 ? 'inline-block' : 'none';
+  btn.style.display = currentWorkouts.length >= 1 ? 'inline-block' : 'none';
   // Only reset the armed state if a delete isn't already in progress.
   if (!btn.disabled) resetDeleteAllBtn();
 }

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vert Day 2026 — Hills</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root {
+  --green: #2d4217;
+  --green-light: #3d5a20;
+  --green-faint: #e8ede2;
+  --ink: #1a2010;
+  --paper: #f5f7f2;
+  --font: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  min-height: 100vh;
+}
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Ccircle cx='24' cy='24' r='1.2' fill='%232d4217' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 96px 96px;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+.grid-overlay.scrolling { opacity: 1; transition: opacity 0.1s ease-in; }
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 32px 120px;
+  position: relative;
+  z-index: 5;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.top-nav a {
+  color: var(--green);
+  text-decoration: none;
+  opacity: 0.7;
+  margin-left: 18px;
+}
+.top-nav a:first-child { margin-left: 0; }
+.top-nav a:hover { opacity: 1; text-decoration: underline; }
+.top-nav-right { display: flex; }
+
+.site-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  opacity: 0.7;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  font-weight: 500;
+  line-height: 0.9;
+  color: var(--green);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.date-label {
+  font-size: 0.85rem;
+  opacity: 0.5;
+  margin-bottom: 40px;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.hills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.hill-card {
+  border: 1px solid var(--green);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hill-thumb {
+  position: relative;
+  height: 120px;
+  background: var(--bg);
+}
+.hill-thumb-profile {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: opacity 0.15s ease;
+}
+.hill-thumb-map {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.hill-card:hover .hill-thumb-map { opacity: 1; }
+.hill-card:hover .hill-thumb-profile { opacity: 0; }
+
+.hill-thumb-stats {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  color: var(--green);
+  background: rgba(255,255,255,0.78);
+  padding: 2px 6px;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 1;
+}
+.hill-card:hover .hill-thumb-stats { opacity: 0; }
+
+.hill-card-body { padding: 10px 12px; }
+
+.hill-card-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--green);
+}
+
+.hill-region-section { margin-top: 24px; }
+.hill-region-section:first-child { margin-top: 0; }
+.hill-region-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--green-faint);
+}
+.hill-region-name {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.hill-region-add {
+  font-family: var(--font);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: var(--green);
+  cursor: pointer;
+  opacity: 0.55;
+  padding: 4px 0;
+}
+.hill-region-add:hover { opacity: 1; }
+.hill-region-empty { font-size: 0.78rem; opacity: 0.4; padding: 6px 0 10px; }
+
+#hill-region {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--green);
+  padding: 12px 36px 12px 14px;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%232d4217'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.add-hill-form {
+  display: none;
+  margin-top: 20px;
+  border: 1px solid var(--green);
+  padding: 20px;
+}
+
+.form-group { margin-bottom: 20px; }
+
+input[type="text"],
+input[type="file"] {
+  font-family: var(--font);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--green);
+  padding: 11px 14px;
+  width: 100%;
+  border-radius: 0;
+  appearance: none;
+}
+
+input[type="file"] { padding: 10px 14px; cursor: pointer; }
+input:focus { outline: 2px solid var(--green); outline-offset: 2px; }
+
+.preview-stats {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+#hill-preview-map {
+  height: 180px;
+  margin-bottom: 12px;
+}
+
+.confirm-btn {
+  font-family: var(--font);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.confirm-btn:hover { background: var(--green-light); }
+.confirm-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.cancel-btn {
+  font-family: var(--font);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: white;
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 10px 24px;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background 0.1s;
+}
+
+.cancel-btn:hover { background: var(--green-faint); }
+
+.form-status { margin-top: 10px; font-size: 0.8rem; color: #c0392b; }
+.form-status.ok { color: var(--green); }
+
+.hills-empty { font-size: 0.85rem; opacity: 0.4; padding: 12px 0; }
+
+footer {
+  margin-top: 80px;
+  padding-top: 20px;
+  border-top: 1px solid var(--green);
+  opacity: 0.4;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .page { padding: 40px 20px 80px; }
+}
+
+.climb-slider-wrap {
+  position: relative;
+  height: 36px;
+  margin: 12px 0 8px;
+}
+.climb-slider-track {
+  position: absolute; top: 16px; left: 0; right: 0;
+  height: 4px; background: var(--green-faint); border-radius: 2px;
+}
+.climb-slider-range {
+  position: absolute; top: 16px; height: 4px;
+  background: var(--green); border-radius: 2px;
+}
+.climb-slider-wrap input[type=range] {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 36px; margin: 0;
+  background: none; pointer-events: none;
+  -webkit-appearance: none; appearance: none;
+}
+.climb-slider-wrap input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; pointer-events: auto;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green); border: 2px solid white; cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.climb-slider-wrap input[type=range]::-moz-range-thumb {
+  pointer-events: auto;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--green); border: 2px solid white; cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.climb-slider-wrap input[type=range]::-webkit-slider-runnable-track { background: transparent; }
+.climb-slider-wrap input[type=range]::-moz-range-track { background: transparent; }
+.climb-hint { font-size: 0.78rem; opacity: 0.65; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="grid-overlay" id="grid"></div>
+
+<div class="page">
+  <div class="top-nav">
+    <a href="/" class="site-label">&larr; Vert Day 2026</a>
+    <div class="top-nav-right">
+      <a href="/sign-up">Sign Up</a>
+    </div>
+  </div>
+
+  <h1>HILLS</h1>
+  <div class="date-label">Browse hills or add your own GPX.</div>
+
+  <div id="hills-loading" class="hills-empty">Loading hills...</div>
+  <div id="hills-regions"></div>
+
+  <div class="add-hill-form" id="add-hill-form">
+    <span class="section-label" style="margin-bottom:16px;display:block">Add a Hill</span>
+    <div class="form-group">
+      <label class="section-label" for="hill-name">Hill Name</label>
+      <input type="text" id="hill-name" placeholder="e.g. Mount Victoria" />
+    </div>
+    <div class="form-group">
+      <label class="section-label" for="hill-region">Region</label>
+      <select id="hill-region"></select>
+    </div>
+    <div class="form-group">
+      <label class="section-label" for="hill-gpx-file">GPX File</label>
+      <input type="file" id="hill-gpx-file" accept=".gpx" />
+    </div>
+    <div class="form-status" id="hill-parse-status"></div>
+    <div id="hill-gpx-preview" style="display:none">
+      <div class="preview-stats" id="hill-preview-stats"></div>
+      <div id="hill-preview-map"></div>
+      <div class="climb-hint" id="hill-climb-hint"></div>
+      <div class="climb-slider-wrap" id="hill-climb-slider" style="display:none">
+        <div class="climb-slider-track"></div>
+        <div class="climb-slider-range" id="hill-climb-slider-range"></div>
+        <input type="range" id="hill-climb-min" min="0" max="100" value="0" />
+        <input type="range" id="hill-climb-max" min="0" max="100" value="100" />
+      </div>
+      <button class="confirm-btn" id="hill-confirm-btn">Save Hill</button>
+      <button class="cancel-btn" id="hill-cancel-btn">Cancel</button>
+      <div class="form-status" id="hill-save-status"></div>
+    </div>
+  </div>
+
+  <footer>
+    Vert Day 2026 &mdash; wreckd.org.nz
+  </footer>
+</div>
+
+<script>
+const WORKER_URL = 'https://vertday-worker.wreckd.workers.dev';
+const TILE_URL = 'https://basemaps.linz.govt.nz/v1/tiles/topo-raster/WebMercatorQuad/{z}/{x}/{y}.png?api=c01kmvkcd23g6jxarvbnpegvcmp';
+const OSM_TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+const REGIONS = [
+  'Wellington', 'Porirua', 'Hutt', 'Kapiti', 'Eastbourne', 'Wairarapa',
+  'Christchurch', 'North Island (other)', 'South Island (other)',
+  'Nepal', 'Anywhere Else'
+];
+
+function isInNZ(lat, lng) {
+  return lat >= -47.5 && lat <= -34 && lng >= 166 && lng <= 179;
+}
+function tileLayerFor(lat, lng) {
+  const url = (lat != null && lng != null && !isInNZ(lat, lng)) ? OSM_TILE_URL : TILE_URL;
+  return L.tileLayer(url, { maxZoom: 19, tileSize: 256 });
+}
+
+let parsedHillGpx = null;
+let hillPreviewMap = null;
+const hillMaps = {};
+
+async function loadHills() {
+  try {
+    const res = await fetch(`${WORKER_URL}/hills`);
+    const hills = await res.json();
+    renderHills(hills);
+  } catch {
+    document.getElementById('hills-loading').textContent = 'Failed to load hills.';
+  }
+}
+
+function buildHillCard(hill) {
+  const card = document.createElement('div');
+  card.className = 'hill-card';
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => { window.location.href = `/hill/${esc(hill.slug)}`; });
+  const gain = parseInt(hill.elevation_gain_m) || 0;
+  const km = parseFloat(hill.distance_km) || 0;
+  const avgSlope = km > 0 ? (gain / (km * 1000)) * 100 : 0;
+  card.innerHTML = `
+    <div class="hill-thumb" id="hillthumb-${hill.id}">
+      <canvas class="hill-thumb-profile" id="hillprof-${hill.id}"></canvas>
+      <div class="hill-thumb-map" id="hillmap-${hill.id}"></div>
+      <div class="hill-thumb-stats">
+        <div>${gain}m</div>
+        <div>${avgSlope.toFixed(1)}%</div>
+      </div>
+    </div>
+    <div class="hill-card-body">
+      <div class="hill-card-name">${esc(hill.name)}</div>
+    </div>
+  `;
+  return card;
+}
+
+function renderHills(hills) {
+  document.getElementById('hills-loading').style.display = 'none';
+  const container = document.getElementById('hills-regions');
+  container.innerHTML = '';
+
+  const byRegion = {};
+  for (const r of REGIONS) byRegion[r] = [];
+  for (const h of hills) {
+    const r = REGIONS.includes(h.region) ? h.region : 'Anywhere Else';
+    byRegion[r].push(h);
+  }
+
+  for (const region of REGIONS) {
+    const section = document.createElement('div');
+    section.className = 'hill-region-section';
+    section.innerHTML = `
+      <div class="hill-region-header">
+        <span class="hill-region-name">${esc(region)}</span>
+        <button class="hill-region-add" data-region="${esc(region)}">+ Add a Hill</button>
+      </div>
+      <div class="hills-grid"></div>
+      ${byRegion[region].length === 0 ? '<div class="hill-region-empty">No hills in this region yet.</div>' : ''}
+    `;
+    container.appendChild(section);
+    const grid = section.querySelector('.hills-grid');
+    for (const hill of byRegion[region]) {
+      grid.appendChild(buildHillCard(hill));
+    }
+  }
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    for (const hill of hills) {
+      const wrap = document.getElementById(`hillthumb-${hill.id}`);
+      const canvas = document.getElementById(`hillprof-${hill.id}`);
+      const mapEl = document.getElementById(`hillmap-${hill.id}`);
+      if (!wrap || !canvas || !mapEl) continue;
+      let pts;
+      try { pts = JSON.parse(hill.track_points); } catch { continue; }
+      if (!pts || !pts.length) continue;
+      const latlngs = pts.map(p => [p[0], p[1]]);
+      const eles = pts[0].length >= 3 ? pts.map(p => p[2]) : [];
+
+      if (eles.length >= 2) {
+        drawHillProfile(canvas, eles);
+      } else {
+        canvas.style.display = 'none';
+      }
+
+      let mapInited = false;
+      const card = wrap.closest('.hill-card');
+      card.addEventListener('mouseenter', () => {
+        if (mapInited) return;
+        mapInited = true;
+        const map = L.map(mapEl, { zoomControl: false, scrollWheelZoom: false, attributionControl: false, dragging: false, keyboard: false });
+        tileLayerFor(latlngs[0][0], latlngs[0][1]).addTo(map);
+        const poly = L.polyline(latlngs, { color: '#c0392b', weight: 2.5, opacity: 0.95 }).addTo(map);
+        map.invalidateSize();
+        map.fitBounds(poly.getBounds(), { padding: [8, 8] });
+        hillMaps[hill.id] = map;
+      }, { once: true });
+    }
+  }));
+}
+
+function drawHillProfile(canvas, eles) {
+  if (eles.length < 2) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  if (!W || !H) return;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const minE = Math.min(...eles), maxE = Math.max(...eles);
+  const range = maxE - minE || 1;
+  const pad = 4;
+  const drawH = H - pad * 2;
+  ctx.beginPath();
+  ctx.moveTo(0, H);
+  for (let i = 0; i < eles.length; i++) {
+    const x = (i / (eles.length - 1)) * W;
+    const y = pad + drawH * (1 - (eles[i] - minE) / range);
+    ctx.lineTo(x, y);
+  }
+  ctx.lineTo(W, H);
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0, 0, 0, H);
+  grad.addColorStop(0, 'rgba(45,66,23,0.4)');
+  grad.addColorStop(1, 'rgba(45,66,23,0.08)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+  ctx.beginPath();
+  for (let i = 0; i < eles.length; i++) {
+    const x = (i / (eles.length - 1)) * W;
+    const y = pad + drawH * (1 - (eles[i] - minE) / range);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = '#2d4217'; ctx.lineWidth = 1.5; ctx.stroke();
+}
+
+(function populateRegionSelect() {
+  const sel = document.getElementById('hill-region');
+  for (const r of REGIONS) {
+    const opt = document.createElement('option');
+    opt.value = r; opt.textContent = r;
+    sel.appendChild(opt);
+  }
+})();
+
+document.getElementById('hills-regions').addEventListener('click', (e) => {
+  const btn = e.target.closest('.hill-region-add');
+  if (!btn) return;
+  const region = btn.dataset.region;
+  const sel = document.getElementById('hill-region');
+  if (region) sel.value = region;
+  const form = document.getElementById('add-hill-form');
+  form.style.display = 'block';
+  form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+function haversineKm(a, b) {
+  const R = 6371;
+  const dLat = (b[0] - a[0]) * Math.PI / 180;
+  const dLng = (b[1] - a[1]) * Math.PI / 180;
+  const x = Math.sin(dLat/2)**2 + Math.cos(a[0]*Math.PI/180) * Math.cos(b[0]*Math.PI/180) * Math.sin(dLng/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+}
+function computeStatsForRange(triples, start, end) {
+  let gain = 0, dist = 0;
+  for (let i = start + 1; i <= end; i++) {
+    const dEle = triples[i][2] - triples[i - 1][2];
+    if (dEle > 0) gain += dEle;
+    dist += haversineKm(triples[i - 1], triples[i]);
+  }
+  return { gain: Math.round(gain), dist: Math.round(dist * 100) / 100 };
+}
+
+let hillPreviewPoly = null;
+let hillPreviewFullPoly = null;
+let hillClimbStart = 0, hillClimbEnd = 0;
+
+function updateHillPreview() {
+  if (!parsedHillGpx || !parsedHillGpx.track_points) return;
+  const triples = parsedHillGpx.track_points;
+  const stats = computeStatsForRange(triples, hillClimbStart, hillClimbEnd);
+  document.getElementById('hill-preview-stats').innerHTML =
+    `<strong>${stats.gain.toLocaleString()}m</strong> vert &nbsp;/&nbsp; <strong>${stats.dist}km</strong>` +
+    ` <span style="opacity:0.5">(full GPX: ${parsedHillGpx.elevation_gain_m.toLocaleString()}m / ${parsedHillGpx.distance_km}km)</span>`;
+  const total = triples.length - 1;
+  const rangeEl = document.getElementById('hill-climb-slider-range');
+  rangeEl.style.left = (hillClimbStart / total * 100) + '%';
+  rangeEl.style.right = ((1 - hillClimbEnd / total) * 100) + '%';
+  if (hillPreviewMap && hillPreviewPoly) {
+    const slice = triples.slice(hillClimbStart, hillClimbEnd + 1).map(p => [p[0], p[1]]);
+    hillPreviewPoly.setLatLngs(slice);
+  }
+}
+
+document.getElementById('hill-gpx-file').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const status = document.getElementById('hill-parse-status');
+  status.textContent = 'Parsing GPX...';
+  status.className = 'form-status';
+  document.getElementById('hill-gpx-preview').style.display = 'none';
+  parsedHillGpx = null;
+
+  const fd = new FormData();
+  fd.append('gpx', file);
+  try {
+    const res = await fetch(`${WORKER_URL}/parse-gpx`, { method: 'POST', body: fd });
+    if (!res.ok) { status.textContent = 'Failed to parse GPX.'; return; }
+    parsedHillGpx = await res.json();
+    status.textContent = '';
+
+    const triples = parsedHillGpx.track_points || [];
+    const total = triples.length - 1;
+    hillClimbStart = parsedHillGpx.climb_start || 0;
+    hillClimbEnd = parsedHillGpx.climb_end != null ? parsedHillGpx.climb_end : total;
+
+    const minSlider = document.getElementById('hill-climb-min');
+    const maxSlider = document.getElementById('hill-climb-max');
+    minSlider.min = 0; minSlider.max = total; minSlider.value = hillClimbStart;
+    maxSlider.min = 0; maxSlider.max = total; maxSlider.value = hillClimbEnd;
+
+    const autoStats = computeStatsForRange(triples, hillClimbStart, hillClimbEnd);
+    document.getElementById('hill-climb-hint').textContent =
+      `Auto-selected longest climb: ${autoStats.gain}m gain over ${autoStats.dist}km. Drag handles to adjust.`;
+    document.getElementById('hill-climb-slider').style.display = total > 0 ? 'block' : 'none';
+
+    const mapEl = document.getElementById('hill-preview-map');
+    if (hillPreviewMap) { hillPreviewMap.remove(); hillPreviewMap = null; hillPreviewPoly = null; hillPreviewFullPoly = null; }
+    document.getElementById('hill-gpx-preview').style.display = 'block';
+
+    updateHillPreview();
+
+    if (triples.length) {
+      setTimeout(() => {
+        hillPreviewMap = L.map(mapEl, { zoomControl: true, scrollWheelZoom: true, attributionControl: false });
+        tileLayerFor(triples[0][0], triples[0][1]).addTo(hillPreviewMap);
+        const fullLatLngs = triples.map(p => [p[0], p[1]]);
+        const slice = triples.slice(hillClimbStart, hillClimbEnd + 1).map(p => [p[0], p[1]]);
+        hillPreviewFullPoly = L.polyline(fullLatLngs, { color: '#2d4217', weight: 2.5, opacity: 0.85 }).addTo(hillPreviewMap);
+        hillPreviewPoly = L.polyline(slice, { color: '#c0392b', weight: 3.5, opacity: 0.95 }).addTo(hillPreviewMap);
+        hillPreviewMap.invalidateSize();
+        if (fullLatLngs.length > 1) hillPreviewMap.fitBounds(hillPreviewFullPoly.getBounds(), { padding: [16, 16] });
+      }, 50);
+    }
+  } catch {
+    status.textContent = 'Network error — please try again.';
+  }
+});
+
+document.getElementById('hill-climb-min').addEventListener('input', (e) => {
+  hillClimbStart = parseInt(e.target.value);
+  if (hillClimbStart >= hillClimbEnd) {
+    hillClimbStart = hillClimbEnd - 1;
+    e.target.value = hillClimbStart;
+  }
+  updateHillPreview();
+});
+document.getElementById('hill-climb-max').addEventListener('input', (e) => {
+  hillClimbEnd = parseInt(e.target.value);
+  if (hillClimbEnd <= hillClimbStart) {
+    hillClimbEnd = hillClimbStart + 1;
+    e.target.value = hillClimbEnd;
+  }
+  updateHillPreview();
+});
+
+document.getElementById('hill-confirm-btn').addEventListener('click', async () => {
+  if (!parsedHillGpx) return;
+  const name = document.getElementById('hill-name').value.trim();
+  if (!name) { document.getElementById('hill-save-status').textContent = 'Please enter a hill name.'; return; }
+
+  const btn = document.getElementById('hill-confirm-btn');
+  const status = document.getElementById('hill-save-status');
+  btn.disabled = true;
+  btn.textContent = 'Saving...';
+  status.textContent = '';
+
+  const triples = parsedHillGpx.track_points || [];
+  const slicedTriples = triples.slice(hillClimbStart, hillClimbEnd + 1);
+  const sliceStats = computeStatsForRange(triples, hillClimbStart, hillClimbEnd);
+  const slicedCentroid = slicedTriples.length > 0
+    ? {
+        lat: slicedTriples.reduce((s, p) => s + p[0], 0) / slicedTriples.length,
+        lng: slicedTriples.reduce((s, p) => s + p[1], 0) / slicedTriples.length,
+      }
+    : null;
+
+  const region = document.getElementById('hill-region').value;
+
+  try {
+    const res = await fetch(`${WORKER_URL}/hills`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        region,
+        elevation_gain_m: sliceStats.gain,
+        distance_km: sliceStats.dist,
+        track_points: JSON.stringify(slicedTriples),
+        centroid_lat: slicedCentroid ? slicedCentroid.lat : '',
+        centroid_lng: slicedCentroid ? slicedCentroid.lng : '',
+        added_by: '',
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      status.textContent = err.error || 'Failed to save hill.';
+    } else {
+      status.className = 'form-status ok';
+      status.textContent = 'Hill saved!';
+      document.getElementById('hill-name').value = '';
+      document.getElementById('hill-gpx-file').value = '';
+      document.getElementById('hill-gpx-preview').style.display = 'none';
+      parsedHillGpx = null;
+      if (hillPreviewMap) { hillPreviewMap.remove(); hillPreviewMap = null; }
+      loadHills();
+    }
+  } catch {
+    status.textContent = 'Network error — please try again.';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Save Hill';
+});
+
+document.getElementById('hill-cancel-btn').addEventListener('click', () => {
+  document.getElementById('hill-gpx-preview').style.display = 'none';
+  document.getElementById('hill-gpx-file').value = '';
+  parsedHillGpx = null;
+  if (hillPreviewMap) { hillPreviewMap.remove(); hillPreviewMap = null; }
+});
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+loadHills();
+
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  document.getElementById('grid').classList.add('scrolling');
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => document.getElementById('grid').classList.remove('scrolling'), 800);
+}, { passive: true });
+</script>
+</body>
+</html>

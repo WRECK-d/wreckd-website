@@ -46,13 +46,30 @@ body {
 
 header { margin-bottom: 60px; }
 
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.top-nav a {
+  color: var(--green);
+  text-decoration: none;
+  opacity: 0.7;
+}
+.top-nav a:hover { opacity: 1; text-decoration: underline; }
+.top-nav-right a { margin-left: 18px; }
+.top-nav-right a:first-child { margin-left: 0; }
+
 .site-label {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--green);
   opacity: 0.7;
-  margin-bottom: 16px;
 }
 
 .site-label a {
@@ -263,8 +280,15 @@ footer {
 <div class="grid-overlay" id="grid"></div>
 
 <div class="page">
+  <div class="top-nav">
+    <a href="/" class="site-label">&larr; Vert Day 2026</a>
+    <div class="top-nav-right">
+      <a href="/">Leaderboard</a>
+      <a href="/hills">Hills</a>
+    </div>
+  </div>
+
   <header>
-    <div class="site-label"><a href="/leaderboard">Vert Day 2026</a></div>
     <h1>SIGN UP</h1>
     <div class="date-label">23 May 2026</div>
   </header>
@@ -333,12 +357,12 @@ footer {
       <a class="go-btn" id="go-btn" href="#">Go to My Entry Page &rarr;</a>
     </div>
     <p class="success-note">
-      Can't find your link later? Look yourself up on the <a href="/leaderboard" style="color:var(--green)">leaderboard</a>.
+      Can't find your link later? Look yourself up on the <a href="/" style="color:var(--green)">leaderboard</a>.
     </p>
   </div>
 
   <footer>
-    <a href="/leaderboard" style="color:inherit;text-decoration:none;">Vert Day 2026</a> &mdash; wreckd.org.nz
+    <a href="/" style="color:inherit;text-decoration:none;">Vert Day 2026</a> &mdash; wreckd.org.nz
   </footer>
 </div>
 

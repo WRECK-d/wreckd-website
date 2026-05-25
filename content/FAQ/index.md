@@ -14,12 +14,14 @@ WREC'kd is a (slightly) organised group. BSR is a state of mind.
 ### What does becoming a financial member get me?
 
 Access to the events, we think the subscription represents great value even if you can only make one fixture.
-There may be small fee for additional event related costs (we might need to cover the sausages and beers at the finish line). 
+There may be small fee for additional event related costs (we might need to cover the sausages and beers at the finish line) those details will be provided with rego. 
 We also support trail work, conservation and advocacy efforts.
 
 ### How do I enter the events?
 
 We call these fixtures; they are for subscribed members only. When you sign-up we'll provide you a race bib and number for the year. Most messenging and comms will made by email when you sign-up including the details for registration.
+
+A membership for WREC'kd does not guarantee a place in our activities, unless you sign-up to each fixture individually.
 
 ### Why the Inc.?
 Chores and admin. WREC'kd hosts grassroots activities for its members. We collaborate with people and groups doing cool things!

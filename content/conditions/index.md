@@ -1,6 +1,8 @@
 ---
 title: "Race Conditions & Code of Conduct"
 description: "Race conditions, code of conduct, and safety declaration for WREC'kd fixture participants."
+aliases:
+  - /fixtures/conditions/
 ---
 
 This page applies to all participants registering as racers in a WREC'kd fixture. By submitting a registration you confirm you have read and agree to the conditions below.

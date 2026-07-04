@@ -231,6 +231,7 @@ async function handleRegister(request, env) {
     fixture: data.fixture,
     team,
     name: data.name.trim(),
+    publish_name: data.publish_name === "no" ? "no" : "yes",
     email: data.email.trim(),
     dob: data.dob,
     gender: data.gender,

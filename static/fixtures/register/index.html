@@ -362,6 +362,11 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         <input type="text" id="name" name="name" required>
       </div>
       <div class="form-group">
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" id="no-publish-name" name="no_publish_name"> Do not publish my name on the entrants&rsquo; list</label>
+        </div>
+      </div>
+      <div class="form-group">
         <label for="email">Email address *</label>
         <input type="email" id="email" name="email" required>
         <div id="member-status" class="field-help"></div>
@@ -816,6 +821,7 @@ async function submitForm(extra) {
     fixture: getFixture(),
     team,
     name: form.name.value.trim(),
+    publish_name: document.getElementById("no-publish-name").checked ? "no" : "yes",
     email: form.email.value.trim(),
     dob: parseDOB(form.dob.value.trim()),
     gender: form.gender.value.trim(),

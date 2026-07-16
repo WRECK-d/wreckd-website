@@ -1,0 +1,17 @@
+{{- /*
+  Reusable fixture participant list.
+
+  Usage in any fixture page:
+    {{< participant-list fixture="mukamuka-munter" >}}
+
+  Renders the published entrants live from the fixtures Worker. Withdrawals
+  and name opt-outs are already applied server-side. See
+  /static/fixtures/participant-list.js for the renderer.
+*/ -}}
+{{- $fixture := .Get "fixture" | default (.Get 0) -}}
+{{- with $fixture -}}
+<div class="wreckd-participants" data-fixture="{{ . }}"></div>
+<script src="/fixtures/participant-list.js" defer></script>
+{{- else -}}
+<!-- participant-list shortcode: missing required "fixture" argument -->
+{{- end -}}

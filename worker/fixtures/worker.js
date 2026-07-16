@@ -58,6 +58,26 @@ async function fetchExistingTeams(env) {
   return Array.from(new Set(reg.teams || [])).sort();
 }
 
+// Public participant list, built by build-fixtures-registry.py in the private
+// repo. Already deduped, withdrawn-excluded, opt-outs dropped, and limited to
+// public-safe fields (name, team, type). We serve it verbatim — no private
+// data is present in the file to begin with.
+async function fetchParticipants(env) {
+  const response = await fetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/contents/fixtures-participants.json`,
+    {
+      headers: {
+        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "User-Agent": "wreckd-fixtures-worker",
+      },
+    }
+  );
+  if (!response.ok) return { fixtures: {} };
+  const { content } = await response.json();
+  return JSON.parse(atob(content.replace(/\n/g, "")));
+}
+
 function toYaml(obj) {
   return Object.entries(obj)
     .map(([key, value]) => `${key}: "${String(value).replace(/"/g, '\\"')}"`)
@@ -302,6 +322,27 @@ export default {
       return new Response(JSON.stringify({ teams }), {
         status: 200,
         headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
+      });
+    }
+
+    if (url.pathname === "/participants" && request.method === "GET") {
+      if (origin && !isAllowedOrigin(origin)) {
+        return new Response(JSON.stringify({ error: "Forbidden" }), {
+          status: 403, headers: { "Content-Type": "application/json" },
+        });
+      }
+      const data = await fetchParticipants(env);
+      const fixture = url.searchParams.get("fixture") || "";
+      const body = fixture
+        ? { fixture, participants: data.fixtures[fixture] || [] }
+        : { fixtures: data.fixtures };
+      return new Response(JSON.stringify(body), {
+        status: 200,
+        headers: {
+          ...corsHeaders(origin),
+          "Content-Type": "application/json",
+          "Cache-Control": "public, max-age=60",
+        },
       });
     }
 

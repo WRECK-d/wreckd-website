@@ -43,21 +43,14 @@
       ".wreckd-participants th, .wreckd-participants td { text-align: left; padding: 0.35rem 0.75rem 0.35rem 0; border-bottom: 1px solid #ddd; vertical-align: top; }",
       ".wreckd-participants th { border-bottom: 2px solid #cc0000; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; }",
       ".wreckd-participants td.wp-num { color: #999; text-align: right; padding-right: 0.75rem; width: 2.5rem; }",
-      ".wreckd-participants .wp-vol { color: #cc0000; font-size: 0.8rem; text-transform: uppercase; }",
     ].join("\n");
     document.head.appendChild(style);
   }
 
   function render(container, participants) {
-    var racers = participants.filter(function (p) { return p.type !== "volunteer"; });
-    var volunteers = participants.filter(function (p) { return p.type === "volunteer"; });
-
-    var html = "";
-    var countBits = [racers.length + " entrant" + (racers.length === 1 ? "" : "s")];
-    if (volunteers.length) {
-      countBits.push(volunteers.length + " volunteer" + (volunteers.length === 1 ? "" : "s"));
-    }
-    html += '<p class="wp-count">' + countBits.join(" &middot; ") + "</p>";
+    var html = '<p class="wp-count">' +
+      participants.length + " entrant" + (participants.length === 1 ? "" : "s") +
+      "</p>";
 
     if (!participants.length) {
       html += '<p class="wp-status">No entrants yet &mdash; be the first to register.</p>';
@@ -66,15 +59,11 @@
     }
 
     html += "<table><thead><tr><th></th><th>Name</th><th>Team</th></tr></thead><tbody>";
-    var i = 1;
-    participants.forEach(function (p) {
-      var isVol = p.type === "volunteer";
-      var teamCell = escapeHtml(p.team || "");
-      if (isVol) teamCell = '<span class="wp-vol">volunteer</span>';
+    participants.forEach(function (p, idx) {
       html += "<tr>" +
-        '<td class="wp-num">' + (isVol ? "" : i++) + "</td>" +
+        '<td class="wp-num">' + (idx + 1) + "</td>" +
         "<td>" + escapeHtml(p.name) + "</td>" +
-        "<td>" + teamCell + "</td>" +
+        "<td>" + escapeHtml(p.team || "") + "</td>" +
         "</tr>";
     });
     html += "</tbody></table>";

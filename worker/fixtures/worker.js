@@ -170,7 +170,7 @@ async function saveToGitHub(submission, env) {
         "User-Agent": "wreckd-fixtures-worker",
       },
       body: JSON.stringify({
-        message: `New fixture registration: ${submission.name} — ${submission.fixture}`,
+        message: `New fixture registration: ${submission.ref} — ${submission.fixture}`,
         content: base64Encode(yamlContent),
       }),
     }

@@ -18,7 +18,7 @@ Course: ~30km / 1040m\
 Route: Point to Point\
 Difficulty: (Mostly) runnable
 
-[Fixture Card](/fixtures/Mukamuka%20Munter.pdf)
+[Fixture Card](/mukamuka-comms)
 
 {{< highlight-box >}} ### [Aorangi Undulator →](/undulator/) {{< /highlight-box >}}
 

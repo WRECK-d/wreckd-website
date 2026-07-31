@@ -49,9 +49,8 @@ Manual timing, with splits at Mukamuka Corner and South Saddle.
 
 Please ensure all marshals can read your race bib number, and they've noted your time.
 
-Race results will be published [here]((https://wreckd.org.nz/mukamuka-comms/)
+Race results will be published [here](https://wreckd.org.nz/mukamuka-comms/)
 
-#### No dogs are allowed. 
 
 ## Volunteers
 
@@ -59,10 +58,13 @@ Our events only happen because of an awesome crew of volunteers giving up their 
 
 ## Entrants List - [live publication](https://wreckd.org.nz/mukamuka/)
 
-## Volunteers
+## Post-Event
 
 Massage will be available at the finish line / Catchpool Centre. 
 The wizard - Jörg 'Jay' Otto of Being One Therapies offering services for $20 (Bring Cash)
+
+A BBQ will be running, with a range of Choice Bros. beers and non-alcoholic options.
+Prize giving will be at 2.00 pm.
 
 ## Thanks 
 
@@ -72,6 +74,7 @@ Special thanks:
 ~Wharekauhau Station
 ~Greater Wellington Backcountry Network
 ~Remutaka Conservation Trust
+~DOC, Wellington
 
 
 

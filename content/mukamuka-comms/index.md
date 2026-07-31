@@ -43,19 +43,36 @@ WREC'kd thanks the Wharekauhau Station landowners for allowing access across the
 The Mukamuka Munter borders sensitive areas of Turekihae Head, kiwi-Zone and stock is present. 
 #### No dogs are allowed. 
 
+## Timing
+
+Manual timing, with splits at Mukamuka Corner and South Saddle. 
+
+Please ensure all marshals can read your race bib number, and they've noted your time.
+
+Race results will be published [here]((https://wreckd.org.nz/mukamuka-comms/)
+
+#### No dogs are allowed. 
+
 ## Volunteers
 
 Our events only happen because of an awesome crew of volunteers giving up their time. If you can no longer race, but can help out, then flick me an email.
 
 ## Entrants List - [live publication](https://wreckd.org.nz/mukamuka/)
 
+## Volunteers
+
+Massage will be available at the finish line / Catchpool Centre. 
+The wizard - Jörg 'Jay' Otto of Being One Therapies offering services for $20 (Bring Cash)
+
 ## Thanks 
 
 Special thanks: 
 ~Choice Bros. 
+~Being One Therapies
 ~Wharekauhau Station
 ~Greater Wellington Backcountry Network
 ~Remutaka Conservation Trust
+
 
 
 

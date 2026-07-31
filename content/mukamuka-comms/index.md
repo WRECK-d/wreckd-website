@@ -37,9 +37,25 @@ There'll be limited course marking; marshals will be present at safety-critical 
 
 *If weather conditions are unfavourable, a decision will be made to cancel or B-Course a route that avoids river crossing with advance notice and update of .gpx and maps*
 
+## Dogs?
+
+WREC'kd thanks the Wharekauhau Station landowners for allowing access across their land. 
+The Mukamuka Munter borders sensitive areas of Turekihae Head, kiwi-Zone and stock is present. 
+#### No dogs are allowed. 
+
 ## Volunteers
 
 Our events only happen because of an awesome crew of volunteers giving up their time. If you can no longer race, but can help out, then flick me an email.
 
 ## Entrants List - [live publication](https://wreckd.org.nz/mukamuka/)
+
+## Thanks 
+
+Special thanks: 
+~Choice Bros. 
+~Wharekauhau Station
+~Greater Wellington Backcountry Network
+~Remutaka Conservation Trust
+
+
 

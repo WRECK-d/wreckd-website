@@ -37,7 +37,7 @@
     style.id = "wreckd-participants-styles";
     style.textContent = [
       ".wreckd-participants { font-family: 'Courier New', Courier, monospace; margin: 1.5rem 0; }",
-      ".wreckd-participants .wp-status { color: #555; font-style: italic; }",
+      ".wreckd-participants .wp-status { color: #000; font-style: italic; }",
       ".wreckd-participants .wp-count { margin: 0 0 0.75rem; font-weight: bold; }",
       ".wreckd-participants table { border-collapse: collapse; width: 100%; max-width: 640px; }",
       ".wreckd-participants th, .wreckd-participants td { text-align: left; padding: 0.35rem 0.75rem 0.35rem 0; border-bottom: 1px solid #ddd; vertical-align: top; }",

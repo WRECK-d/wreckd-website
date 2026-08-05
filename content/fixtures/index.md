@@ -7,7 +7,7 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 
 **Already a member? [Register for a fixture →](/fixtures/register/)**
 
-{{< highlight-box >}} ### [Mukamuka Munter →](/mukamuka/) {{< /highlight-box >}}
+{{< highlight-box >}} ### [Mukamuka Munter →](/mukamuka/) [Fixture Card →](/mukamuka-comms) {{< /highlight-box >}}
 
 ...is back
 
@@ -18,7 +18,6 @@ Course: ~30km / 1040m\
 Route: Point to Point\
 Difficulty: (Mostly) runnable
 
-[Fixture Card](/mukamuka-comms)
 
 {{< highlight-box >}} ### [Aorangi Undulator →](/undulator/) {{< /highlight-box >}}
 

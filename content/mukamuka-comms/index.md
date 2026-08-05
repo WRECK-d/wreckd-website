@@ -46,7 +46,7 @@ Point-to-point: **South Coast → Catchpool Centre**
 
 ## No Dogs
 
-> 🚫 **No dogs allowed.** The course borders sensitive Turekihae Head kiwi-zone habitat, with stock present. Thanks to the Wharekauhau Station landowners for allowing access across their land.
+> **No dogs allowed.** The course borders the sensitive Turekihae Head Scientific Reserve (NZ Largest Fur Seal Colony), kiwi-zone, and stock is present. Thanks to the Wharekauhau Station landowners for allowing access across their land during calving.
 
 ---
 

@@ -40,7 +40,7 @@ Point-to-point: **South Coast → Catchpool Centre**
 - GPX file: [download](https://wreckd.org.nz/mukamuka/mukamuka-munter.gpx) — load onto NZ Topo Maps on a fully charged phone *before* race day
 - Course marking is limited; marshals will be at safety-critical points only
 
-> ⚠ **Weather contingency:** if conditions are unfavourable, the race may be cancelled or switched to a [B-Course](https://mukumukumunter.wordpress.com/wp-content/uploads/2016/06/mukumunterboption-1.jpg?w=1440&h=1018) avoiding river crossings, with advance notice (day prior) and an updated GPX.
+> ⚠ **Weather contingency:** if conditions are unfavourable, the race may be cancelled or switched to a [B-Course](https://mukumukumunter.wordpress.com/wp-content/uploads/2016/06/mukumunterboption-1.jpg?w=1440&h=1018) avoiding river crossings, with advance notice (day prior) and an updated [GPX](/mukamuka-comms/b-course.gpx).
 
 ---
 

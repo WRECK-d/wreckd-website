@@ -1,86 +1,86 @@
-# Mukamuka Munter - Fixture Card
-
-## Event Details
+# Mukamuka Munter — Fixture Card
 
 **Date:** 15 August 2026
-**Registration:** From 0730 @ [Catchpool Centre & Community Emergency Hub](https://maps.app.goo.gl/JnndiTmBc8mH5VDw9)
-**Start:** 0900 @ Wainuiomata Coast [Beach Access Carpark](https://maps.app.goo.gl/AwC2ZhbD1cXpbq3y8)
+**Registration:** From 07:30 — [Catchpool Centre & Community Emergency Hub](https://maps.app.goo.gl/JnndiTmBc8mH5VDw9)
+**Start:** 09:00 — [Wainuiomata Coast, Beach Access Carpark](https://maps.app.goo.gl/AwC2ZhbD1cXpbq3y8)
+**Race Briefing:** 08:45 at the start line
 
-The **race briefing** will be at **0845** at the start line.
+---
 
-## Travel/Parking and Logistics
+## Travel, Parking & Logistics
 
-Please allow plenty of travel time, particularly if you're coming from Wellington.
-Ample parking is available at the start and at the Catchpool Centre. Note that it is a 10km drive between the registration/finish line and the Coast/start line.
+> **Note:** It's a 10 km drive between the registration/finish line (Catchpool) and the start line (Coast). Allow plenty of travel time, particularly if you're coming from Wellington.
 
-To help with congestion, please consider carpool arrangements before the race day. Team up with other [runners](/mukamuka) for arrangements before and after the race.
+Ample parking is available at both the start and Catchpool Centre.
 
-If you would like to meet members, consider arriving at registration earlier.
+To help with congestion, please carpool where you can — team up with other [runners](/mukamuka) before race day. If you'd like to meet other entrants, consider arriving at registration earlier.
 
-### Warm clothing and other belongings may be left at the Catchpool Centre, and volunteers will be present to look after this until the race has finished.
+Warm clothing and other belongings can be left at the Catchpool Centre — volunteers will look after them until the race has finished.
+
+---
 
 ## What to Bring
 
-The Mukamuka Munter is a backcountry event, and conditions can change quickly. Make sure you come prepared.
-The mandatory gear, the minimum requirements for participating in this fixture, are published on our [website](https://wreckd.org.nz/boring/).
-You should run in your best trail shoes for wet, slippery, technical river travel and muddy conditions.
+The Mukamuka Munter is a backcountry event and conditions can change quickly. Come prepared.
 
-It is a requirement for all WREC'kd fixtures to carry or have access to a **PLB or satellite tracking device** on the course. These can be hired from the following [outlets](https://www.mountainsafety.org.nz/learn/skills/communications/plb-hire).
+- Mandatory gear (minimum requirements): see the [full list on our website](https://wreckd.org.nz/boring/)
+- Wear your best trail shoes — expect wet, slippery, technical river travel and mud
 
-If you are racing as a team, or have other details to update, please [contact us](mailto:office@runs.nz?subject=Mukamuka%20Race%20Updates).
+> ⚠ **MANDATORY:** All entrants must carry or have access to a PLB or satellite tracking device on course. [Hire outlets →](https://www.mountainsafety.org.nz/learn/skills/communications/plb-hire)
+
+Racing as a team, or need to update your details? [Email us](mailto:office@runs.nz?subject=Mukamuka%20Race%20Updates)
+
+---
 
 ## Course Information
 
-The Mukamuka Munter is a point-to-point race.
+Point-to-point: **South Coast → Catchpool Centre**
 
-Starting on the South Coast.
-Finishing at the Catchpool Centre.
+- Route map: [PDF](https://wreckd.org.nz/fixtures/mukamukamap.pdf)
+- GPX file: [download](https://wreckd.org.nz/mukamuka/mukamuka-munter.gpx) — load onto NZ Topo Maps on a fully charged phone *before* race day
+- Course marking is limited; marshals will be at safety-critical points only
 
-Please ensure you are familiar with the [route](https://wreckd.org.nz/fixtures/mukamukamap.pdf) and have the [.GPX file downloaded](https://wreckd.org.nz/mukamuka/mukamuka-munter.gpx) and available on your *fully charged* phone with NZ Topo Maps.
+> ⚠ **Weather contingency:** if conditions are unfavourable, the race may be cancelled or switched to a B-Course avoiding river crossings, with advance notice and an updated GPX/map.
 
-There'll be limited course marking; marshals will be present at safety-critical locations.
+---
 
-*If weather conditions are unfavourable, a decision will be made to cancel or B-Course a route that avoids river crossing with advance notice and update of .gpx and maps*
+## No Dogs
 
-## Dogs?
+> 🚫 **No dogs allowed.** The course borders sensitive Turekihae Head kiwi-zone habitat, with stock present. Thanks to the Wharekauhau Station landowners for allowing access across their land.
 
-WREC'kd thanks the Wharekauhau Station landowners for allowing access across their land. 
-The Mukamuka Munter borders sensitive areas of Turekihae Head, kiwi-Zone and stock is present. 
-#### No dogs are allowed. 
+---
 
 ## Timing
 
-Manual timing, with splits at Mukamuka Corner and South Saddle. 
+Manual timing, with splits at:
 
-Please ensure all marshals can read your race bib number, and they've noted your time.
+- Mukamuka Corner
+- South Saddle
 
-Race results will be published [here](https://wreckd.org.nz/mukamuka-comms/)
+Make sure marshals can read your bib number and have noted your time.
 
+Results published [here](https://wreckd.org.nz/mukamuka-comms/).
+
+---
 
 ## Volunteers
 
-Our events only happen because of an awesome crew of volunteers giving up their time. If you can no longer race, but can help out, then flick me an email.
+Our events only happen because of an awesome crew of volunteers giving up their time. If you can no longer race but can help out instead, flick us an email.
 
-## Entrants List - [live publication](https://wreckd.org.nz/mukamuka/)
+## Entrants List
+
+[Live entrants list →](https://wreckd.org.nz/mukamuka/)
+
+---
 
 ## Post-Event
 
-Massage will be available at the finish line / Catchpool Centre. 
-The wizard - Jörg 'Jay' Otto of Being One Therapies offering services for $20 (Bring Cash)
+- **Massage** — Jörg "Jay" Otto of Being One Therapies, $20 (bring cash)
+- **BBQ** — Choice Bros. beers and non-alcoholic options
+- **Prize-giving** — 2:00 pm
 
-A BBQ will be running, with a range of Choice Bros. beers and non-alcoholic options.
-Prize giving will be at 2.00 pm.
+---
 
-## Thanks 
+## Thanks
 
-Special thanks: 
-~Choice Bros. 
-~Being One Therapies
-~Wharekauhau Station
-~Greater Wellington Backcountry Network
-~Remutaka Conservation Trust
-~DOC, Wellington
-
-
-
-
+Choice Bros. · Being One Therapies · Wharekauhau Station · Greater Wellington Backcountry Network · Remutaka Conservation Trust · DOC Wellington

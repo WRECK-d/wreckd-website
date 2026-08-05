@@ -8,11 +8,16 @@
 
 The **race briefing** will be at **0845** at the start line.
 
-## Travel and Parking
+## Travel/Parking and Logistics
 
 Please allow plenty of travel time, particularly if you're coming from Wellington.
 Ample parking is available at the start and at the Catchpool Centre. Note that it is a 10km drive between the registration/finish line and the Coast/start line.
-To help with congestion, please consider carpool arrangements before the race day. If you would like to meet members, consider arriving at registration earlier.
+
+To help with congestion, please consider carpool arrangements before the race day. Team up with other [runners](/mukamuka) for arrangements before and after the race.
+
+If you would like to meet members, consider arriving at registration earlier.
+
+### Warm clothing and other belongings may be left at the Catchpool Centre, and volunteers will be present to look after this until the race has finished.
 
 ## What to Bring
 

@@ -282,22 +282,10 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       <!-- EVENT SELECTION -->
       <h2>Select your fixture</h2>
       <div class="form-group">
+        <p style="font-size:0.85rem; color:#555; margin-top:0;">Mukamuka Munter registration is closed — the fixture is fully subscribed.</p>
         <div class="radio-group">
           <label class="radio-label">
-            <input type="radio" name="fixture" value="mukamuka-munter" required>
-            Mukamuka Munter — 15 August 2026
-          </label>
-          <div class="fixture-link"><a href="/mukamuka" target="_blank" rel="noopener">Open Mukamuka details in new tab ↗</a></div>
-          <div id="info-mukamuka" class="event-info">
-            <table>
-              <tr><td>Date</td><td>Saturday 15 August</td></tr>
-              <tr><td>Location</td><td>Orongorongo &amp; South Coast</td></tr>
-              <tr><td>Distance</td><td>~30 km / 1,040 m elevation</td></tr>
-              <tr><td>Route</td><td>Point to point — mostly runnable</td></tr>
-            </table>
-          </div>
-          <label class="radio-label">
-            <input type="radio" name="fixture" value="aorangi-undulator">
+            <input type="radio" name="fixture" value="aorangi-undulator" required>
             Aorangi Undulator — 31 October 2026
           </label>
           <div class="fixture-link"><a href="/undulator" target="_blank" rel="noopener">Open Undulator details in new tab ↗</a></div>
@@ -526,12 +514,11 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 
 <script>
 const WORKER_URL = "https://wreckd-fixtures-worker.wreckd.workers.dev";
-const FEES = { "mukamuka-munter": 10, "aorangi-undulator": 20 };
+const FEES = { "aorangi-undulator": 20 };
 
 // Show event info blurbs
 document.querySelectorAll('input[name="fixture"]').forEach(radio => {
   radio.addEventListener("change", () => {
-    document.getElementById("info-mukamuka").classList.toggle("visible", radio.value === "mukamuka-munter" && radio.checked);
     document.getElementById("info-undulator").classList.toggle("visible", radio.value === "aorangi-undulator" && radio.checked);
     updateFeeDisplay();
   });

@@ -5,7 +5,6 @@ const ALLOWED_ORIGINS = [
 const GITHUB_REPO = "WRECK-d/form-submissions";
 
 const FIXTURES = {
-  "mukamuka-munter": { label: "Mukamuka Munter", fee: 10 },
   "aorangi-undulator": { label: "Aorangi Undulator", fee: 20 },
 };
 

@@ -42,6 +42,8 @@ Point-to-point: **South Coast → Catchpool Centre**
 
 > ⚠ **Weather contingency:** if conditions are unfavourable, the race may be cancelled or switched to a [B-Course](https://mukumukumunter.wordpress.com/wp-content/uploads/2016/06/mukumunterboption-1.jpg?w=1440&h=1018) avoiding river crossings, with advance notice (day prior) and an updated [GPX](/mukamuka-comms/B-course.gpx).
 
+![Key points to Note](/mukamuka-comms/keypts.png)
+
 ---
 
 ## No Dogs

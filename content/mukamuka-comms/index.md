@@ -40,7 +40,7 @@ Point-to-point: **South Coast → Catchpool Centre**
 - GPX file: [download](https://wreckd.org.nz/mukamuka/mukamuka-munter.gpx) — load onto NZ Topo Maps on a fully charged phone *before* race day
 - Course marking is limited; marshals will be at safety-critical points only
 
-> ⚠ **Weather contingency:** if conditions are unfavourable, the race may be cancelled or switched to a [B-Course](https://mukumukumunter.wordpress.com/wp-content/uploads/2016/06/mukumunterboption-1.jpg?w=1440&h=1018) avoiding river crossings, we'll know such in advance notice and the reachout the day prior with the updated [B-Course GPX](/mukamuka-comms/bcourse.gpx) or at [Strava](https://www.strava.com/routes/3519909939976978822).
+> ⚠ **Weather contingency:** if conditions are unfavourable, the race may be cancelled or switched to a [B-Course](https://mukumukumunter.wordpress.com/wp-content/uploads/2016/06/mukumunterboption-1.jpg?w=1440&h=1018) avoiding river crossings, we'll know such in advance following the [river levels](https://graphs.gw.govt.nz/envmon?view=graph&collection=River+and+Stream+Levels&site=Orongorongo+River+at+Truss+Bridge&measurement=Flow&flow=Measured+Flow). Confirmation will be sent out the the day prior with the updated [B-Course GPX](/mukamuka-comms/bcourse.gpx) or at [Strava](https://www.strava.com/routes/3519909939976978822).
 
 ![Key points to Note](/mukamuka-comms/keypts.png)
 

@@ -37,7 +37,7 @@ The list above is the minimum gear requirement. The race director reserves the r
 
 Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. *(need't be said, the clothes must fit!)*. 
 
-A PLB is the preferred emergency beacon for reliability, and is best layered with a fully charged phone)
+A PLB is the preferred emergency beacon for reliability, and is best layered with a fully charged phone.
 
 {{< /highlight-box >}}
 

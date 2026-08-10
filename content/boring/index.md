@@ -27,14 +27,18 @@ All participants must carry the essential gear as published on the website. The 
 - Emergency Biv Bag (not a blanket)
 - Headlamp with spare batteries or a second lamp unit (charged)
 - Basic first aid – (min: self-adhering crepe bandage, strapping tape (minimum 100 cm x 6 cm / 40 inches x 2.5 inches) and 2 gauze (10cm square), personal medication and painkillers)
-- Personal Locator Beacon, or satellite tracking device (available; this could be one per team)
+- Personal Locator Beacon (PLB), and/or satellite communication device such as Garmin inReach, and/or satellite
+ capable phone tested with Spark/One NZ SpaceX plan (this could be one per team)
 - Dry bag for all thermal clothing
 - Surplus nutrition for emergency
 - Whistle
 
 The list above is the minimum gear requirement. The race director reserves the right to amend or add items as conditions may require. Such things may include an additional layering system (tech-mid or alpha-tech), Overtrou (seam-sealed rain pants), high-vis, additional water capacity.
 
-Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. *(need't be said, the clothes must fit!)*
+Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. *(need't be said, the clothes must fit!)*. 
+
+A PLB is the preferred emergency beacon for reliability, and is best layered with a fully charged phone)
+
 {{< /highlight-box >}}
 
 As a member, you are entitled to participate in fixtures. However, participation is subject to the event organiser’s discretion, who may assess a participant’s ability, judgement, and any other relevant criteria to ensure the event is conducted safely.

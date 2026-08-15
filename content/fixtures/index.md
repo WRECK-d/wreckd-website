@@ -7,11 +7,26 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 
 **Already a member? [Register for a fixture →](/fixtures/register/)**
 
-{{< highlight-box >}} ### Fully Subscribed!
+
+{{< highlight-box >}} ### [Aorangi Undulator →](/undulator/) {{< /highlight-box >}}
+
+Not for the Weak!
+Date: 31st October 2026
+
+Location: Mangatoetoe, Cape Palliser.\
+Events Fee: $20\
+Race Numbers (maximum entrants): 80\
+Registration close: 27 October\
+Course: ~27km / 2000m\
+Route: Point to Point\
+Difficulty: Undulations better described as big hills
+
+
+Check back later for more details.
+
 
 [Mukamuka Munter →](/mukamuka/) [Fixture Card →](/mukamuka-comms) {{< /highlight-box >}}
 
-...is back
 
 Date: Saturday 15 August 2026\
 Location: Orongorongo and South Coast.\
@@ -21,25 +36,12 @@ Route: Point to Point\
 Difficulty: (Mostly) runnable
 
 
-{{< highlight-box >}} ### [Aorangi Undulator →](/undulator/) {{< /highlight-box >}}
 
-Not for the Weak!
-
-Date: 31st October 2026
-
-Location: Mangatoetoe, Cape Palliser.\
-Events Fee: $20\
-Course: ~27km / 2000m\
-Route: Point to Point\
-Difficulty: Undulations better described as big hills
-
-
-Check back later for more details.
 
 ### Annual General Meeting
 ...race briefing after
 
-Date: TBC May-June?\
+Date: TBC
 Location: As determined by membership\
 Agenda:\
 -Run\
@@ -47,6 +49,5 @@ Agenda:\
 
 
 WREC'kd has no traditions, But once a year we must gather at such a place and time for two important purposes: to go for a run, and to take care of admin.\
-Each year the quorum decides the choosen location for the following year.
 
 Further details, including the confirmed date and locale, will be circulated once agreed.

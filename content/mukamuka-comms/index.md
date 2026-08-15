@@ -13,12 +13,12 @@ Choice Bros. · Being One Therapies · Wharekauhau Station · Greater Wellington
 
 ## Podium
 
-Men: 
+Women:
 1. **Hannah Fletcher** — 3:13:50
 2. **Zoe MacClure** — 3:33:06
 3. **Harriette Carr** — 4:11:04
 
-Women:
+Men:
 1. **Chester Holt-Quick** — 2:43:39
 2. **Sam McCutcheon** — 2:45:54
 3. **Ryan Tait** — 2:48:56

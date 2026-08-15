@@ -1,88 +1,155 @@
 # Mukamuka Munter — Fixture Card
 
 **Date:** 15 August 2026
-**Registration:** From 07:30 — [Catchpool Centre & Community Emergency Hub](https://maps.app.goo.gl/JnndiTmBc8mH5VDw9)
 **Start:** 09:00 — [Wainuiomata Coast, Beach Access Carpark](https://maps.app.goo.gl/AwC2ZhbD1cXpbq3y8)
-**Race Briefing:** 08:45 at the start line
-
----
-
-## Travel, Parking & Logistics
-
-> **Note:** It's a 10 km drive between the registration/finish line (Catchpool) and the start line (Coast). Allow plenty of travel time, particularly if you're coming from Wellington.
-
-Ample parking is available at both the start and Catchpool Centre.
-
-To help with congestion, please carpool where you can — team up with other [runners](/mukamuka) before race day. If you'd like to meet other entrants, consider arriving at registration earlier.
-
-Warm clothing and other belongings can be left at the Catchpool Centre — volunteers will look after them until the race has finished.
-
----
-
-## What to Bring
-
-The Mukamuka Munter is a backcountry event and conditions can change quickly. Come prepared.
-
-- Mandatory gear (minimum requirements): see the [full list on our website](https://wreckd.org.nz/boring/)
-- Wear your best trail shoes — expect wet, slippery, technical river travel and mud
-
-> ⚠ **MANDATORY:** All entrants must carry or have access to a PLB or satellite tracking device on course. [Hire outlets →](https://www.mountainsafety.org.nz/learn/skills/communications/plb-hire)
-
-Racing as a team, or need to update your details? [Email us](mailto:office@runs.nz?subject=Mukamuka%20Race%20Updates)
-
----
-
-## Course Information
-
-Point-to-point: **South Coast → Catchpool Centre**
-
-- Route map: [PDF](https://wreckd.org.nz/fixtures/mukamukamap.pdf)
-- GPX file: [download](https://wreckd.org.nz/mukamuka/mukamuka-munter.gpx) — load onto NZ Topo Maps on a fully charged phone *before* race day
-- Course marking is limited; marshals will be at safety-critical points only
-
-> ⚠ **Weather contingency:** if conditions are unfavourable, the race may be cancelled or switched to a [B-Course](https://mukumukumunter.wordpress.com/wp-content/uploads/2016/06/mukumunterboption-1.jpg?w=1440&h=1018) avoiding river crossings, we'll know such in advance following the [river levels](https://graphs.gw.govt.nz/envmon?view=graph&collection=River+and+Stream+Levels&site=Orongorongo+River+at+Truss+Bridge&measurement=Flow&flow=Measured+Flow). Confirmation will be sent out the the day prior with the updated [B-Course GPX](/mukamuka-comms/bcourse.gpx) or at [Strava](https://www.strava.com/routes/3519909939976978822).
-
-![Key points to Note](/mukamuka-comms/keypts.png)
-
----
-
-## No Dogs
-
-> **No dogs allowed.** The course borders the sensitive Turekihae Head Scientific Reserve (NZ Largest Fur Seal Colony), kiwi-zone, and stock is present. Thanks to the Wharekauhau Station landowners for allowing access across their land during calving.
-
----
-
-## Timing
-
-Manual timing, with splits at:
-
-- Mukamuka Corner
-- South Saddle
-
-Make sure marshals can read your bib number and have noted your time.
-
-Results published [here](https://wreckd.org.nz/mukamuka-comms/).
-
----
-
-## Volunteers
-
-Our events only happen because of an awesome crew of volunteers giving up their time. If you can no longer race but can help out instead, flick us an email.
-
-## Entrants List
-
-[Live entrants list →](https://wreckd.org.nz/mukamuka/)
-
----
-
-## Post-Event
-
-- **Massage** — Jörg "Jay" Otto of Being One Therapies, $20 (bring cash)
-- **BBQ** — Choice Bros. beers and non-alcoholic options
-- **Prize-giving** — 2:00 pm
-
----
 
 ## Thanks
 
-Choice Bros. · Being One Therapies · Wharekauhau Station · Greater Wellington Backcountry Network · Remutaka Conservation Trust · DOC Wellington
+Choice Bros. · Being One Therapies · Wharekauhau Station · Greater Wellington Backcountry Network · Remutaka Conservation Trust · DOC Wellington · ###Many Volunteers
+
+# Mukamuka Munter 2026 — Results
+
+102 finishers. Course ~32km / 965m. Fastest time 2:43:39, last finisher 06:25:35.
+
+## Podium
+
+1. **Hannah Fletcher** — 3:13:50
+2. **Zoe MacClure** — 3:33:06
+3. **Harriette Carr** — 4:11:04
+
+1. **Chester Holt-Quick** — 2:43:39
+2. **Sam McCutcheon** — 2:45:54
+3. **Ryan Tait** — 2:48:56
+
+## First across the line
+
+- **Junior (U20)** — Albert O'Rellly (4:39:55)
+
+- **Senior/Open (20-34)** - Hannah Fletcher (3:13:50)
+- **Senior/Open (20-34)** — Ryan Tait (2:48:56)
+
+- **Vet (35-49)** - Jessie Anderson  4:16:13
+- **Vet (35-49)** — Chester Holt-Quick (2:43:39)
+
+- **Super Vet (50+)** — Harriette Carr — (4:11:04)
+- **Super Vet (50+)** — Josh Campbell (3:01:33)
+
+## Teams
+
+- **Team Baguette** — Romain Moreau (4:07:37), Baptiste Desemery (4:07:38)
+- **The Mums** — Rebecca Foley (5:01:25), Kate Brind (5:01:28)
+- **Undercooked and ready to go** — Nigel Yeow (5:18:52), Mike McFarlane (5:18:52)
+- **Two Degrees of Difficulty** — Zara Patterson (5:41:41), Libby McNaughton (5:41:41)
+
+## WREC'kd Mukamuka Sausage Award (Midpacker Prize)
+**Al Cross** bib 69, in 4:14:21
+
+## Full results
+
+| # | Name | Team | Category | Time |
+| ---: | --- | --- | --- | ---: |
+| 1 | Chester Holt-Quick | — | Vet (35-49) | 2:43:39 |
+| 2 | Name withheld | Team Righteous | Vet (35-49) | 2:45:54 |
+| 3 | Ryan Tait | — | Senior/Open (20-34) | 2:48:56 |
+| 4 | Brendan Varty | — | Vet (35-49) | 2:55:22 |
+| 5 | Jonah Ackerman | — | Senior/Open (20-34) | 2:58:00 |
+| 6 | Owen Perry | Wellington Harriers Athletics Club | Senior/Open (20-34) | 2:58:07 |
+| 7 | Bruce Hughes | — | Vet (35-49) | 2:58:09 |
+| 8 | Josh Campbell | — | Super Vet (50+) | 3:01:33 |
+| 9 | Angus Ward | — | Senior/Open (20-34) | 3:05:38 |
+| 10 | Hannah Fletcher | — | Senior/Open (20-34) | 3:13:50 |
+| 11 | Ben Rae | — | Vet (35-49) | 3:15:03 |
+| 12 | Rory Hart | — | Vet (35-49) | 3:19:08 |
+| 13 | Samuel Hansby | — | Vet (35-49) | 3:19:52 |
+| 14 | Mariano McClean | — | Senior/Open (20-34) | 3:20:47 |
+| 15 | Stephen Molineux | — | Vet (35-49) | 3:21:01 |
+| 16 | Alastair Shelton | — | Vet (35-49) | 3:24:10 |
+| 17 | Stephen Goodman | — | Vet (35-49) | 3:24:21 |
+| 18 | Valentinas Bakaitis | — | Vet (35-49) | 3:30:29 |
+| 19 | Joe Kelly | — | Vet (35-49) | 3:30:39 |
+| 20 | Iain McIver | — | Vet (35-49) | 3:32:00 |
+| 21 | Zoe MacClure | — | Senior/Open (20-34) | 3:33:06 |
+| 22 | Jack Wellington | — | Senior/Open (20-34) | 3:33:07 |
+| 23 | Andrew Heaps | — | Senior/Open (20-34) | 3:35:19 |
+| 24 | Dan Kellow | — | Super Vet (50+) | 3:40:09 |
+| 25 | Sean Martin | — | Super Vet (50+) | 3:41:37 |
+| 26 | Jono Wood | — | Senior/Open (20-34) | 3:42:26 |
+| 27 | Matt Wightman | — | Vet (35-49) | 3:42:49 |
+| 28 | Xiang Liu | — | Vet (35-49) | 3:43:00 |
+| 29 | Jacob McElwee | — | Vet (35-49) | 3:43:36 |
+| 30 | Simon Coggins | — | Vet (35-49) | 3:44:55 |
+| 31 | Ryan Gold | Worms | Vet (35-49) | 3:45:28 |
+| 32 | Richard Clemo | — | Vet (35-49) | 3:45:45 |
+| 33 | Nic Blair | — | Vet (35-49) | 3:46:52 |
+| 34 | Mike Haworth | — | Vet (35-49) | 3:47:47 |
+| 35 | Greg Taylor | — | Vet (35-49) | 3:48:27 |
+| 36 | Mike Keenan | — | Vet (35-49) | 3:50:12 |
+| 37 | Justin Tampeau | — | Vet (35-49) | 3:52:13 |
+| 38 | Dan Forster | — | Vet (35-49) | 3:53:36 |
+| 39 | Mike Monastra | — | Senior/Open (20-34) | 3:54:01 |
+| 40 | Tom Rademaker | Team Righteous | Vet (35-49) | 3:55:17 |
+| 41 | Steve Beatson | — | Super Vet (50+) | 3:59:16 |
+| 42 | Michael Morrison | — | Vet (35-49) | 4:01:32 |
+| 43 | Will Parker | — | Super Vet (50+) | 4:03:13 |
+| 44 | Cullum Mangin | — | Vet (35-49) | 4:05:57 |
+| 45 | Andy Wells | — | Super Vet (50+) | 4:06:10 |
+| 46 | Romain Moreau | Team Baguette | Senior/Open (20-34) | 4:07:37 |
+| 47 | Baptiste Desemery | Team Baguette | Senior/Open (20-34) | 4:07:38 |
+| 48 | Jimmy Tait-Jamieson | Team Righteous | Vet (35-49) | 4:08:32 |
+| 49 | Andy Carruthers | — | Super Vet (50+) | 4:08:56 |
+| 50 | Alistair Gardner | — | Super Vet (50+) | 4:09:09 |
+| 51 | Harriette Carr | — | Super Vet (50+) | 4:11:04 |
+| 52 | Al Cross | — | Super Vet (50+) | 4:14:21 |
+| 53 | Jessie Anderson | — | Vet (35-49) | 4:16:13 |
+| 54 | Chris Martin | — | Vet (35-49) | 4:16:27 |
+| 55 | Richard Smith | — | Vet (35-49) | 4:16:36 |
+| 56 | Gordon Pal | — | Senior/Open (20-34) | 4:18:08 |
+| 57 | David Foster | — | Super Vet (50+) | 4:20:29 |
+| 58 | Florence Wellington | — | Senior/Open (20-34) | 4:20:30 |
+| 59 | Samuel Stewart | — | Vet (35-49) | 4:24:18 |
+| 60 | Sam Taylor | — | Vet (35-49) | 4:24:25 |
+| 61 | Sam Burns | — | Vet (35-49) | 4:24:30 |
+| 62 | Adam Simpson | Rose Simpson | Super Vet (50+) | 4:26:09 |
+| 63 | Martin Sedy | — | Senior/Open (20-34) | 4:27:57 |
+| 64 | Kristina Kirk | — | Super Vet (50+) | 4:28:41 |
+| 65 | Cameron Burns | — | Super Vet (50+) | 4:31:08 |
+| 66 | Jason Eason | — | Vet (35-49) | 4:31:33 |
+| 67 | Jess Birt | Worms | Vet (35-49) | 4:32:12 |
+| 68 | Justin Sprecher | Worms | Vet (35-49) | 4:37:37 |
+| 69 | Phil Kendon | — | Super Vet (50+) | 4:38:07 |
+| 70 | James Wilson | — | Vet (35-49) | 4:39:36 |
+| 71 | Albert O'Rellly | — | Junior (U20) | 4:39:55 |
+| 72 | Matt O'Reilly | — | Vet (35-49) | 4:39:58 |
+| 73 | Daniel Addington | — | Vet (35-49) | 4:40:52 |
+| 74 | William Veale | — | Vet (35-49) | 4:42:54 |
+| 75 | Mattie Wilson | Worms | Vet (35-49) | 4:44:16 |
+| 76 | Jarred Gustafson | — | Vet (35-49) | 4:50:25 |
+| 77 | Craig Wellington | — | Super Vet (50+) | 4:54:52 |
+| 78 | Alastair Crawford | — | Super Vet (50+) | 4:56:36 |
+| 79 | Sean Kelly | — | Super Vet (50+) | 4:58:46 |
+| 80 | Lilla Csorgo | — | Super Vet (50+) | 5:00:58 |
+| 81 | Rebecca Foley | The Mums | Vet (35-49) | 5:01:25 |
+| 82 | Kate Brind | The Mums | Senior/Open (20-34) | 5:01:28 |
+| 83 | Kate Sprecher | — | Vet (35-49) | 5:07:39 |
+| 84 | Anthony Bus | — | Super Vet (50+) | 5:09:18 |
+| 85 | Sarah Mackey | — | Vet (35-49) | 5:10:25 |
+| 86 | Rosie McIntyre | — | Vet (35-49) | 5:11:00 |
+| 87 | Aaron Sloss | — | Super Vet (50+) | 5:13:13 |
+| 88 | Nigel Yeow | Undercooked and ready to go | Super Vet (50+) | 5:18:52 |
+| 89 | Mike McFarlane | Undercooked and ready to go | Vet (35-49) | 5:18:52 |
+| 90 | Andrew Shackleton | — | Super Vet (50+) | 5:20:22 |
+| 91 | Megan Sety | — | Vet (35-49) | 5:20:22 |
+| 92 | Corey Millikin | — | Super Vet (50+) | 5:20:22 |
+| 93 | Karen Murray | — | Vet (35-49) | 5:20:22 |
+| 94 | Simon Wakeman | — | Super Vet (50+) | 5:22:22 |
+| 95 | Zara Patterson | Two Degrees of Difficulty | Senior/Open (20-34) | 5:41:41 |
+| 96 | Libby McNaughton | Two Degrees of Difficulty | Senior/Open (20-34) | 5:41:41 |
+| 97 | Elspeth Knewstubb | Worms | Vet (35-49) | 5:58:28 |
+| 98 | Shaz Dagg | — | Super Vet (50+) | 6:06:06 |
+| 99 | Kelley T Waite | — | Vet (35-49) | 6:06:06 |
+| 100 | Desiree silk | — | Vet (35-49) | 6:06:06 |
+| 101 | Anna garrett | — | Vet (35-49) | 6:16:06 |
+| 102 | Ireneusz Badura | — | Senior/Open (20-34) | 6:25:35 |
+| 103 | Karl Watson | — | Super Vet (50+) | DNF |
+
+Times are elapsed from the 09:00 start.

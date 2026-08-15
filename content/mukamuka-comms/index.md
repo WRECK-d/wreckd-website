@@ -13,11 +13,12 @@ Choice Bros. · Being One Therapies · Wharekauhau Station · Greater Wellington
 
 ## Podium
 
+Men: 
 1. **Hannah Fletcher** — 3:13:50
 2. **Zoe MacClure** — 3:33:06
-3. **Harriette Carr** — 4:11:04/
+3. **Harriette Carr** — 4:11:04
 
-
+Women:
 1. **Chester Holt-Quick** — 2:43:39
 2. **Sam McCutcheon** — 2:45:54
 3. **Ryan Tait** — 2:48:56
@@ -49,7 +50,7 @@ Full results
 | # | Name | Team | Category | Gender | Time |
 | ---: | --- | --- | --- | --- | ---: |
 | 1 | Chester Holt-Quick | — | Vet (35-49) | Male | 2:43:39 |
-| 2 | Name withheld | Team Righteous | Vet (35-49) | Male | 2:45:54 |
+| 2 | Sam McCutcheon | Team Righteous | Vet (35-49) | Male | 2:45:54 |
 | 3 | Ryan Tait | — | Senior/Open (20-34) | Male | 2:48:56 |
 | 4 | Brendan Varty | — | Vet (35-49) | Male | 2:55:22 |
 | 5 | Jonah Ackerman | — | Senior/Open (20-34) | Male | 2:58:00 |

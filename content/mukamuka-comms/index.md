@@ -9,7 +9,7 @@ Choice Bros. · Being One Therapies · Wharekauhau Station · Greater Wellington
 
 # Mukamuka Munter 2026 — Results
 
-102 finishers. Course ~32km / 965m. Fastest time 2:43:39, last finisher 06:25:35.
+102 finishers. Fastest time 2:43:39
 
 ## Podium
 

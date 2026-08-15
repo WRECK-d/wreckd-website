@@ -5,7 +5,7 @@
 
 ## Thanks
 
-Choice Bros. · Being One Therapies · Wharekauhau Station · Greater Wellington Backcountry Network · Remutaka Conservation Trust · DOC Wellington · ###Many Volunteers
+Choice Bros. · Being One Therapies · Wharekauhau Station · Greater Wellington Backcountry Network · Remutaka Conservation Trust · DOC Wellington · ### Many Volunteers
 
 # Mukamuka Munter 2026 — Results
 

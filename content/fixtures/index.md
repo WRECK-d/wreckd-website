@@ -28,18 +28,12 @@ Check back later for more details.
 
 Date: 15 September 2026 - 6.30pm / 8pm
 Location: Southern Cross Garden Bar, Abel Smith Street, Wellington
-
+ 
 Agenda:\
 -Run\
 -Business
 
-
-
-[Mukamuka Munter →](/mukamuka/) [Fixture Card →](/mukamuka-comms) {{< /highlight-box >}}
+{{< highlight-box >}} [Mukamuka Munter →](/mukamuka/) [Fixture Card →](/mukamuka-comms) {{< /highlight-box >}}
 
 
 Date: Saturday 15 August 2026\
-Location: Orongorongo and South Coast.\
-Course: ~30km / 1040m\
-Route: Point to Point\
-Difficulty: (Mostly) runnable

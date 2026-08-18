@@ -36,4 +36,4 @@ Agenda:\
 {{< highlight-box >}} [Mukamuka Munter →](/mukamuka/) [Fixture Card →](/mukamuka-comms) {{< /highlight-box >}}
 
 
-Date: Saturday 15 August 2026\
+Date: Saturday 15 August 2026

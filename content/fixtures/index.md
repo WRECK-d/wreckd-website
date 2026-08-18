@@ -29,6 +29,7 @@ Check back later for more details.
 
 Date: 15 September 2026 - 6.30pm / 8pm
 Location: Southern Cross Garden Bar, Abel Smith Street, Wellington\
+
 Agenda:\
 -Run\
 -Business

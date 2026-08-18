@@ -25,29 +25,21 @@ Difficulty: Undulations better described as big hills
 Check back later for more details.
 
 
-[Mukamuka Munter →](/mukamuka/) [Fixture Card →](/mukamuka-comms) {{< /highlight-box >}}
+{{< highlight-box >}} ###  Annual General Meeting {{< /highlight-box >}}
 
-
-Date: Saturday 15 August 2026\
-Location: Orongorongo and South Coast.\
-Events Fee: $10\
-Course: ~30km / 1040m\
-Route: Point to Point\
-Difficulty: (Mostly) runnable
-
-
-
-
-### Annual General Meeting
-...race briefing after
-
-Date: TBC
-Location: As determined by membership\
+Date: 15 September 2026 - 6.30pm / 8pm
+Location: Southern Cross Garden Bar, Abel Smith Street, Wellington
 Agenda:\
 -Run\
 -Business
 
 
-WREC'kd has no traditions, But once a year we must gather at such a place and time for two important purposes: to go for a run, and to take care of admin.\
 
-Further details, including the confirmed date and locale, will be circulated once agreed.
+[Mukamuka Munter →](/mukamuka/) [Fixture Card →](/mukamuka-comms) {{< /highlight-box >}}
+
+
+Date: Saturday 15 August 2026\
+Location: Orongorongo and South Coast.\
+Course: ~30km / 1040m\
+Route: Point to Point\
+Difficulty: (Mostly) runnable

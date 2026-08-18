@@ -28,7 +28,7 @@ Check back later for more details.
 {{< highlight-box >}} ###  Annual General Meeting {{< /highlight-box >}}
 
 Date: 15 September 2026 - 6.30pm / 8pm
-Location: Southern Cross Garden Bar, Abel Smith Street, Wellington
+Location: Southern Cross Garden Bar, Abel Smith Street, Wellington\
 Agenda:\
 -Run\
 -Business

@@ -7,7 +7,6 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 
 **Already a member? [Register for a fixture →](/fixtures/register/)**
 
-
 {{< highlight-box >}} ### [Aorangi Undulator →](/undulator/) {{< /highlight-box >}}
 
 Not for the Weak!

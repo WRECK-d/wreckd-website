@@ -1,9 +1,6 @@
-Capital Punishment
+## Capital Punishment
 
-An administrative error.
-
-
-Brevet meets footrace.
+### Brevet meets footrace.
 
 Approximately 200+ miles of Wellington’s greatest, least convenient, and potentially not entirely connected trails, tracks, roads and coastlines.
 

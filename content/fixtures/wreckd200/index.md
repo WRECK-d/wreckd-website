@@ -13,10 +13,15 @@ Aid is the responsibility of participants.
 Checkpoints to prove you've been where you need to go.
 
 Tracking mandatory and also the responsibility of participants (share your dot)
-Route finding also your problem as is a strategy.
+Route finding also your problem; as is a strategy.
 
 Cut-off: 60 hours?
 Definitely be 200 miles or your money back!
 
 Glory to all finishers.
+
+
+taking eoi.
+tentative start time Friday 18th (late evening)
+cost tbc <$70
 

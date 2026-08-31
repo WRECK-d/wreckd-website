@@ -17,19 +17,18 @@ Consitutional Changes\
 General Business
 
 #### Annual Report 2026 
-[FY26](boring/annualreport2526.pdf/)
+[FY26](annualreport2526.pdf)
 
 #### Notices of Motion
-[Notice of motion](boring/notices2026.pdf/)
-
+[Notice of motion](notices2026.pdf)
 
 #### Proxy Voting Form 
-[Proxy voting form](boring/proxy26.pdf/)
+[Proxy voting form](proxy26.pdf)
 
 
 
 ### Rules 
-[Our Constitution](boring/Constitution.pdf/)
+[Our Constitution](constitution.pdf)
 
 ###
 

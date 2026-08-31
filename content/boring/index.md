@@ -17,19 +17,19 @@ Consitutional Changes\
 General Business
 
 #### Annual Report 2026 
-[FY26](boring/annualreport2526.pdf)
+[FY26](boring/annualreport2526.pdf/)
 
 #### Notices of Motion
-[Notice of motion](boring/notices2026.pdf)
+[Notice of motion](boring/notices2026.pdf/)
 
 
 #### Proxy Voting Form 
-[Proxy voting form](boring/proxy26.pdf)
+[Proxy voting form](boring/proxy26.pdf/)
 
 
 
 ### Rules 
-[Our Constitution](boring/Constitution.pdf)
+[Our Constitution](boring/Constitution.pdf/)
 
 ###
 
@@ -85,7 +85,7 @@ As a member, you are entitled to participate in fixtures. However, participation
 
 
 ### Annual Report
-[FY26](boring/annualreport2526.pdf)
+[FY26](boring/annualreport2526.pdf/)
 
 {{< highlight-box >}}
 Our Bank Account if you need to give us money for some reason (thanks!) is

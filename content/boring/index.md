@@ -28,7 +28,7 @@ General Business
 
 
 ### Rules 
-[Our Constitution](constitution.pdf)
+[Our Constitution](Constitution.pdf)
 
 ###
 

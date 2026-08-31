@@ -7,13 +7,13 @@ Members can attend the AGM following a run/walk at 06:30pm (noting the earlier s
 
 Agenda
 
-Welcome and apologies
-Voting and Proxies
-Approve Minutes of Meeting of the Initial General Meeting
-Chair's Forward
-Approve Audited Financial Statements for the year ended 31 March 2026
-Levy Rate
-Consitutional Changes
+Welcome and apologies\
+Voting and Proxies\
+Approve Minutes of Meeting of the Initial General Meeting\
+Chair's Forward\
+Approve Financial Statements for the year ended 31 March 2026\
+Levy Rate\
+Consitutional Changes\
 General Business
 
 #### Annual Report 2026 

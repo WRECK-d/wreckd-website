@@ -1,5 +1,37 @@
+
+## 2026 Annual General Meeting
+
+The 1st Annual General Meeting of Wilderness Running and Endurance Collective Inc will be held at Southern Cross Tavern, at Abel Smith St, Wellington on Tuesday 15 Septemebr 2026 at 8pm.
+
+Members can attend the AGM following a run/walk at 06:30pm (noting the earlier start); please send corrospondence to office@runs.nz
+
+Agenda
+
+Welcome and apologies
+Voting and Proxies
+Approve Minutes of Meeting of the Initial General Meeting
+Chair's Forward
+Approve Audited Financial Statements for the year ended 31 March 2026
+Levy Rate
+Consitutional Changes
+General Business
+
+#### Annual Report 2026 
+[FY26](boring/annualreport2526.pdf)
+
+#### Notices of Motion
+[Notice of motion](boring/notices2026.pdf)
+
+
+#### Proxy Voting Form 
+[Proxy voting form](boring/proxy26.pdf)
+
+
+
 ### Rules 
-[Our Constitution](https://app.businessregisters.govt.nz/sber-businesses/viewInstance/view.html?id=229a78e05307b6d8bf1b29667f00cb173076778c13b25d39#scrollTop)
+[Our Constitution](boring/Constitution.pdf)
+
+###
 
 By joining WREC'kd, you agree to uphold the relevant duties detailed below.
 
@@ -53,7 +85,7 @@ As a member, you are entitled to participate in fixtures. However, participation
 
 
 ### Annual Report
-[Interim FY26](/boring/WRECkd_financials_2026_v2.pdf)
+[FY26](/boring/annualreport2526.pdf)
 
 {{< highlight-box >}}
 Our Bank Account if you need to give us money for some reason (thanks!) is

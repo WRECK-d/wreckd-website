@@ -20,8 +20,8 @@ Course: ~27km / 2000m\
 Route: Point to Point\
 Difficulty: Undulations better described as big hills
 
+{{< highlight-box >}} ### [Fixture Card→](/undulator-info/) {{< /highlight-box >}}
 
-Check back later for more details.
 
 
 {{< highlight-box >}} ###  Annual General Meeting {{< /highlight-box >}}

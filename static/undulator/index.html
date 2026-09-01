@@ -310,7 +310,45 @@ footer {
   color: var(--blue);
   border-bottom-color: var(--blue);
 }
+
+  
+.elev-readout {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  white-space: nowrap;
+}
+ 
+.elev-plot {
+  position: relative;
+  z-index: 20;
+  margin-top: 12px;
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+ 
+.elev-plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+ 
+.elev-plot text {
+  font-family: var(--font-body);
+  font-size: 9px;
+  fill: #6b7a90;
+  letter-spacing: 0.06em;
+}
+
+
+  
 </style>
+
+
+
+  
 </head>
 <body>
 
@@ -379,6 +417,15 @@ footer {
   </section>
 
   <section>
+  <div class="map-header">
+    <span class="section-label" style="margin-bottom: 0;">Elevation Profile</span>
+    <span class="elev-readout" id="elev-readout">Loading…</span>
+  </div>
+  <div class="elev-plot" id="elev-plot"></div>
+</section>
+ 
+
+  <section>
     <h2>Entrants</h2>
     <div class="wreckd-participants" data-fixture="aorangi-undulator"></div>
     <script src="/fixtures/participant-list.js" defer></script>
@@ -418,6 +465,205 @@ var routeCoords = [[-41.60018,175.25805],[-41.59928,175.25932],[-41.59846,175.26
  
   L.polyline(routeCoords, { color: '#1a4a8a', weight: 4 }).addTo(map);
   map.setView([-41.522, 175.267], 11);
+})();
+</script>
+
+
+  <script>
+(function () {
+  var plot = document.getElementById('elev-plot');
+  var readout = document.getElementById('elev-readout');
+  if (!plot) return;
+ 
+  var GPX      = 'undulator.gpx';
+  var ROW_M    = 50;    // metres of elevation per block row
+  var ROWS     = 15;    // 15 x 50m = 750m ceiling
+  var ROW_H    = 9;     // block height, px
+  var GAP_Y    = 2.4;   // vertical gap between blocks, px
+  var PAD_T    = 10;
+  var PAD_L    = 34;    // left gutter for elevation labels
+  var AXIS_H   = 24;    // room under the plot for km labels
+  var TARGET_W = 5.6;   // aimed-for px per column; column count derives from this
+ 
+  var BLUE = '#1a4a8a';
+  var LITE = '#2a6abf';
+ 
+  var pts = null;       // [[cumulative metres, elevation m], ...]
+  var bins = null;      // max elevation per column
+  var cols = 0, colW = 0, plotW = 0, W = 0, H = 0;
+  var totalKm = 0, summary = '', hover = -1;
+ 
+  function hav(la1, lo1, la2, lo2) {
+    var R = 6371000, p = Math.PI / 180;
+    var dla = (la2 - la1) * p, dlo = (lo2 - lo1) * p;
+    var a = Math.sin(dla / 2) * Math.sin(dla / 2) +
+            Math.cos(la1 * p) * Math.cos(la2 * p) * Math.sin(dlo / 2) * Math.sin(dlo / 2);
+    return 2 * R * Math.asin(Math.sqrt(a));
+  }
+ 
+  function parse(txt) {
+    var doc = new DOMParser().parseFromString(txt, 'application/xml');
+    var nodes = doc.getElementsByTagName('trkpt');
+    if (!nodes.length) return null;
+ 
+    var raw = [], d = 0, plat = null, plon = null;
+    for (var i = 0; i < nodes.length; i++) {
+      var lat = parseFloat(nodes[i].getAttribute('lat'));
+      var lon = parseFloat(nodes[i].getAttribute('lon'));
+      var eleNode = nodes[i].getElementsByTagName('ele')[0];
+      if (!eleNode) continue;
+      var ele = parseFloat(eleNode.textContent);
+      if (plat !== null) d += hav(plat, plon, lat, lon);
+      raw.push([d, ele]);
+      plat = lat; plon = lon;
+    }
+ 
+    // Light 5-point smoothing. The first few hundred metres of the GPX are
+    // snapped to a coarse DEM and arrive as flat plateaus; this softens the
+    // step edges without moving the real terrain.
+    var out = [];
+    for (var j = 0; j < raw.length; j++) {
+      var s = 0, n = 0;
+      for (var k = Math.max(0, j - 2); k <= Math.min(raw.length - 1, j + 2); k++) {
+        s += raw[k][1]; n++;
+      }
+      out.push([raw[j][0], s / n]);
+    }
+    return out;
+  }
+ 
+  function stats() {
+    var total = pts[pts.length - 1][0];
+    totalKm = total / 1000;
+    var high = 0, gain = 0, last = pts[0][1];
+    for (var i = 0; i < pts.length; i++) {
+      if (pts[i][1] > high) high = pts[i][1];
+      var diff = pts[i][1] - last;
+      if (diff >= 5) { gain += diff; last = pts[i][1]; }
+      else if (diff <= -5) { last = pts[i][1]; }
+    }
+    summary = totalKm.toFixed(1) + ' km · ' + Math.round(gain / 10) * 10 + ' m \u25B3 · high ' + Math.round(high) + ' m';
+  }
+ 
+  function bin() {
+    var total = pts[pts.length - 1][0];
+    var binW = total / cols;
+    bins = new Array(cols).fill(0);
+    for (var i = 0; i < pts.length; i++) {
+      var idx = Math.min(cols - 1, Math.floor(pts[i][0] / binW));
+      if (pts[i][1] > bins[idx]) bins[idx] = pts[i][1];
+    }
+    for (var j = 1; j < cols; j++) if (bins[j] === 0) bins[j] = bins[j - 1];
+  }
+ 
+  function jitter(i) { return (i % 17 === 0 || i % 23 === 0) ? 1.6 : 0; }
+ 
+  function draw() {
+    var blockW = Math.max(1.6, colW - Math.max(1, colW * 0.28));
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" ' +
+            'role="img" aria-label="Course elevation profile, ' + summary + '">';
+ 
+    // elevation gutter
+    for (var r = 0; r <= ROWS; r += 5) {
+      var gy = PAD_T + (ROWS - r) * (ROW_H + GAP_Y) + ROW_H - 1;
+      s += '<text x="' + (PAD_L - 8) + '" y="' + gy.toFixed(1) + '" text-anchor="end">' + (r * ROW_M) + '</text>';
+    }
+ 
+    // hover band, drawn under the blocks
+    if (hover >= 0) {
+      s += '<rect x="' + (PAD_L + hover * colW - 1).toFixed(1) + '" y="' + PAD_T +
+           '" width="' + (colW + 2).toFixed(1) + '" height="' + (ROWS * (ROW_H + GAP_Y)).toFixed(1) +
+           '" fill="' + BLUE + '" opacity="0.09"/>';
+    }
+ 
+    for (var i = 0; i < cols; i++) {
+      var x = PAD_L + i * colW + jitter(i);
+      var filled = Math.max(1, Math.min(ROWS, Math.round(bins[i] / ROW_M)));
+      var hot = (i === hover);
+ 
+      for (var b = 0; b < filled; b++) {
+        if (!hot && (i * 7 + b * 13) % 29 === 0 && b < filled - 1) continue; // glitch dropout
+        var y = PAD_T + (ROWS - 1 - b) * (ROW_H + GAP_Y);
+        var fill = hot ? LITE : BLUE;
+        var op = hot ? 1 : (b === filled - 1 ? 1 : (b > filled - 4 ? 0.62 : 0.32));
+        s += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + blockW.toFixed(1) +
+             '" height="' + ROW_H + '" fill="' + fill + '" opacity="' + op + '"/>';
+      }
+ 
+      // detached block floating above, occasionally
+      if (!hot && i % 19 === 4 && filled + 1 < ROWS) {
+        var fy = PAD_T + (ROWS - 2 - filled) * (ROW_H + GAP_Y);
+        s += '<rect x="' + x.toFixed(1) + '" y="' + fy.toFixed(1) + '" width="' + blockW.toFixed(1) +
+             '" height="' + ROW_H + '" fill="' + BLUE + '" opacity="0.28"/>';
+      }
+    }
+ 
+    // km axis
+    var step = totalKm > 20 ? 5 : 2;
+    for (var km = 0; km <= Math.floor(totalKm); km += step) {
+      var ax = PAD_L + (km / totalKm) * plotW;
+      var anchor = km === 0 ? 'start' : 'middle';
+      s += '<text x="' + ax.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="' + anchor + '">' + km + '</text>';
+    }
+    s += '<text x="' + (PAD_L + plotW) + '" y="' + (H - 8) + '" text-anchor="end">KM</text>';
+ 
+    s += '</svg>';
+    plot.innerHTML = s;
+  }
+ 
+  function layout() {
+    W = plot.clientWidth || 616;
+    plotW = W - PAD_L;
+    cols = Math.max(45, Math.min(130, Math.round(plotW / TARGET_W)));
+    colW = plotW / cols;
+    H = PAD_T + ROWS * (ROW_H + GAP_Y) + AXIS_H;
+    bin();
+    draw();
+  }
+ 
+  function setHover(clientX) {
+    var box = plot.getBoundingClientRect();
+    var scale = W / box.width;
+    var i = Math.floor(((clientX - box.left) * scale - PAD_L) / colW);
+    if (i < 0 || i >= cols) return clearHover();
+    if (i === hover) return;
+    hover = i;
+    var km = ((i + 0.5) / cols) * totalKm;
+    readout.textContent = km.toFixed(1) + ' km · ' + Math.round(bins[i]) + ' m';
+    draw();
+  }
+ 
+  function clearHover() {
+    if (hover === -1) return;
+    hover = -1;
+    readout.textContent = summary;
+    draw();
+  }
+ 
+  plot.addEventListener('mousemove', function (e) { setHover(e.clientX); });
+  plot.addEventListener('mouseleave', clearHover);
+  plot.addEventListener('touchstart', function (e) { setHover(e.touches[0].clientX); }, { passive: true });
+  plot.addEventListener('touchmove', function (e) { setHover(e.touches[0].clientX); }, { passive: true });
+  plot.addEventListener('touchend', clearHover);
+ 
+  var rt = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { if (pts) layout(); }, 150);
+  });
+ 
+  fetch(GPX)
+    .then(function (r) { return r.text(); })
+    .then(function (txt) {
+      pts = parse(txt);
+      if (!pts || pts.length < 2) throw new Error('no track points');
+      stats();
+      readout.textContent = summary;
+      layout();
+    })
+    .catch(function () {
+      plot.parentNode.style.display = 'none';
+    });
 })();
 </script>
 

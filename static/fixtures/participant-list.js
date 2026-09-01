@@ -41,8 +41,7 @@
       ".wreckd-participants .wp-count { margin: 0 0 0.75rem; font-weight: bold; }",
       ".wreckd-participants table { border-collapse: collapse; width: 100%; max-width: 640px; }",
       ".wreckd-participants th, .wreckd-participants td { text-align: left; padding: 0.35rem 0.75rem 0.35rem 0; border-bottom: 1px solid #ddd; vertical-align: top; }",
-      ".wreckd-participants th { border-bottom: 2px solid #cc0000; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; }",
-      ".wreckd-participants td.wp-num { color: #999; text-align: right; padding-right: 0.75rem; width: 2.5rem; }",
+".wreckd-participants th { border-bottom: 2px solid var(--wp-accent, #cc0000); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; }",      ".wreckd-participants td.wp-num { color: #999; text-align: right; padding-right: 0.75rem; width: 2.5rem; }",
     ].join("\n");
     document.head.appendChild(style);
   }

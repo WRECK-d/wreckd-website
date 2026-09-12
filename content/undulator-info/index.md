@@ -29,7 +29,7 @@ The Aorangi Undulator is a backcountry event and conditions can change quickly. 
 
 > ⚠ **MANDATORY:** All entrants must carry or have access to a PLB or satellite tracking device on course. If you are in trouble, stay put and call emergency services. [Hire outlets →](https://www.mountainsafety.org.nz/learn/skills/communications/plb-hire)
 
-> **Garmin inReach users:** please enable MapShare and send us your link before race day (if using Zoleo or SPOT send us your track link). It lets the race crew see where you are without needing to contact you, which speeds things up considerably if we're tracking down a missing runner or assisting in an incident if nearby. Email your MapShare URL (and password, if you've set one) to [office@runs.nz](mailto:office@runs.nz?subject=Undulator%20MapShare).
+> **Garmin inReach users:** please enable MapShare and send us your link before race day (if using Zoleo or SPOT send us your track link). It lets the race crew see where you are without needing to contact you, which speeds things up considerably if we're tracking down a missing runner or assisting in an incident nearby. Email your MapShare URL (and password, if you've set one) to [office@runs.nz](mailto:office@runs.nz?subject=Undulator%20MapShare).
 
 Racing as a team, or need to update your details? [Email us](mailto:office@runs.nz?subject=Undulator%20Race%20Updates)
 

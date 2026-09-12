@@ -1,8 +1,8 @@
 # Aorangi Undulator — Fixture Card
 
-**Date:** 31 October 2026
-**Registration:** From 06:30 — Mangatoetoe, GRID REF: BR33 8818 9216 — [Mangatoetoe Carpark](https://maps.app.goo.gl/t9XQA5eS1UV4cCKy9)
-**Race briefing:** 06:50 at the start line
+**Date:** 31 October 2026\
+**Registration:** From 06:30 — Mangatoetoe, GRID REF: BR33 8818 9216 — [Mangatoetoe Carpark](https://maps.app.goo.gl/t9XQA5eS1UV4cCKy9)\
+**Race briefing:** 06:50 at the start line\
 **Start:** 07:00 (AM)
 
 ---

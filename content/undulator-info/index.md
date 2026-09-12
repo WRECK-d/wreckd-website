@@ -40,7 +40,7 @@ Racing as a team, or need to update your details? [Email us](mailto:office@runs.
 Point-to-point: **Mangatoetoe → Putangirua Pinnacles**
 **~27 km / 2,000 m △**
 
-- Route map: [PDF](https://wreckd.org.nz/fixtures/undulator.pdf)
+- Route map: [PDF](https://wreckd.org.nz/fixtures/undulator-info/AorangiUndulatorMap.pdf)
 - GPX file: [download](https://wreckd.org.nz/undulator/undulator.gpx) — load onto NZ Topo Maps on a fully charged phone *before* race day
 - Course marking is limited. Marshals are at the huts only.
 

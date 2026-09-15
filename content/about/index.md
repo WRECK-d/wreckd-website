@@ -17,7 +17,7 @@ In the hills, we respect the ngahere and whenua. We back each other.
 ## Committee
 
 The admin is sorted by:
-Callum Mallett + Bogdan State +  Chris Martin + Liz Palmer + Allira Hanczakowski + Nick On + Andy Carruthers.
+Callum Mallett + Liz Palmer +  Jack Thompson + Elspeth Knewstubb + Nick On + Allira Hanczakowski + Andy Carruthers.
 
 [Contact Us](mailto:office@runs.nz)
 

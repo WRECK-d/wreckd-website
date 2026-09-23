@@ -35,6 +35,15 @@ Racing as a team, or need to update your details? [Email us](mailto:office@runs.
 
 ---
 
+## Race Tracking
+
+WREC'kd uses CalTopo for navigation and location services. The Aorangi Undulator course is setup including map assets. You can join this service and share you location within the app, or link in you Garmin. 
+![Alt text](/4L9RJVJ40NBD.png)
+
+Download [CalTopo](https://caltopo.com/group/MLAP0T/signup/4L9RJVJ40NBD), and join the group [here](https://caltopo.com/group/MLAP0T/signup/4L9RJVJ40NBD)
+
+NB. This map will be public, and your location with our volunteer marshals will be visible on race-day.
+
 ## Course Information
 
 Point-to-point: **Mangatoetoe → Putangirua Pinnacles**

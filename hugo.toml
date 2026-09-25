@@ -10,6 +10,7 @@ theme = 'ananke'
   featured_image = ""
   show_reading_time = false
   custom_css = ["custom.css"]
+  site_logo = "/images/Logo-Colour.png"
 
 [menu]
   [[menu.main]]

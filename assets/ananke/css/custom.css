@@ -12,7 +12,7 @@ body {
 /* Site title — sans-serif, left-aligned */
 .site-title {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
 }
 
 /* Nav bar site title — sans-serif */
@@ -22,12 +22,12 @@ nav a.f3 {
 
 /* Subtitle — monospace, left-aligned */
 .site-description {
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
 }
 
 /* Motto */
 .site-motto {
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
   font-style: italic;
 }
 
@@ -38,7 +38,7 @@ nav a.f3 {
 
 header, footer {
   background-color: #fff !important;
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
 }
 
 /* All text elements */
@@ -46,12 +46,12 @@ h1, h2, h3, h4, h5, h6,
 p, a, li, span, td, th,
 .f2, .f3, .f4, .f5, .f6,
 .f-subheadline-l, .f-headline {
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
 }
 
 /* Links */
 a {
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
   text-decoration: underline;
 }
 
@@ -61,12 +61,12 @@ a:hover {
 
 /* Navigation */
 nav a {
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
 }
 
 /* Hero header text */
 .white-90, .white-80, .white-70, .white-60 {
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
 }
 
 /* Remove any dark overlays on headers */
@@ -78,17 +78,17 @@ nav a {
 .nested-copy-line-height,
 .nested-copy-line-height p,
 .nested-copy-line-height li {
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
 }
 
 .highlight-box {
   display: block;
   max-width: 28rem;
-  border: 1.5px dashed #2d4217;
+  border: 1.5px dashed #ba1b1dff;
   padding: 0.75rem 1.25rem;
   margin: 1rem 0;
   background: #fff;
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
   text-decoration: none !important;
@@ -109,16 +109,16 @@ nav a {
 
 /* Footer text */
 footer, footer a, footer span {
-  color: #2d4217 !important;
+  color: #ba1b1dff !important;
 }
 
 /* Subtle border for visual separation */
 header {
-  border-bottom: 1px solid #2d4217;
+  border-bottom: 1px solid #ba1b1dff;
 }
 
 footer {
-  border-top: 1px solid #2d4217;
+  border-top: 1px solid #ba1b1dff;
 }
 
 /* Join form */
@@ -135,7 +135,7 @@ footer {
 .join-form label {
   display: block;
   margin-bottom: 0.25rem;
-  color: #2d4217;
+  color: #ba1b1dff;
   font-weight: bold;
 }
 
@@ -143,16 +143,16 @@ footer {
 .join-form input[type="email"] {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid #2d4217;
+  border: 1px solid #ba1b1dff;
   background: #fff;
-  color: #2d4217;
+  color: #ba1b1dff;
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
   box-sizing: border-box;
 }
 
 .join-form input:focus {
-  outline: 2px solid #2d4217;
+  outline: 2px solid #ba1b1dff;
   outline-offset: 1px;
 }
 
@@ -164,7 +164,7 @@ footer {
 
 .join-form .membership-type legend {
   font-weight: bold;
-  color: #2d4217;
+  color: #ba1b1dff;
   margin-bottom: 0.25rem;
 }
 
@@ -178,7 +178,7 @@ footer {
 .join-form .radio-label input[type="radio"] {
   width: auto;
   margin-right: 0.25rem;
-  accent-color: #2d4217;
+  accent-color: #ba1b1dff;
 }
 
 .join-form .checkbox-label {
@@ -195,14 +195,14 @@ footer {
   width: auto;
   margin-top: 0.2rem;
   flex-shrink: 0;
-  accent-color: #2d4217;
+  accent-color: #ba1b1dff;
 }
 
 .join-form button[type="submit"] {
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  border: 1px solid #2d4217;
-  background: #2d4217;
+  border: 1px solid #ba1b1dff;
+  background: #ba1b1dff;
   color: #fff;
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
@@ -212,7 +212,7 @@ footer {
 
 .join-form button[type="submit"]:hover {
   background: #fff;
-  color: #2d4217;
+  color: #ba1b1dff;
 }
 
 .join-form button[type="submit"]:disabled {
@@ -226,7 +226,7 @@ footer {
 }
 
 .form-status.success {
-  color: #2d4217;
+  color: #ba1b1dff;
 }
 
 .form-status.error {

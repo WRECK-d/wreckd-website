@@ -1,4 +1,18 @@
 <footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
+
+  <div class="home-signoff">
+    <div class="scale">
+      <div class="scale-bar">
+        <div class="scale-row"></div>
+        <div class="scale-row scale-row--alt"></div>
+      </div>
+      <div class="scale-labels"><span>0</span><span>10 km</span></div>
+    </div>
+    <a href="{{ "/" | relURL }}" class="byline-logo">
+      <img src="{{ "images/Byline-Colour.png" | relURL }}" alt="WREC'kd">
+    </a>
+  </div>
+
   <div class="flex justify-between">
     <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="{{ .Site.Home.Permalink }}">
       &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ now.Format "2006" }} {{ end }}
@@ -6,12 +20,9 @@
     <div>{{ partials.IncludeCached "social/follow.html" . }}</div>
   </div>
 
-  <a href="{{ "/" | relURL }}" class="byline-logo" id="byline-logo" style="display:none">
-    <img src="{{ "images/Byline-Colour.png" | relURL }}" alt="WREC'kd">
-  </a>
   <script>
     if (location.pathname === "/" || location.pathname === "/index.html") {
-      document.getElementById("byline-logo").style.display = "block";
+      document.body.classList.add("is-home");
     }
   </script>
 </footer>

@@ -1,39 +1,36 @@
 ---
 title: "Fixtures"
-description: "Upcoming \"runs\". Mukamuka Munter, Wellington Trail and Adventure Running. Local Grassroots sport. Aorangi Undulator. Orongorongo,Remutaka, Tararua, Aorangi Ranges events"
+description: "Upcoming WREC'kd fixtures: the Aorangi Undulator, 31 October 2026. Grassroots wilderness and trail running in the Aorangi, Remutaka, Orongorongo and Tararua ranges."
 ---
 
-WREC'kd organises grassroots running activities for its [members](/join/). See our [T+Cs](/boring/) for the fine print.
+WREC'kd organises grassroots running activities for its [members](/join/). See our [T+Cs](/conditions/) for the fine print.
 
-**Already a member? [Register for a fixture →](/fixtures/register/)**
+---
 
-{{< highlight-box >}} ### [Aorangi Undulator →](/undulator/) {{< /highlight-box >}}
+## Next up: [Aorangi Undulator →](/undulator/)
 
-Not for the Weak!
-Date: 31st October 2026
+**Saturday 31 October 2026 · Not for the weak!**
 
-Location: Mangatoetoe, Cape Palliser.\
-Events Fee: $20\
-Race Numbers (maximum entrants): 80\
-Registration close: 27 October\
-Course: ~27km / 2000m\
-Route: Point to Point\
-Difficulty: Undulations better described as big hills
+**Course:** ~27 km / 2,000 m, point to point\
+**Route:** Mangatoetoe (Cape Palliser) → Putangirua Pinnacles\
+**Difficulty:** Undulations better described as big hills\
+**Fee:** $20 (members only)\
+**Places:** 80 maximum\
+**Registration closes:** 27 October or at capacity.
 
-{{< highlight-box >}} ### [Fixture Card→](/undulator-info/) {{< /highlight-box >}}
+**Race day:** registration from 06:30 at Mangatoetoe carpark, briefing 06:50, start 07:00.
 
+{{< highlight-box >}}
+**[Register for the Undulator →](/fixtures/register/)**
 
+Not a member yet? [Join first →](/join/)
+{{< /highlight-box >}}
 
-{{< highlight-box >}} ###  Annual General Meeting {{< /highlight-box >}}
+Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers travel and parking, cut-offs, marshal points, tracking and the weather plan. All entrants must carry or have access to a PLB or satellite device, plus the [essential gear](/racing/).
 
-Date: 15 September 2026 - 6.30pm / 8pm
-Location: Southern Cross Garden Bar, Abel Smith Street, Wellington
- 
-Agenda:\
--Run\
--Business
+---
 
-{{< highlight-box >}} [Mukamuka Munter →](/mukamuka/) [Fixture Card →](/mukamuka-comms) {{< /highlight-box >}}
+## Past fixtures
 
-
-Date: Saturday 15 August 2026
+**[Mukamuka Munter](/mukamuka/)**: Saturday 15 August 2026 · [Fixture Card](/mukamuka-comms/)\
+**Annual General Meeting**: 15 September 2026, Southern Cross Garden Bar, Wellington

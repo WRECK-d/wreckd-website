@@ -1,4 +1,3 @@
-
 {{< highlight-box >}} Heading to a race? [Our Advice on running in the backcountry  →](/racing) {{< /highlight-box >}}
 
 

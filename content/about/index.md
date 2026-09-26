@@ -19,11 +19,10 @@ In the hills, we respect the ngahere and whenua. We back each other.
 The admin is sorted by:
 Callum Mallett + Liz Palmer +  Jack Thompson + Elspeth Knewstubb + Nick On + Allira Hanczakowski + Andy Carruthers.
 
-[Contact Us](mailto:office@runs.nz)
+
 
 {{< highlight-box >}}
-[Boring Stuff →](/boring/)
-
+[Boring Stuff →](/boring/)\
 [Send us an email →](mailto:office@runs.nz)
 {{< /highlight-box >}}
 

@@ -164,6 +164,8 @@ If in doubt, stay out. A swollen, discoloured or fast river is not a race obstac
 Rivers rise fast and drop fast. Heavy rain in the ranges can flood a stream within an hour. Waiting it out in your biv bag is often the safest option.
 Know your crossings. Check whether your route has a bridge, a flood track, or an alternative before you leave.
 
+Seek local knowledge on flow rate for specific rivers, and where council hydrology data is available.
+
 ### Water and food
 
 Know where the water is. Many huts have rainwater tanks, but long ridge sections can be dry, and some huts may have depleted tanks in summer months.

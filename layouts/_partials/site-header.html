@@ -6,9 +6,6 @@
     <div class="{{ $cover_dimming_class }}">
       {{ partials.Include "site-navigation.html" .}}
       <div class="tl pv4 pv6-l ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title site-title">
-          {{ .Title | compare.Default .Site.Title }}
-        </h1>
         {{ with .Params.description }}
           <h2 class="fw1 f5 f3-l white-80 measure-wide-l mt3 site-description">
             {{ . }}
@@ -25,9 +22,6 @@
     <div class="pb3-m pb6-l {{ .Site.Params.background_color_class | compare.Default "bg-black" }}">
       {{ partials.Include "site-navigation.html" . }}
       <div class="tl pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 mb0 lh-title site-title">
-          {{ .Title | compare.Default .Site.Title }}
-        </h1>
         {{ with .Params.description }}
           <h2 class="fw1 f5 f3-l lh-copy mt3 mb0 site-description">
             {{ . }}

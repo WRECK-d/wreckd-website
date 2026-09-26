@@ -1,16 +1,13 @@
 <footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
 
   <div class="home-signoff">
-    <div class="scale">
-      <div class="scale-bar">
-        <div class="scale-row"></div>
-        <div class="scale-row scale-row--alt"></div>
-      </div>
-      <div class="scale-labels"><span>0</span><span>10 km</span></div>
-    </div>
     <a href="{{ "/" | relURL }}" class="byline-logo">
       <img src="{{ "images/Byline-Colour.png" | relURL }}" alt="WREC'kd">
     </a>
+    <div class="scale-bar">
+      <div class="scale-row"></div>
+      <div class="scale-row scale-row--alt"></div>
+    </div>
   </div>
 
   <div class="flex justify-between">

@@ -111,15 +111,25 @@ The hills don't wait for the weekend. If the good window is a Tuesday, the next 
 
 {{< highlight-box >}}
 **Useful Weather Sources**
+
 [MetVUW](https://www.metvuw.com/) | Pressure, rain and wind charts for the whole of New Zealand, run out to 10 days in 6-hour steps, built from US GFS model data. Course global data; useful for trends.
+
 [Windy](https://www.windy.com/) | Side by side view of models including ECMWF, GFS and ICON with different granularity. Readings of winds at altitude.
+
 [Yr](yr.no) | Norwegian Meteorological Institute using ECMWF model (~9km grid). Readable hour-by-hour forecast, particularly for precipitation. 
+
 [MetService](wwww.metservice.com) | Pressure maps, rain radar. Human read/write forecasts up to 3 days out. Official source of severe weather warnings and watches.
+
 [NIWA / Earth Sciences NZ](https://weather.niwa.co.nz/) | High-resolution weather model for New Zealand. Best use the next 48 hours.
+
 [Mountain-Forecast](mountain-forecast.com) | Use with caution. Global model scaled to elevation bands. Useful for degrees of coldness and windiness as moving higher up.
+
 [NIWA river flow forecast](https://niwa.co.nz/hazards/weather-hazards/river-flow-forecasting) | A national forecast of river flows. 48 hours ahead, shown relative to normal flows. Uses Earth Science climate and weather data
+
 [Regional council rain and river gauges](https://graphs.gw.govt.nz/) | Real measurements. How much rain has actually fallen in the hills, and how high the rivers are right now.
+
 [Zephyr](zephyrapp.nz) | Built for paragliders, Zephyr pulls live readings from wind stations across the country onto one map.
+
 
 {{< /highlight-box >}}
 

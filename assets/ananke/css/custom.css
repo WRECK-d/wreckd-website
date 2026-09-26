@@ -43,12 +43,15 @@ header, footer {
 
 :root { --wreckd-red: #ba1b1dff; }
 
-.is-home .home-signoff {
+.home-signoff {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0.75rem;
+  align-items: flex-start;
+  gap: 1.25rem;
   padding: 0 1rem 1rem;
+}
+.is-home .home-signoff {
+  align-items: flex-end;
 }
 .scale-bar {
   width: 100%;
@@ -149,14 +152,14 @@ article header aside.ttu {
 }
 
 /* WREC'kd section dividers — every `---` (<hr>) in Markdown renders as a row of red map grid crosses.
-   To change the colour, edit %23d7263d in the SVG below (%23 is the #).
+   To change the colour, edit %23ba1b1d in the SVG below (%23 is the #).
    To space the crosses wider or tighter, change 64px in both places. */
  
 hr {
   border: 0;
   height: 14px;
   margin: 3rem 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='14'%3E%3Cpath d='M32 1v12M26 7h12' stroke='%23d7263d' stroke-width='2'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='14'%3E%3Cpath d='M32 1v12M26 7h12' stroke='%23ba1b1d' stroke-width='2'/%3E%3C/svg%3E")
     center / 64px 14px space no-repeat;
 }
  
@@ -169,10 +172,6 @@ footer, footer a, footer span {
 /* Subtle border for visual separation */
 header {
   border-bottom: 1px solid #ba1b1dff;
-}
-
-footer {
-  border-top: 1px solid #ba1b1dff;
 }
 
 /* Join form */

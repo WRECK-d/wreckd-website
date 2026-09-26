@@ -21,7 +21,8 @@ Callum Mallett + Liz Palmer +  Jack Thompson + Elspeth Knewstubb + Nick On + All
 
 [Contact Us](mailto:office@runs.nz)
 
-{{< highlight-box link="/boring/" >}}
-Boring Stuff →
+{{< highlight-box >}}
+[Boring Stuff →](/boring/)
+[Send us an email →](mailto:office@runs.nz)
 {{< /highlight-box >}}
 

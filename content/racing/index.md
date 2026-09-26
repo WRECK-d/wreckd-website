@@ -153,7 +153,14 @@ Someone who goes quiet and stops making sense needs warmth, food and shelter now
 
 ### Rivers
 
-If in doubt, stay out. A swollen, discoloured or fast river is not a race obstacle.
+If in doubt, stay out. A swollen, discoloured or fast river is not a race obstacle. 
+
+- too fast?
+- too messy?
+- too murky?
+- to loud?
+...if yes to any, then stay out.
+
 Rivers rise fast and drop fast. Heavy rain in the ranges can flood a stream within an hour. Waiting it out in your biv bag is often the safest option.
 Know your crossings. Check whether your route has a bridge, a flood track, or an alternative before you leave.
 

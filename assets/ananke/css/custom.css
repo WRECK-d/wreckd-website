@@ -64,6 +64,18 @@ header, footer {
   background: repeating-linear-gradient(to right,
     transparent 0 5%, var(--wreckd-red) 5% 10%);
 }
+
+/* Homepage: remove the plain divider lines */
+.is-home header,
+.is-home header *,
+.is-home main,
+.is-home footer {
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+.is-home hr { display: none; }
+
 /* Byline */
 .byline-logo img { height: 40px; width: auto; display: block; }
 /* All text elements */

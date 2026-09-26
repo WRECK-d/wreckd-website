@@ -41,6 +41,18 @@ header, footer {
   color: #ba1b1dff !important;
 }
 
+.byline-logo {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+.byline-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
 /* All text elements */
 h1, h2, h3, h4, h5, h6,
 p, a, li, span, td, th,

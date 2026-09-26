@@ -56,7 +56,12 @@ WREC'kd is not a registered charity. You can help by engaging in our pursuits, o
 ### I'm a financial member, but can't make an event?
 Cool! Accessibility is a priority, and your contribution will help out others. It enables us to put on some sweet projects we all benefit from.
 
+{{< highlight-box >}}
+
 ### [Sign me up!](/join/)
+
+{{< /highlight-box >}}
+
 
 
 

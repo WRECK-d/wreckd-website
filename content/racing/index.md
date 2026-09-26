@@ -11,7 +11,7 @@ This page has two parts: the rules that apply at every WREC'kd fixture, and our 
 
 As a member, you are entitled to participate in fixtures. However, participation is at the event organiser's discretion. The organiser may assess a participant's ability, judgement, and any other relevant criteria to ensure the event is conducted safely.
 
-All participants must follow the WREC'kd [Code of Conduct](/about/#code-of-conduct), including our 'leave no trace' principles.
+All participants must follow the WREC'kd [Code of Conduct](/boring), including our 'leave no trace' principles.
 
 ## Participant Responsibilities
 
@@ -137,7 +137,7 @@ The hills don't wait for the weekend. If the good window is a Tuesday, the next 
 ### Know the route
 Study it before you go. Know the distance, the vertical, the tricky sections, and where the tracks may become routes. Many of our routes follow poled or marked tracks that can disappear in cloud.
 Recce if you can. Running a section beforehand, in daylight, is the best navigation training there is.
-Carry the map and [use it](www.)  Your phone GPX is great until the battery is flat or the screen is too wet to swipe. Check your position on the paper map at key junctions, not only when you're lost.
+Carry the map and [use it](https://www.mountainsafety.org.nz/learn/skills/navigation)  Your phone GPX is great until the battery is flat or the screen is too wet to swipe. Check your position on the paper map at key junctions, not only when you're lost.
 Slow down at tricky bits. Most wrong turns happen when you're tired, moving fast, and chasing the person in front.
 
 

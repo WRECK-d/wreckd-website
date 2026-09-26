@@ -1,4 +1,11 @@
 <footer>
   <p>WREC'kd – Wilderness Running and Endurance Collective Inc. Based in Wellington, Aotearoa, running the hills of the Orongorongo, Remutaka and Aorangi ranges.</p>
   <p>© WREC'kd 2026</p>
+
+  {{ if .IsHome }}
+  <a href="{{ "/" | relURL }}" class="byline-logo">
+    <img src="{{ "images/Byline-Colour.png" | relURL }}" alt="WREC'kd">
+  </a>
+{{ end }}
+  
 </footer>

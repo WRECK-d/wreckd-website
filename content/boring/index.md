@@ -1,5 +1,5 @@
 
-{{< highlight-box >}} Heading to a race? The essential gear list and participant responsibilities are on the Race Regulations page. {{< /highlight-box >}}
+{{< highlight-box >}} Heading to a race? [Our Advice on running in backcountry  →](/racing) {{< /highlight-box >}}
 
 
 ### Rules 

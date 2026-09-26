@@ -1,33 +1,11 @@
 
-## 2026 Annual General Meeting
-
-The 1st Annual General Meeting of Wilderness Running and Endurance Collective Inc will be held at Southern Cross Tavern, at Abel Smith St, Wellington on Tuesday 15 Septemebr 2026 at 8pm.
-
-Members can attend the AGM following a run/walk at 06:30pm (noting the earlier start); please send corrospondence to office@runs.nz
-
-Agenda
-
-Welcome and apologies\
-Voting and Proxies\
-Approve Minutes of Meeting of the Initial General Meeting\
-Chair's Forward\
-Approve Financial Statements for the year ended 31 March 2026\
-Levy Rate\
-Consitutional Changes\
-General Business
-
-#### Annual Report 2026 
-[FY26](annualreport2526.pdf)
-
-#### Notices of Motion
-[Notice of motion](notices2026.pdf)
-
-#### Proxy Voting Form 
-[Proxy voting form](proxy26.pdf)
-
+{{< highlight-box >}} Heading to a race? The essential gear list and participant responsibilities are on the Race Regulations page. {{< /highlight-box >}}
 
 
 ### Rules 
+
+WREC'kd is an incorporated society governed by its constitution.
+
 [Our Constitution](Constitution.pdf)
 
 ###
@@ -37,54 +15,17 @@ By joining WREC'kd, you agree to uphold the relevant duties detailed below.
 
 ### Code of Conduct 
 
+Code of Conduct
+
 WREC'kd is committed to providing a safe, welcoming, and inclusive environment for all participants, volunteers, and spectators. All participants are expected to conduct themselves with respect and integrity at all times.
 
-A member may face disciplinary action, up to and including suspension or termination of membership, if the Committee determines that the member has brought the Society into disrepute, or repeatedly or seriously acted in a manner that poses a risk to the safety, health, or welfare of themselves or others involved in Society activities. WREC'kd is guided by 'leaving no trace' principles and littering on the course or in the surrounding environment is a serious breach of this code. 
+A member may face disciplinary action, up to and including suspension or termination of membership, if the Committee determines that the member has brought the Society into disrepute, or repeatedly or seriously acted in a manner that poses a risk to the safety, health, or welfare of themselves or others involved in Society activities.
 
-### Race Regulations and Essential Gear 
+WREC'kd is guided by 'leave no trace' principles. Littering on the course or in the surrounding environment is a serious breach of this code.
 
-Our events take place in remote New Zealand backcountry terrain. Conditions may be challenging, wet, cold, and unpredictable. Participants must be self-sufficient and capable of navigating and managing their own safety for the full duration of our events.
+#### Annual Reports 
+[FY26](annualreport2526.pdf)
 
-All participants must carry the essential gear as published on the website. The organiser reserves the right to check gear or delegate gear checks to volunteers, including spot-checks that can be conducted at any time. Failure to carry mandatory gear is grounds for immediate disqualification without refund.
-
-{{< highlight-box >}}
-**Essential Gear:**
-
-- Seam-sealed jacket – with hood
-- Thermal leggings & Thermal top
-- Beanie and Gloves
-- Phone with .GPX file and cached maps such as NZTOPO, with a plastic-sealed dry bag
-- Printed Topo50 map and compass in sealed dry bag
-- Emergency Biv Bag (not a blanket)
-- Headlamp with spare batteries or a second lamp unit (charged)
-- Basic first aid – (min: self-adhering crepe bandage, strapping tape (minimum 100 cm x 6 cm / 40 inches x 2.5 inches) and 2 gauze (10cm square), personal medication and painkillers)
-- Personal Locator Beacon (PLB), and/or satellite communication device such as Garmin inReach, and/or satellite
- capable phone tested with Spark/One NZ SpaceX plan (this could be one per team)
-- Dry bag for all thermal clothing
-- Surplus nutrition for emergency
-- Whistle
-
-The list above is the minimum gear requirement. The race director reserves the right to amend or add items as conditions may require. Such things may include an additional layering system (tech-mid or alpha-tech), Overtrou (seam-sealed rain pants), high-vis, additional water capacity.
-
-Lycra, acrylic and cotton fabrics are not sufficient. They must be merino wool or a thermal polyprop. Layers that are available at all good sports and outdoor stores. *(need't be said, the clothes must fit!)*. 
-
-A PLB is the preferred emergency beacon for reliability, and is best layered with a fully charged phone.
-
-{{< /highlight-box >}}
-
-As a member, you are entitled to participate in fixtures. However, participation is subject to the event organiser’s discretion, who may assess a participant’s ability, judgement, and any other relevant criteria to ensure the event is conducted safely.
-
-[] Operate in the bounds of your competence. Ensuring your are physically fit enough, and with the required experience\
-[] Beware of the trip plan and route. Ensuring you understand contingency\
-[] Provide your emergency contact details with rego, and ensure they are aware of you planned activities\
-[] Bring the required gear and appropriate nutrition\
-[] Look after yourself and the other members\
-[] Know where are PLB is located (or carry one yourself)\
-[] Listen/read the organisers' instruction.
-
-
-### Annual Report
-[FY26](boring/annualreport2526.pdf/)
 
 {{< highlight-box >}}
 Our Bank Account if you need to give us money for some reason (thanks!) is

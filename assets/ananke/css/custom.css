@@ -88,6 +88,43 @@ p, a, li, span, td, th,
 .f-subheadline-l, .f-headline {
   color: #ba1b1dff !important;
 }
+/* Collapsible sections: {{< fold "Title" >}} … {{< endfold >}}
+   Add "open" as a second value to start expanded: {{< fold "Title" "open" >}} */
+.wreckd-details {
+  border-top: 1.5px dashed #ba1b1d;
+  margin: 0;
+}
+.wreckd-details:last-of-type {
+  border-bottom: 1.5px dashed #ba1b1d;
+}
+.wreckd-details summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 0;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #ba1b1d;
+}
+
+.wreckd-details summary::-webkit-details-marker { display: none; }
+.wreckd-details summary::after {
+  content: "+";
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-left: 1rem;
+}
+.wreckd-details[open] summary::after { content: "\2212"; }
+.wreckd-details summary:focus-visible {
+  outline: 2px solid #ba1b1d;
+  outline-offset: 2px;
+}
+.wreckd-details__body { padding: 0 0 1.25rem; }
+.wreckd-details__body > :first-child { margin-top: 0; }
+
 
 /* Links */
 a {

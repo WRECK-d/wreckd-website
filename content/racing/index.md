@@ -14,7 +14,9 @@ All participants must follow the WREC'kd [Code of Conduct](/boring), including o
 
 ---
 
-## Participant Responsibilities
+## The Rules
+
+{{< fold "Participant Responsibilities" >}}
 
 - **Operate within your competence.** Make sure you are physically fit enough and have the required experience.
 - **Know the plan.** Be aware of the trip plan and route, and make sure you understand the contingencies.
@@ -24,9 +26,9 @@ All participants must follow the WREC'kd [Code of Conduct](/boring), including o
 - **Know where the PLB is** located (or carry one yourself).
 - **Follow instructions.** Listen to and read the organisers' instructions.
 
----
+{{< endfold >}}
 
-## Emergency Contact
+{{< fold "Emergency Contact" >}}
 
 Every participant must provide an emergency contact when they register. We will only contact them if something goes wrong.
 
@@ -40,9 +42,9 @@ Your emergency contact should:
 
 Make sure they know you've listed them, and that their details are current. If your plans change on the day, update your details at registration.
 
----
+{{< endfold >}}
 
-## Essential Gear
+{{< fold "Essential Gear" "open" >}}
 
 All participants must carry the essential gear listed below. The organiser reserves the right to check gear, or to delegate gear checks to volunteers, including spot-checks at any time. Failure to carry mandatory gear is grounds for immediate disqualification without refund.
 
@@ -74,9 +76,9 @@ Lycra, acrylic and cotton fabrics are not sufficient. Thermal layers must be mer
 
 A PLB is the preferred emergency beacon for reliability, and is best paired with a fully charged phone.
 
----
+{{< endfold >}}
 
-## Race Tracking
+{{< fold "Race Tracking" >}}
 
 WREC'kd uses [CalTopo](https://caltopo.com) for mapping our events. The course, checkpoints and bail-out routes are saved on a shared event map, and our volunteers' positions are tracked on it during the event.
 
@@ -92,13 +94,15 @@ The link to join the event map is sent to registered participants before each ev
 
 CalTopo doesn't replace your printed map. However, it can be used in lieu of a .GPX file and the NZTopo app.
 
+{{< endfold >}}
+
 ---
 
 ## Backcountry Musings
 
 The gear list above includes most standard race kit for NZ conditions. What keeps you safe out there is your own judgement. Please consider the weather forecast, the time on feet, and your prior experience when deciding what gear to carry.
 
-### Start with the Land Safety Code
+{{< fold "Start with the Land Safety Code" >}}
 
 The NZ Mountain Safety Council's Land Safety Code is five simple points:
 
@@ -108,7 +112,9 @@ The NZ Mountain Safety Council's Land Safety Code is five simple points:
 4. **Share your plans and take ways to get help.** Tell a trusted person your trip details, and carry a distress beacon.
 5. **Take care of yourself and each other.** Eat, drink and rest. Running in the backcountry is better together! Stick with your group, and make decisions together.
 
-### Weather
+{{< endfold >}}
+
+{{< fold "Weather" >}}
 
 Exposure is the single biggest killer in the hills, and poor decisions about weather are behind most backcountry callouts in the ranges.
 
@@ -131,14 +137,18 @@ Exposure is the single biggest killer in the hills, and poor decisions about wea
 
 {{< /highlight-box >}}
 
-### Know the Route
+{{< endfold >}}
+
+{{< fold "Know the Route" >}}
 
 - **Study it before you go.** Know the distance, the vertical, the tricky sections, and where tracks may become routes. Many of our routes follow poled or marked tracks that can disappear in cloud.
 - **Recce if you can.** Running a section beforehand, in daylight, is the best navigation training there is.
 - **Carry the map and [use it](https://www.mountainsafety.org.nz/learn/skills/navigation).** Your phone GPX is great until the battery is flat or the screen is too wet to swipe. Check your position on the paper map at key junctions, not only when you're lost.
 - **Slow down at tricky bits.** Most wrong turns happen when you're tired, moving fast, and chasing the person in front.
 
-### Stay Warm
+{{< endfold >}}
+
+{{< fold "Stay Warm" >}}
 
 Hypothermia creeps up on runners because you're warm while moving and cool quickly once you stop or slow.
 
@@ -149,7 +159,9 @@ Hypothermia creeps up on runners because you're warm while moving and cool quick
 
 Someone who goes quiet and stops making sense needs warmth, food and shelter now.
 
-### Rivers
+{{< endfold >}}
+
+{{< fold "Rivers" >}}
 
 **If in doubt, stay out.** A swollen, discoloured or fast river is not a race obstacle. Ask yourself:
 
@@ -164,25 +176,33 @@ If yes to any, stay out.
 - **Know your crossings.** Check whether your route has a bridge, a flood track, or an alternative before you leave.
 - **Seek local knowledge** on flow rates for specific rivers, and check council hydrology data where it's available.
 
-### Water and Food
+{{< endfold >}}
+
+{{< fold "Water and Food" >}}
 
 - **Know where the water is.** Many huts have rainwater tanks, but long ridge sections can be dry, and some hut tanks may be depleted in the summer months.
 - **Plan your refills** and carry enough for the longest dry stretch. Consider multiple flasks, which needn't always be filled.
 - **Eat early and often.** A bonk on an exposed ridge is a safety problem, not just a slow day.
 - **Keep emergency food** that you don't touch unless something goes wrong.
 
-### Know Your Way Out
+{{< endfold >}}
+
+{{< fold "Know Your Way Out" >}}
 
 - **Plan your bail-outs.** Before you start, know where you can leave the route and how long it takes to reach a road from each point. Consider timings if you or someone in your party is injured: if your run becomes a hike, how long will you be out?
 - **Set a turnaround time.** Decide beforehand when you'll turn back, and stick to it.
 - **Turning back is always an option.**
 
-### If Things Go Wrong
+{{< endfold >}}
+
+{{< fold "If Things Go Wrong" >}}
 
 - **Stop, think, and stay together.** Get out of the wind, put on your warm layers, and eat something before making decisions.
 - **Use your emergency shelter.** Your biv bag is there so that a night out, while uncomfortable, is not dangerous.
 - **Activate your beacon in a genuine emergency.** If life is at risk, or you can't get yourself out, activate your PLB and leave it on. Stay where you are unless you have to move to be safe.
 - **Register your beacon.** Make sure your PLB is registered at [beacons.org.nz](https://www.beacons.org.nz/) with current contact details, and check the battery date.
+
+{{< endfold >}}
 
 {{< highlight-box >}}
 **Useful Links**

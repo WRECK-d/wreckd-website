@@ -1,0 +1,10 @@
+{{- /* Collapsible section. Usage:
+  {{< fold "Title" >}}          (starts closed)
+  {{< fold "Title" "open" >}}   (starts open)
+  ...normal markdown, including other shortcodes...
+  {{< endfold >}}
+*/ -}}
+{{- $title := .Get 0 | default "More" -}}
+<details class="wreckd-details" id="{{ $title | anchorize }}"{{ if eq (.Get 1) "open" }} open{{ end }}>
+<summary>{{ $title | markdownify }}</summary>
+<div class="wreckd-details__body">

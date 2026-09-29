@@ -30,6 +30,35 @@ Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers t
 
 ---
 
+## FY27/28
+
+**After Dark Series**
+
+**3 Rounds:** Kapakapanui, East Whakanui, Dobsons Loop\
+**When?:** When the clocks go back (from April 4 2027)\
+**Difficulty:** Varies\
+**Fee:** Free (members only)\
+**Places:** No cap\
+**RSVP closes:** TBC
+
+{{< highlight-box >}}
+**[After Dark →](/afterdark/)**
+{{< /highlight-box >}}
+
+**Mukamuka Munter**
+
+**Course:** ~32 km / 960m, point to point\
+**Route:** Orongorongo River Mouth (Wainuiomata Coast) → Catchpool Valley\
+**Difficulty:** Mostly runnable\
+**Fee:** $TBC (members only)\
+**Places:** 120\
+**Date:** TBC
+
+{{< highlight-box >}}
+**[Mukamuka Munter→](/Mukamuka/)**
+{{< /highlight-box >}}
+
+---
 ## Past fixtures
 
 **[Mukamuka Munter](/mukamuka/)**: Saturday 15 August 2026 · [Fixture Card](/mukamuka-comms/)\

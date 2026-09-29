@@ -35,7 +35,7 @@ Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers t
 **After Dark Series**
 
 **3 Rounds:** Kapakapanui, East Whakanui, Dobsons Loop\
-**When?:** When the clocks go back (from April 4 2027)\
+**Dates:** When the clocks go back (from April 4 2027)\
 **Difficulty:** Varies\
 **Fee:** Free (members only)\
 **Places:** No cap\

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>After Dark Series</title>
+<meta name="description" content="The After Dark Series: WREC'kd's opening series. Three night runs to mark the end of daylight saving: Kapakapanui, East Whakanui and Dobson Loop." />
+<meta name="theme-color" content="#070707" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=Barlow+Condensed:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --black: #070707;
+  --soot: #121110;
+  --bone: #ece6dc;
+  --bone-dim: #9d968b;
+  --red: #b3231f;
+  --red-hot: #e0322b;
+  --fog: #d6d1c8;
+  --font-body: 'IBM Plex Mono', monospace;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-serif: 'Bodoni Moda', 'Didot', 'Times New Roman', serif;
+  /* reusable film grain: white noise, alpha only */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.8 -0.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--black); overflow-x: hidden; }
+html, body { overflow-x: clip; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--black);
+  color: var(--bone);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--red); color: var(--bone); }
+
+/* ── ATMOSPHERE LAYERS ── */
+.grain {
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 60;
+  background-image: var(--grain);
+  background-size: 220px 220px;
+  opacity: 0.075;
+}
+
+/* ── PAGE ── */
+.page {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 36px 32px 120px;
+}
+
+section {
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 20;
+}
+
+/* ── HEADER / POSTER ── */
+header {
+  position: relative;
+  z-index: 20;
+  margin: 20px 0 64px;
+  text-align: left;
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 15vw, 6.6rem);
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin: 0;
+  position: relative;
+  z-index: 3;               /* title sits over the moth */
+  pointer-events: none;
+}
+.wordmark .l2 { display: block; padding-left: 0.95em; }
+
+.moth-wrap {
+  position: relative;
+  /* pulled up under the title and pushed off to the right, bleeding past the column */
+  margin: -128px -120px 0 16%;
+}
+#moth {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+/* red reference dots, drawn clean over the moth and down the page */
+#moth-dots, #stipple {
+  pointer-events: none;
+  filter: blur(0.6px);
+}
+#moth-dots {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* page-wide red stipple, parallax on scroll */
+#stipple {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ── BODY TEXT ── */
+.body-text {
+  font-size: 0.875rem;
+  line-height: 1.78;
+  color: var(--bone);
+  padding: 15px;
+  margin: 0 0 6px;
+  display: inline-block;
+}
+.body-text a { color: var(--red-hot); text-underline-offset: 3px; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red-hot);
+  margin-bottom: 10px;
+  display: inline-block;
+  position: relative;
+  padding-right: 6px;
+}
+
+}
+
+/* ── TAG LINKS ── */
+.tag-link {
+  display: inline-block;
+  background: var(--red);
+  color: var(--bone);
+  padding: 4px 9px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+.tag-link:hover { background: var(--red-hot); transform: scale(1.04); }
+
+/* ── ROUNDS TABLE ── */
+.route-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+.route-table td {
+  padding: 20px 15px;
+  vertical-align: top;
+  color: var(--bone);
+}
+.route-table tr:not(:last-child) td { border-bottom: 0.5px solid var(--red); }
+.route-table td:first-child {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--red-hot);
+  width: 86px;
+  border-right: 0.5px solid var(--red);
+  padding-right: 18px;
+}
+.route-table td:first-child small {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--bone-dim);
+}
+.route-table td:last-child { padding-left: 20px; }
+.route-table h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  margin: 0 0 6px;
+}
+.route-table p { margin: 0 0 8px; }
+.meta {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+
+/* placeholder copy: easy to spot, easy to find-and-replace */
+.tbc {
+  color: var(--red-hot);
+  border-bottom: 1px dashed var(--red);
+}
+
+/* ── CARRY LIST ── */
+.carry {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+.carry li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  padding: 12px 15px;
+  border-bottom: 0.5px solid #2a2725;
+}
+.carry li::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--red-hot);
+}
+
+/* ── BUTTONS ── */
+.register-button {
+  display: block;
+  background: var(--red);
+  color: var(--bone);
+  padding: 25px 40px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+.register-button.secondary {
+  background: var(--black);
+  color: var(--bone);
+  border: 1.5px solid var(--bone);
+  padding: 23.5px 38.5px;
+}
+.register-button + .register-button { margin-top: 12px; }
+.register-button:hover {
+  background: var(--red-hot);
+  border-color: var(--red-hot);
+  color: var(--bone);
+  transform: translateY(-2px);
+  box-shadow: 0 0 36px rgba(224, 50, 43, 0.35);
+}
+.register-button:active { transform: translateY(0); }
+
+/* ── WRECKD BOX ── */
+.wreckd-box {
+  position: relative;
+  z-index: 20;
+  background: var(--bone);
+  color: var(--black);
+  padding: 30px;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.wreckd-box p { margin: 0; }
+.wreckd-box a { color: var(--red); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  color: var(--bone-dim);
+  font-size: 0.72rem;
+  padding: 40px 0;
+}
+.footer-link { color: var(--bone-dim); text-decoration: none; border-bottom: 1px solid var(--bone-dim); }
+.footer-link:hover { color: var(--red-hot); border-bottom-color: var(--red-hot); }
+
+@media (max-width: 520px) {
+  .page { padding: 24px 16px 100px; }
+  header { margin-bottom: 64px; }
+  .route-table td:first-child { width: 62px; font-size: 1.3rem; padding-right: 10px; }
+  .route-table td { padding: 16px 8px; }
+  .route-table td:last-child { padding-left: 12px; }
+  .register-button { font-size: 1.25rem; padding: 22px 20px; }
+  .register-button.secondary { padding: 20.5px 18.5px; }
+  .moth-wrap { margin: -62px -40px 0 4%; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<canvas id="stipple" aria-hidden="true"></canvas>
+
+<div class="page">
+
+  <header>
+
+    <h1 class="wordmark" aria-label="After Dark">
+      <span>After</span><span class="l2">Dark</span>
+    </h1>
+
+    <div class="moth-wrap">
+      <canvas id="moth" role="img" aria-label="Animated flick-book moth with red motion-reference dots"></canvas>
+      <canvas id="moth-dots" aria-hidden="true"></canvas>
+    </div>
+  </header>
+
+  <section>
+    <span class="section-label">Lights Out</span><br>
+    <p class="body-text">
+      The clocks go back on Sunday 4 April 2027. The evenings close in early, and WREC'kd heads out anyway.
+    </p>
+    <p class="body-text">
+      The After Dark Series is WREC'kd's opening series: three-night runs in the hills about Te Whanganui-a-Tara to mark the end of daylight saving. 
+    </p>
+    <p class="body-text">
+      A WREC'kd series, proudly put on by the <a href="https://wreckd.org.nz">Wilderness Running and Endurance Collective Inc</a> for our members.
+    </p>
+  </section>
+
+  <section>
+    <span class="section-label">The Series | Three Rounds</span>
+    <table class="route-table">
+      <tbody>
+        <tr>
+          <td>#1<small class="tbc">[April 4th]</small></td>
+          <td>
+            <h3>Kapakapanui</h3>
+            <p class="meta">Tararua Forest Park · Ngatiawa Road, Reikorangi</p>
+            <p class="meta"><span class="tbc">[~km]</span> / 1,102 m summit · Start <span class="tbc">[time]</span></p>
+            <p>Nine unbridged river crossings in the first twenty minutes, then a steep, rooty climb through the bush to the 1,102 m summit. Kāpiti Island is out there somewhere in the dark.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>#2<small class="tbc">[tbc]</small></td>
+          <td>
+            <h3>East Whakanui</h3>
+            <p class="meta">Remutaka Forest Park · Hine Road Recreation Reserve, Wainuiomata</p>
+            <p class="meta"><span class="tbc">[~km / m △]</span> · Start <span class="tbc">[time]</span></p>
+            <p>Straight up out of Wainuiomata in Remutaka and big trees. Steep, advanced track, and hard to follow in places even in daylight.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>#3<small class="tbc">[tbc]</small></td>
+          <td>
+            <h3>Dobson Loop</h3>
+            <p class="meta">Tararua Forest Park · Kiwi Ranch Road, Kaitoke</p>
+            <p class="meta"><span class="tbc">~14 km / 825 m △</span> · Start <span class="tbc">[time]</span></p>
+            <p>Up to Puffer Saddle, a sharp drop to Smith Creek, a technical valley floor with small creek crossings, then the long climb back over the saddle. The clay is slippery at any time of year.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <span class="section-label">Carry</span>
+    <ul class="carry">
+      <li><span>A headtorch that will last the whole round, plus a spare light or spare batteries.</span></li>
+      <li><span>An extra warm layer. It gets cold fast once the sun goes.</span></li>
+      <li><span>Charged phone and the rest of the <a href="/racing/" style="color: var(--red-hot);">essential gear</a>.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <a href="/fixtures/register/" class="register-button">Register for this fixture</a>
+    <a href="#" class="register-button secondary">Night Info</a>
+  </section>
+
+
+  <div class="wreckd-box">
+    <p>WREC'kd is an Incorporated Society in Aotearoa that promotes endurance and adventure running activities in New Zealand's hills and mountains. We put on events for our members, and collaborate with others doing like-minded things.<br>
+    <a href="https://wreckd.org.nz">wreckd.org.nz</a></p>
+  </div>
+
+  <footer>
+    <p>© Wilderness Running and Endurance Collective Inc. 2026.</p>
+    <p><a href="/fixtures/" class="footer-link">All fixtures</a></p>
+  </footer>
+
+</div>
+
+<script>
+/* ── shared: tiny value noise + seeded random ── */
+var AD = (function () {
+  var seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+  var P = [];
+  for (var i = 0; i < 512; i++) P[i] = rnd();
+  function h(x, y) { return P[((x * 73 + y * 151) & 511 + 512) & 511]; }
+  function sm(t) { return t * t * (3 - 2 * t); }
+  function noise(x, y) {
+    var xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+    var a = h(xi, yi), b = h(xi + 1, yi), c = h(xi, yi + 1), d = h(xi + 1, yi + 1);
+    var u = sm(xf), v = sm(yf);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  }
+  function gauss() { return Math.sqrt(-2 * Math.log(rnd() + 1e-9)) * Math.cos(6.2832 * rnd()); }
+  return {
+    rnd: rnd, noise: noise, gauss: gauss,
+    reduce: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    scrollV: 0,
+    DOT: '#ff2419',
+    // one dot size for the moth and the page, so they read as the same markers
+    dotR: function () {
+      var m = document.getElementById('moth');
+      var cw = m ? m.clientWidth : window.innerWidth;
+      return Math.max(6, Math.min(14, cw * 0.02));
+    }
+  };
+})();
+
+/* ── the moth: 1-bit dithered flick-book, 12 stepped frames, red trackers ── */
+(function () {
+  var cv = document.getElementById('moth');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var noise = AD.noise;
+  var counter = document.getElementById('frame-count');
+
+  var FORE = [[0.04,-0.2],[0.2,-0.3],[0.42,-0.44],[0.66,-0.56],[0.86,-0.63],[0.97,-0.6],[1.0,-0.5],
+              [0.96,-0.34],[0.9,-0.18],[0.83,-0.04],[0.72,0.06],[0.52,0.1],[0.3,0.08],[0.1,0.02]];
+  var HIND = [[0.05,-0.04],[0.3,-0.02],[0.55,0.02],[0.74,0.1],[0.81,0.24],[0.78,0.38],[0.66,0.52],
+              [0.5,0.62],[0.3,0.64],[0.15,0.55],[0.06,0.36]];
+  // reference dots, hand-placed: [x, y, part] with part 1 forewing, 2 hindwing, 0 body.
+  // Clusters of 2-3 sit close enough to merge, like rotoscope markers.
+  var DOTS = [
+    [0.92,-0.55,1], [0.52,-0.44,1], [0.6,-0.45,1], [0.82,-0.12,1], [0.36,-0.08,1], [0.43,-0.04,1], [0.38,0.02,1],
+    [-0.94,-0.52,1], [-0.48,-0.43,1], [-0.8,-0.08,1], [-0.62,-0.2,1], [-0.55,-0.22,1],
+    [0.74,0.32,2], [0.46,0.55,2], [0.53,0.53,2],
+    [-0.72,0.3,2], [-0.4,0.57,2],
+    [0.01,-0.31,0], [0.02,-0.15,0], [0.08,-0.12,0], [-0.04,-0.1,0], [0.0,0.16,0], [0.01,0.3,0], [0.03,0.47,0],
+    [0.36,-0.64,0], [-0.33,-0.66,0]
+  ];
+
+  function inPoly(x, y, poly) {
+    var c = false;
+    for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+      var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
+      if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) c = !c;
+    }
+    return c;
+  }
+
+  var FRAMES = 12, FPS = 10;
+  var BONE = [236, 230, 220], BLK = [7, 7, 7];
+  var w = 0, h = 0, img, lum, cls, prev, stat, U, cx, cy;
+
+  function size() {
+    var cw = cv.clientWidth || 600;
+    w = Math.max(150, Math.min(260, Math.round(cw / 2.6)));
+    h = Math.round(w * 0.8);
+    cv.width = w; cv.height = h;
+    img = ctx.createImageData(w, h);
+    lum = new Float32Array(w * h); cls = new Uint8Array(w * h);
+    prev = new Float32Array(w * h); stat = new Float32Array(w * h);
+    for (var i = 0; i < stat.length; i++) stat[i] = Math.random();
+    U = w * 0.4; cx = w * 0.5; cy = h * 0.52;
+  }
+
+  var ov = document.getElementById('moth-dots'), octx = ov.getContext('2d');
+  function hash(a, b) { var x = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return x - Math.floor(x); }
+  function drawDots(frame, fF, fH, sF, sH, lift, ct, st, wx, wy) {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var DW = ov.clientWidth, DH = ov.clientHeight;
+    if (ov.width !== Math.round(DW * dpr)) { ov.width = Math.round(DW * dpr); ov.height = Math.round(DH * dpr); }
+    octx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    octx.clearRect(0, 0, DW, DH);
+    var k = DW / w, R = AD.dotR();
+    octx.fillStyle = AD.DOT;
+    octx.beginPath();
+    for (var i = 0; i < DOTS.length; i++) {
+      var d = DOTS[i], ax = Math.abs(d[0]), x = d[0], y = d[1] - lift;
+      if (d[2] === 1) { x *= fF; y += ax * sF * 0.14; }
+      else if (d[2] === 2) { x *= fH; y += ax * sH * 0.12; }
+      // tracked by hand: each frame's placement is a little off, but the same every time that frame comes round
+      x += (hash(frame, i) - 0.5) * 0.035; y += (hash(i, frame + 40) - 0.5) * 0.035;
+      var X = (cx + wx + (x * ct - y * st) * U) * k;
+      var Y = (cy + wy + (x * st + y * ct) * U) * k;
+      octx.moveTo(X + R, Y);
+      octx.arc(X, Y, R, 0, 6.2832);
+    }
+    octx.fill();
+  }
+
+  function wingAngle(f) { return 0.62 - 0.62 * Math.cos(6.2832 * f / FRAMES); } // 0 open → ~1.24 edge-on
+
+  function forePat(x, y) {
+    var b = 0.32 + 0.4 * noise(x * 5 + 3, y * 5) + 0.28 * noise(x * 13, y * 13 + 9);
+    var u = x + 0.35 * (y + 0.3), zig = 0.025 * Math.sin(y * 38);
+    for (var k = 0; k < 3; k++) {
+      var d = Math.abs(u - [0.3, 0.55, 0.78][k] - zig);
+      if (d < 0.02) b = 0.05; else if (d < 0.045) b += 0.2;
+    }
+    if (Math.hypot(x - 0.52, y + 0.24) < 0.055) b = 0.1;
+    if (x > 0.87) b *= 0.65;
+    return b;
+  }
+
+  function render(frame, tick) {
+    var aF = wingAngle(frame), aH = wingAngle((frame + FRAMES - 1) % FRAMES);
+    var fF = Math.cos(aF), fH = Math.cos(aH), sF = Math.sin(aF), sH = Math.sin(aH);
+    var lift = sF * 0.05;
+    var tilt = -0.2 + (Math.random() - 0.5) * 0.02;            // 3/4 angle + wobble
+    var ct = Math.cos(tilt), st = Math.sin(tilt);
+    var wx = Math.round((Math.random() - 0.5) * 2), wy = Math.round((Math.random() - 0.5) * 2); // gate weave
+    var expo = 0.9 + Math.random() * 0.15;                      // exposure flicker
+    var seed = tick * 7.13;
+
+    prev.set(lum);
+    for (var py = 0; py < h; py++) {
+      for (var px = 0; px < w; px++) {
+        var i = py * w + px;
+        var dx = (px - cx - wx) / U, dy = (py - cy - wy) / U;
+        var ux = dx * ct + dy * st, uy = -dx * st + dy * ct;
+        // boil: coordinates shimmy a little each frame so edges never sit still
+        ux += (noise(px * 0.35, py * 0.35 + seed) - 0.5) * 0.035;
+        uy += (noise(px * 0.35 + 50, py * 0.35 + seed) - 0.5) * 0.035;
+        var ax = Math.abs(ux), L = 0, C = 0, y2;
+
+        var e1 = (ux * ux) / (0.075 * 0.075) + ((uy + lift + 0.12) * (uy + lift + 0.12)) / (0.13 * 0.13);
+        var by = uy + lift;
+        var e2 = (ux * ux) / (0.062 * 0.062) + ((by - 0.2) * (by - 0.2)) / (0.26 * 0.26);
+        var e3 = (ux * ux + (uy + lift + 0.28) * (uy + lift + 0.28)) / (0.052 * 0.052);
+        if (e1 < 1 || e2 < 1 || e3 < 1) {
+          L = 0.3 + 0.4 * noise(ux * 22 + 40, uy * 22);
+          if (e2 < 1 && Math.sin(by * 70) > 0.55) L *= 0.35;       // abdomen segments
+        } else {
+          var fx = fF > 0.06 ? ax / fF : 99;
+          y2 = uy + lift - fx * sF * 0.14;
+          if (fx < 1.05 && inPoly(fx, y2, FORE)) {
+            L = forePat(fx, y2) * (0.42 + 0.4 * fF);
+          } else {
+            var hx = fH > 0.06 ? ax / fH : 99;
+            y2 = uy + lift - hx * sH * 0.12;
+            if (hx < 0.85 && inPoly(hx, y2, HIND)) {
+              var r = Math.hypot(hx - 0.02, (y2 + 0.02) * 1.05) / 0.78 + 0.03 * Math.sin(Math.atan2(y2, hx) * 9);
+              if (r < 0.34) L = 0.12;
+              else if (r < 0.58) { L = 0.8; }
+              else if (r < 0.69) L = 0.1;
+              else if (r < 0.79) { L = 0.68; }
+              else if (r < 0.93) L = 0.12;
+              else L = 0.5;
+              L *= 0.55 + 0.45 * fH;
+            } else {
+              // antennae
+              var t = (-uy - 0.3) / 0.36;
+              if (t > 0 && t < 1) {
+                var axx = 0.02 + 0.28 * t + 0.06 * t * t;
+                if (Math.abs(ax - axx) < 0.012) L = 0.7;
+              }
+            }
+          }
+        }
+        lum[i] = L; cls[i] = C;
+
+        // 1-bit dither: half fixed, half fresh each frame, like re-scanned film
+        var th = 0.45 * stat[i] + 0.55 * Math.random();
+        var o = i * 4, col = BLK;
+        if (L > 0) {
+          if (L * expo > th) col = BONE;
+        } else {
+          // background specks + onion-skin ghost of the previous frame
+          var edge = Math.min(px, w - px, py, h - py) / (w * 0.14);
+          var dens = (0.022 + 0.22 * prev[i]) * Math.min(1, edge);
+          if (Math.random() < dens) col = BONE;
+        }
+        img.data[o] = col[0]; img.data[o + 1] = col[1]; img.data[o + 2] = col[2]; img.data[o + 3] = 255;
+      }
+    }
+
+    // film damage: the odd vertical scratch
+    if (Math.random() < 0.28) {
+      var sx = Math.floor(Math.random() * w);
+      for (var yy2 = 0; yy2 < h; yy2++) {
+        if (Math.random() < 0.7) {
+          var o3 = (yy2 * w + sx) * 4;
+          img.data[o3] = BONE[0]; img.data[o3 + 1] = BONE[1]; img.data[o3 + 2] = BONE[2];
+        }
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+    drawDots(frame, fF, fH, sF, sH, lift, ct, st, wx, wy);
+    if (counter) counter.textContent = 'Frame ' + String(frame + 1).padStart(2, '0') + '/' + FRAMES;
+  }
+
+  size();
+  var frame = 0, tick = 0;
+  render(0, 0);
+  window.addEventListener('resize', function () { size(); render(frame, tick); });
+  if (AD.reduce) return;
+
+  var visible = true, last = 0;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(cv);
+  }
+  (function loop(ms) {
+    requestAnimationFrame(loop);
+    if (!visible || ms - last < 1000 / FPS) return;
+    last = ms; tick++;
+    if (Math.random() > 0.07) frame = (frame + 1) % FRAMES;   // the odd held frame, like a stuck flick-book page
+    render(frame, tick);
+  })(0);
+})();
+
+/* ── red reference dots down the page: same markers as the moth, parallax on scroll ── */
+(function () {
+  var cv = document.getElementById('stipple');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var rnd = AD.rnd;
+  var W = 0, H = 0, dpr = 1, R = 10, groups = [];
+
+  function build() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    R = AD.dotR();
+    var maxScroll = Math.max(0, document.documentElement.scrollHeight - H);
+    groups = [];
+    var count = Math.round((maxScroll + H) / (W < 600 ? 140 : 170));
+    for (var i = 0; i < count; i++) {
+      // a narrow band of depths keeps the field moving together, with just enough parallax to feel deep
+      var depth = AD.reduce ? 1 : 0.7 + rnd() * 0.55;
+      var g = { x: R + rnd() * (W - 2 * R), y: rnd() * (maxScroll * depth + H), depth: depth, dots: [[0, 0]] };
+      var q = rnd(), n = q < 0.55 ? 1 : q < 0.8 ? 2 : q < 0.93 ? 3 : 4;
+      for (var k = 1; k < n; k++) {
+        // chain each dot off a previous one so clusters touch and merge
+        var base = g.dots[Math.floor(rnd() * g.dots.length)], a = rnd() * 6.2832, dist = R * (1.3 + rnd() * 0.5);
+        g.dots.push([base[0] + Math.cos(a) * dist, base[1] + Math.sin(a) * dist]);
+      }
+      groups.push(g);
+    }
+  }
+
+  function draw() {
+    var sy = window.scrollY;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = AD.DOT;
+    ctx.beginPath();
+    for (var i = 0; i < groups.length; i++) {
+      var g = groups[i], y0 = g.y - sy * g.depth;
+      if (y0 < -4 * R || y0 > H + 4 * R) continue;
+      for (var k = 0; k < g.dots.length; k++) {
+        var X = g.x + g.dots[k][0], Y = y0 + g.dots[k][1];
+        ctx.moveTo(X + R, Y);
+        ctx.arc(X, Y, R, 0, 6.2832);
+      }
+    }
+    ctx.fill();
+  }
+
+  var queued = false;
+  function request() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { queued = false; draw(); });
+  }
+  build(); draw();
+  window.addEventListener('scroll', request, { passive: true });
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { build(); draw(); }, 150); });
+  window.addEventListener('load', function () { build(); draw(); });
+})();
+
+</script>
+
+</body>
+</html>

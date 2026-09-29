@@ -150,8 +150,6 @@ header {
   padding-right: 6px;
 }
 
-}
-
 /* ── TAG LINKS ── */
 .tag-link {
   display: inline-block;
@@ -216,6 +214,13 @@ header {
   text-transform: uppercase;
   color: var(--bone-dim);
 }
+
+.meta a.gpx {
+  color: var(--red-hot);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.meta a.gpx:hover { color: var(--bone); }
 
 /* placeholder copy: easy to spot, easy to find-and-replace */
 .tbc {
@@ -345,7 +350,7 @@ footer {
       The clocks go back on Sunday 4 April 2027. The evenings close in early, and WREC'kd heads out anyway.
     </p>
     <p class="body-text">
-      The After Dark Series is WREC'kd's opening series: three-night runs in the hills about Te Whanganui-a-Tara to mark the end of daylight saving. 
+      The After Dark Series is WREC'kd's opening series: three night runs in the hills about Te Whanganui-a-Tara to mark the end of daylight saving. 
     </p>
     <p class="body-text">
       A WREC'kd series, proudly put on by the <a href="https://wreckd.org.nz">Wilderness Running and Endurance Collective Inc</a> for our members.
@@ -361,7 +366,7 @@ footer {
           <td>
             <h3>Kapakapanui</h3>
             <p class="meta">Tararua Forest Park · Ngatiawa Road, Reikorangi</p>
-            <p class="meta"><span class="tbc">[11km]</span> / 1,050 △  · Start <span class="tbc">5pm</span></p>
+            <p class="meta"><a class="gpx" href="/afterdark/kapakapanui.gpx" download>11 km / 1,050 m △ ↓ GPX</a> · Start 5pm</p>
             <p>Nine unbridged river crossings in the first twenty minutes, then a steep, rooty climb through the bush to the 1,102 m summit. Kāpiti Island is out there somewhere in the dark.</p>
           </td>
         </tr>
@@ -370,7 +375,7 @@ footer {
           <td>
             <h3>East Whakanui</h3>
             <p class="meta">Remutaka Forest Park · Hine Road Recreation Reserve, Wainuiomata</p>
-            <p class="meta"><span class="tbc">19km / 1400m △</span> · Start <span class="tbc">5pm</span></p>
+            <p class="meta"><a class="gpx" href="/afterdark/east-whakanui.gpx" download>19 km / 1,400 m △ ↓ GPX</a> · Start 5pm</p>
             <p>Straight up out of Wainuiomata in Remutaka and big trees. Steep, advanced track, and hard to follow in places even in daylight.</p>
           </td>
         </tr>
@@ -379,7 +384,7 @@ footer {
           <td>
             <h3>Dobson Loop</h3>
             <p class="meta">Tararua Forest Park · Kiwi Ranch Road, Kaitoke</p>
-            <p class="meta"><span class="tbc"> <a href="/dobsons.gpx/"~14 km / 825 m △</a></span> · Start <span class="tbc">5pm</span></p>
+            <p class="meta"><a class="gpx" href="/afterdark/dobsons.gpx" download>14 km / 825 m △ ↓ GPX</a> · Start 5pm</p>
             <p>Up to Puffer Saddle, a sharp drop to Smith Creek, a technical valley floor with small creek crossings, then the long climb back over the saddle. The clay is slippery at any time of year.</p>
           </td>
         </tr>

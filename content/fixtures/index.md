@@ -45,7 +45,7 @@ Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers t
 **[After Dark →](/afterdark/)**
 {{< /highlight-box >}}
 
-**Mukamuka Munter**
+**Mega Munter**
 
 **Course:** ~32 km / 960m, point to point\
 **Route:** Orongorongo River Mouth (Wainuiomata Coast) → Catchpool Valley\
@@ -53,6 +53,12 @@ Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers t
 **Fee:** $TBC (members only)\
 **Places:** 120\
 **Date:** TBC
+
+**A100**
+
+**Setup:** 3 day stage race including the Aorangi Undulator.
+**Dates:** late Oct / early Noc 2027
+**Logistics:** TBC
 
 {{< highlight-box >}}
 **[Mukamuka Munter→](/Mukamuka/)**

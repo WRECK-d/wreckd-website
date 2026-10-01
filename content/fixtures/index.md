@@ -57,7 +57,7 @@ Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers t
 **A100**
 
 **Setup:** 3 day stage race including the Aorangi Undulator.
-**Dates:** late Oct / early Noc 2027
+**Dates:** late Oct / early Noc 2027\
 **Logistics:** TBC
 
 {{< highlight-box >}}

@@ -54,15 +54,17 @@ Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers t
 **Places:** 120\
 **Date:** TBC
 
+{{< highlight-box >}}
+**[Mukamuka Munter→](/Mukamuka/)**
+{{< /highlight-box >}}
+
 **A100**
 
 **Setup:** 3 day stage race including the Aorangi Undulator.\
 **Dates:** late Oct / early Noc 2027\
 **Logistics:** TBC
 
-{{< highlight-box >}}
-**[Mukamuka Munter→](/Mukamuka/)**
-{{< /highlight-box >}}
+
 
 ---
 ## Past fixtures

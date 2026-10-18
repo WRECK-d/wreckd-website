@@ -71,3 +71,4 @@ Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers t
 
 **[Mukamuka Munter](/mukamuka/)**: Saturday 15 August 2026 · [Fixture Card](/mukamuka-comms/)\
 **Annual General Meeting**: 15 September 2026, Southern Cross Garden Bar, Wellington
+**Woolshed** Saturday 26 May 2026, Belmont Woolshed, Lower Hutt

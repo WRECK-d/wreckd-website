@@ -61,14 +61,26 @@ The Aorangi Undulator is a backcountry event, and conditions can change quickly.
 
 {{< fold "Tracking & MapShare" >}}
 
-WREC'kd uses [CalTopo](https://caltopo.com) for navigation and tracking. The Undulator course is set up on a CalTopo map, and the map can be downloaded for offline use. See [race tracking](/racing/#race-tracking) for how it works.
+WREC'kd uses CalTopo to bring all participant locations onto one live map.
 
-- **Join the event map:** download the CalTopo app, then [join the group](https://caltopo.com/group/MLAP0T/signup/4L9RJVJ40NBD). You can share your location within the app, or link your Garmin device.
-- **Garmin inReach users:** please enable MapShare and email your MapShare link (and password, if you've set one) to [office@runs.nz](mailto:office@runs.nz?subject=Undulator%20MapShare) before race day. Zoleo or SPOT users, send us your track link. It lets the race crew see where you are without needing to contact you, which speeds things up considerably if we're looking for a missing runner or helping at an incident nearby.
+The Undulator course is on our [public CalTopo map](https://caltopo.com/m/CB1NQNF), which you can download for offline use. See [race tracking](/racing/#race-tracking) for how it works.
 
-*Note: this map is public. On race day, your location will be visible alongside our volunteer marshals.*
+We strongly recommend sharing your location with us. The race crew can then see where you are without contacting you, which speeds things up a lot if we're looking for a missing runner or sending help to an incident nearby. Choose whichever option suits you:
 
-{{< endfold >}}
+- **NZ Topo50 app (North Island):** install [NZ Topo50 North Island](https://nztopo50.sqrl.net/), then go to **Settings → Location Sharing** and set:
+    - **Channel ID:** `WRECKD`
+    - **Display Name:** `AR` + your bib number, e.g. `AR7` (capital letters and no leading zeroes)
+    - Turn on **Share my location**, and allow location access **Always**.
+
+  This app also works over One NZ and Spark Satellite on eligible phones and plans.
+
+- **Garmin inReach:** enable MapShare and email your MapShare link (and password, if you've set one) to [office@runs.nz](mailto:office@runs.nz?subject=Undulator%20MapShare) before race day.
+
+- **CalTopo app:** install CalTopo, [join our team](https://caltopo.com/group/MLAP0T/signup/4L9RJVJ40NBD), then share your location from the app.
+
+Location sharing adds to, and doesn't replace, your mandatory gear and check-ins.
+
+{{< /fold >}}
 
 {{< fold "Updates & Teams" >}}
 

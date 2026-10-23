@@ -69,7 +69,7 @@ We strongly recommend sharing your location with us. The race crew can then see 
 
 - **NZ Topo50 app (North Island):** install [NZ Topo50 North Island](https://nztopo50.sqrl.net/), then go to **Settings → Location Sharing** and set:
     - **Channel ID:** `WRECKD`
-    - **Display Name:** `AR` + your bib number, e.g. `AR7` (capital letters and no leading zeroes)
+    - **Display Name:** `AOR` + your bib number, e.g. `AOR7` (capital letters and no leading zeroes)
     - Turn on **Share my location**, and allow location access **Always**.
 
   This app also works over One NZ and Spark Satellite on eligible phones and plans.

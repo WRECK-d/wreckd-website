@@ -107,7 +107,7 @@ The event map link is shared with registered participants before each event, and
 
 **Location sharing and apps don't replace your printed map, compass or mandatory gear.** Tracking depends on your phone's battery and signal, so don't count on being seen.
 
-{{< /fold >}}
+{{< endfold >}}
 
 ---
 

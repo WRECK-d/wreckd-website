@@ -80,7 +80,7 @@ We strongly recommend sharing your location with us. The race crew can then see 
 
 Location sharing adds to, and doesn't replace, your mandatory gear and check-ins.
 
-{{< /fold >}}
+{{< endfold >}}
 
 {{< fold "Updates & Teams" >}}
 

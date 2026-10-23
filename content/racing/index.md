@@ -80,21 +80,34 @@ A PLB is the preferred emergency beacon for reliability, and is best paired with
 
 {{< fold "Race Tracking" >}}
 
-WREC'kd uses [CalTopo](https://caltopo.com) for mapping our events. The course, checkpoints and bail-out routes are saved on a shared event map, and our volunteers' positions are tracked on it during the event.
+WREC'kd uses [CalTopo](https://caltopo.com) to map and track our events. The course, checkpoints and bail-out routes are on a shared event map. During the event, the positions of volunteers and participants who share their location appear on the same map, so the race crew sees everyone in one place.
 
-**You don't have to use CalTopo**, but it's a useful extra layer of safety and navigation:
+**Sharing your location is optional**, but it adds a real layer of safety. If you're overdue, injured or near an incident, the crew can see where you are without having to reach you first.
 
-- **The route in your pocket.** Join the event map in the CalTopo app ([iOS](https://apps.apple.com/app/caltopo/id1455358713) or [Android](https://play.google.com/store/apps/details?id=com.caltopo.android)) to see the course, checkpoints and exits.
+### Ways to share your location
+
+| Option | Best for | Works over |
+| --- | --- | --- |
+| **NZ Topo50 app** | Most runners | Mobile data, and One NZ Satellite on eligible phones and plans |
+| **Garmin inReach** | inReach owners | Garmin satellite network |
+| **CalTopo app** | Members on our CalTopo team | Mobile data |
+| **SMS location request** | Anyone, if we making attempt to find you | data (opens a link in your browser) or send us a grid ref. |
+
+- **NZ Topo50 (North Island).** Install [NZ Topo50](https://nztopo50.sqrl.net/), then go to **Settings → Location Sharing**. Set the **Channel ID** to `WRECKD` and the **Display Name** to the event prefix plus your bib number (e.g. `AR7` for the Aorangi Undulator; your race info gives the prefix). Turn on **Share my location** and allow location access **Always**. Your position appears on the event map automatically.
+- **Garmin inReach.** Enable MapShare and send us your MapShare link (and password, if set) when you register or before the event. We'll add your feed to the event map for the day.
+- **CalTopo app.** Install CalTopo ([iOS](https://apps.apple.com/app/caltopo/id1455358713) / [Android](https://play.google.com/store/apps/details?id=com.caltopo.android)), [join our team](https://caltopo.com/group/MLAP0T/signup/4L9RJVJ40NBD), and share your location from the app's location menu.
+- **SMS location request.** If needed, the crew can text you a link. Opening it shares your location from your phone's browser while the page stays open / If data is unavailable send us grid ref.
+
+### Navigation
+
+- **The route in your pocket.** Open the event map in CalTopo or NZ Topo50 to see the course, checkpoints and exits.
 - **Works offline.** Download the map area to your phone before you leave. Most of our courses have little or no mobile coverage.
-- **Share your position.** You can choose to share your location to the event map, so the race team can see where you are.
-- **Garmin inReach users.** We can add your Garmin MapShare feed to the event map for the day. Send us your MapShare link when you register, or before the event.
-- **Location requests.** We can request your location over SMS.
 
-The link to join the event map is sent to registered participants before each event.
+The event map link is shared with registered participants before each event, and supporters can follow along on the public map.
 
-CalTopo doesn't replace your printed map. However, it can be used in lieu of a .GPX file and the NZTopo app.
+**Location sharing and apps don't replace your printed map, compass or mandatory gear.** Tracking depends on your phone's battery and signal, so don't count on being seen.
 
-{{< endfold >}}
+{{< /fold >}}
 
 ---
 

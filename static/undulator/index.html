@@ -235,6 +235,11 @@ header {
   z-index: 20;
 }
 
+/* Desaturate basemap tiles only; route line stays blue */
+.bw-tiles {
+  filter: grayscale(1) contrast(1.15) brightness(1.05);
+}
+
 /* ── REGISTER BUTTON ── */
 .gpx-section {
   position: relative;
@@ -487,9 +492,11 @@ footer {
   var map = L.map('map', { zoomControl: true, scrollWheelZoom: false });
   var KEY = 'ac0b45ad4df545989a25eddd3c77ab6e';
 
-  L.tileLayer('https://basemaps.linz.govt.nz/v1/tiles/scanned-aerial-imagery-pre-1990-01-01/WebMercatorQuad/{z}/{x}/{y}.webp?api=' + KEY, {
-    attribution: 'Imagery &copy; LINZ',
-    maxZoom: 11
+  // Current LINZ aerial imagery, desaturated via the .bw-tiles CSS filter
+  L.tileLayer('https://basemaps.linz.govt.nz/v1/tiles/aerial/WebMercatorQuad/{z}/{x}/{y}.webp?api=' + KEY, {
+    attribution: 'Imagery &copy; LINZ CC BY 4.0',
+    maxZoom: 18,
+    className: 'bw-tiles'
   }).addTo(map);
 
   // Approximate route through Aorangi Forest Park
@@ -498,7 +505,6 @@ var routeCoords = [[-41.60018,175.25805],[-41.59928,175.25932],[-41.59846,175.26
   var line = L.polyline(routeCoords, { color: '#1a4a8a', weight: 4 }).addTo(map);
   map.fitBounds(line.getBounds(), { padding: [50, 50], maxZoom: 10 });
 })();
-</script>
 </script>
 
 

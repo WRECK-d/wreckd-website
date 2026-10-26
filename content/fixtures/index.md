@@ -21,9 +21,7 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 **Race day:** registration from 06:30 at Mangatoetoe carpark, briefing 06:50, start 07:00.
 
 {{< highlight-box >}}
-**[Register for the Undulator →](/fixtures/register/)**
-
-Not a member yet? [Join first →](/join/)
+**Registration Closed**
 {{< /highlight-box >}}
 
 Before you enter, read the **[Fixture Card →](/undulator-info/)**. It covers travel and parking, cut-offs, marshal points, tracking and the weather plan. All entrants must carry or have access to a PLB or satellite device, plus the [essential gear](/racing/).

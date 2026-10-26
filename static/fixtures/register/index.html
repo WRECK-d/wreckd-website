@@ -274,29 +274,15 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 <body>
 <div class="page">
   <h1>Fixture Registration</h1>
-  <p class="subtitle">Complete all required fields. Contact us if your membership details have changed.</p>
+  <p class="subtitle">Registration is closed — there are no fixtures currently open for entry. Keep an eye on <a href="/fixtures/">Fixtures</a> for upcoming events.</p>
 
-  <div id="form-wrapper">
+  <div id="form-wrapper" class="hidden">
     <form id="reg-form">
 
       <!-- EVENT SELECTION -->
       <h2>Select your fixture</h2>
       <div class="form-group">
-        <p style="font-size:0.85rem; color:#555; margin-top:0;">Mukamuka Munter registration is closed — the fixture is fully subscribed.</p>
         <div class="radio-group">
-          <label class="radio-label">
-            <input type="radio" name="fixture" value="aorangi-undulator" required>
-            Aorangi Undulator — 31 October 2026
-          </label>
-          <div class="fixture-link"><a href="/undulator" target="_blank" rel="noopener">Open Undulator details in new tab ↗</a></div>
-          <div id="info-undulator" class="event-info">
-            <table>
-              <tr><td>Date</td><td>Friday 31 October</td></tr>
-              <tr><td>Location</td><td>Mangatoetoe, Cape Palliser</td></tr>
-              <tr><td>Distance</td><td>~27 km / 2,000 m elevation</td></tr>
-              <tr><td>Route</td><td>Point to point — undulations better described as big hills!</td></tr>
-            </table>
-          </div>
         </div>
       </div>
 
@@ -514,12 +500,11 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 
 <script>
 const WORKER_URL = "https://wreckd-fixtures-worker.wreckd.workers.dev";
-const FEES = { "aorangi-undulator": 20 };
+const FEES = {};
 
 // Show event info blurbs
 document.querySelectorAll('input[name="fixture"]').forEach(radio => {
   radio.addEventListener("change", () => {
-    document.getElementById("info-undulator").classList.toggle("visible", radio.value === "aorangi-undulator" && radio.checked);
     updateFeeDisplay();
   });
 });

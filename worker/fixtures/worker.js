@@ -4,9 +4,7 @@ const ALLOWED_ORIGINS = [
 ];
 const GITHUB_REPO = "WRECK-d/form-submissions";
 
-const FIXTURES = {
-  "aorangi-undulator": { label: "Aorangi Undulator", fee: 20 },
-};
+const FIXTURES = {};
 
 const REQUIRED_FIELDS = [
   "type", "fixture", "name", "email", "dob", "gender",

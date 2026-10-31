@@ -348,13 +348,33 @@ footer {
   letter-spacing: 0.06em;
 }
 
+/* ── RESULTS ── */
+.pods { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin: 10px 0 28px; }
+.pod { background: var(--paper); border: 0.5px solid var(--blue); padding: 12px 14px; }
+.pod-title { font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 6px; }
+.pod ol { margin: 0; padding-left: 1.3em; font-size: 0.75rem; line-height: 1.7; color: var(--ink); }
+.pod li span:last-child { float: right; color: var(--blue); }
+.res-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.res-filter { font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; background: white; color: var(--blue); border: 1.5px solid var(--blue); padding: 4px 9px; cursor: pointer; }
+.res-filter.on, .res-filter:hover { background: var(--blue); color: white; }
+.res-wrap { background: var(--paper); overflow-x: auto; }
+.res-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; color: var(--ink); }
+.res-table th { font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); text-align: left; padding: 8px 8px; border-bottom: 1.5px solid var(--blue); }
+.res-table td { padding: 7px 8px; border-bottom: 0.5px solid #c9d3e3; vertical-align: top; }
+.res-table .res-pl, .res-table .res-cp { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--blue); width: 2.6em; }
+.res-table .res-time, .res-table .res-gap { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.res-table .res-gap { color: #6b7a90; }
+.res-table .res-cat { white-space: nowrap; color: #6b7a90; }
+.res-note { display: inline-block; font-size: 0.65rem; color: var(--blue); border: 0.5px solid var(--blue); padding: 0 4px; margin-left: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.res-table .res-cp { display: none; }
+.res-table.filtered .res-cp { display: table-cell; }
+.res-table.filtered .res-pl { display: none; }
+.res-table tr.hide { display: none; }
+.res-key { font-size: 0.7rem; color: #6b7a90; line-height: 1.6; margin-top: 10px; background: var(--paper); }
+@media (max-width: 520px) { .res-table .res-gap { display: none; } .res-table td, .res-table th { padding: 7px 5px; } }
 
-  
 </style>
 
-
-
-  
 </head>
 <body>
 
@@ -378,6 +398,76 @@ footer {
     <p class="body-text">
       A WREC'kd event, proudly put on by the <a href="https://wreckd.org.nz" style="color: var(--blue);">Wilderness Running and Endurance Collective Inc</a> for our members.
     </p>
+  </section>
+
+  <!-- ── RESULTS 2026 ── -->
+  <section id="results">
+    <span class="section-label">Results | 31 October 2026</span>
+    <div class="pods"><div class="pod"><span class="pod-title">Overall Women</span><ol><li><span>Zoe MacClure</span><span>5:48:11</span></li><li><span>Harriette Carr</span><span>6:18:26</span></li><li><span>Melanie Gibson</span><span>9:12:01</span></li></ol></div><div class="pod"><span class="pod-title">Overall Men</span><ol><li><span>Luke Brown</span><span>4:10:57</span></li><li><span>Ryan Tait</span><span>4:17:58</span></li><li><span>Sam Hansby</span><span>4:26:02</span></li></ol></div><div class="pod"><span class="pod-title">Junior Men</span><ol><li><span>Louie Burger</span><span>5:48:11</span></li></ol></div><div class="pod"><span class="pod-title">Senior Women</span><ol><li><span>Zoe MacClure</span><span>5:48:11</span></li><li><span>Natasha Furness</span><span>9:12:04</span></li></ol></div><div class="pod"><span class="pod-title">Senior Men</span><ol><li><span>Luke Brown</span><span>4:10:57</span></li><li><span>Ryan Tait</span><span>4:17:58</span></li><li><span>Sam Hansby</span><span>4:26:02</span></li></ol></div><div class="pod"><span class="pod-title">Veteran Women</span><ol><li><span>Melanie Gibson</span><span>9:12:01</span></li><li><span>Sarah Mackey</span><span>9:12:01</span></li></ol></div><div class="pod"><span class="pod-title">Veteran Men</span><ol><li><span>Bernard Campion</span><span>4:36:38</span></li><li><span>Alex Jones</span><span>5:26:20</span></li><li><span>Dan Forster</span><span>5:35:49</span></li></ol></div><div class="pod"><span class="pod-title">Super Veteran Women</span><ol><li><span>Harriette Carr</span><span>6:18:26</span></li></ol></div><div class="pod"><span class="pod-title">Super Veteran Men</span><ol><li><span>Al Cross</span><span>6:18:15</span></li><li><span>David Foster</span><span>6:49:27</span></li><li><span>Phil Kendon</span><span>7:24:27</span></li></ol></div><div class="pod"><span class="pod-title">Super Duper Veteran Men</span><ol><li><span>Will Parker</span><span>6:03:33</span></li><li><span>Anthony Bus</span><span>9:02:06</span></li><li><span>Roger Jones</span><span>9:03:51</span></li></ol></div></div>
+
+    <div class="res-filters" role="group" aria-label="Filter results"><button type="button" class="res-filter on" data-f="all">All</button><button type="button" class="res-filter" data-f="F">Women</button><button type="button" class="res-filter" data-f="M">Men</button><button type="button" class="res-filter" data-f="JNR">Junior</button><button type="button" class="res-filter" data-f="SNR">Senior</button><button type="button" class="res-filter" data-f="VET">Veteran</button><button type="button" class="res-filter" data-f="SV">Super Vet</button><button type="button" class="res-filter" data-f="SDV">Super Duper Vet</button></div>
+    <div class="res-wrap">
+      <table class="res-table" id="res-table">
+        <thead><tr><th class="res-pl">Pl</th><th class="res-cp">Pl</th><th>Name</th><th class="res-cat">Cat</th><th class="res-time">Time</th><th class="res-gap">Gap</th></tr></thead>
+        <tbody>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">1</td><td class="res-cp">1</td><td class="res-name">Luke Brown</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">4:10:57</td><td class="res-gap"></td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">2</td><td class="res-cp">2</td><td class="res-name">Ryan Tait</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">4:17:58</td><td class="res-gap">+0:07:01</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">3</td><td class="res-cp">3</td><td class="res-name">Sam Hansby</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">4:26:02</td><td class="res-gap">+0:15:05</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">4</td><td class="res-cp">4</td><td class="res-name">Brendan Varty</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">4:27:45</td><td class="res-gap">+0:16:48</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">5</td><td class="res-cp">1</td><td class="res-name">Bernard Campion</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">4:36:38</td><td class="res-gap">+0:25:41</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">6</td><td class="res-cp">5</td><td class="res-name">Arran Whiteford</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">4:39:08</td><td class="res-gap">+0:28:11</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">7</td><td class="res-cp">6</td><td class="res-name">Stephen Molineux</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">4:52:06</td><td class="res-gap">+0:41:09</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">8</td><td class="res-cp">7</td><td class="res-name">Kyle Malone</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">5:00:18</td><td class="res-gap">+0:49:21</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">9</td><td class="res-cp">8</td><td class="res-name">Andy Mackay</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">5:16:04</td><td class="res-gap">+1:05:07</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">10</td><td class="res-cp">9</td><td class="res-name">Theo Wordsworth</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">5:26:16</td><td class="res-gap">+1:15:19</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">11</td><td class="res-cp">2</td><td class="res-name">Alex Jones</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">5:26:20</td><td class="res-gap">+1:15:23</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">12</td><td class="res-cp">10</td><td class="res-name">Max Kempthorne</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">5:27:49</td><td class="res-gap">+1:16:52</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">13</td><td class="res-cp">11</td><td class="res-name">Daniel Parkinson</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">5:29:10</td><td class="res-gap">+1:18:13</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">14</td><td class="res-cp">3</td><td class="res-name">Dan Forster</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">5:35:49</td><td class="res-gap">+1:24:52</td></tr>
+          <tr data-g="M" data-c="JNR"><td class="res-pl">15</td><td class="res-cp">1</td><td class="res-name">Louie Burger</td><td class="res-cat">JNR&nbsp;M</td><td class="res-time">5:48:11</td><td class="res-gap">+1:37:14</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">15</td><td class="res-cp">4</td><td class="res-name">Alex Lark</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">5:48:11</td><td class="res-gap">+1:37:14</td></tr>
+          <tr data-g="F" data-c="SNR"><td class="res-pl">15</td><td class="res-cp">1</td><td class="res-name">Zoe MacClure</td><td class="res-cat">SNR&nbsp;F</td><td class="res-time">5:48:11</td><td class="res-gap">+1:37:14</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">18</td><td class="res-cp">5</td><td class="res-name">Diego Villalobos</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">5:48:57</td><td class="res-gap">+1:38:00</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">19</td><td class="res-cp">12</td><td class="res-name">Martin Sedy</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">5:49:12</td><td class="res-gap">+1:38:15</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">20</td><td class="res-cp">6</td><td class="res-name">Simon Coggins</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">5:50:12</td><td class="res-gap">+1:39:15</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">20</td><td class="res-cp">6</td><td class="res-name">Andy Marsland</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">5:50:12</td><td class="res-gap">+1:39:15</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">22</td><td class="res-cp">13</td><td class="res-name">Jon Urquidi</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">6:00:09</td><td class="res-gap">+1:49:12</td></tr>
+          <tr data-g="M" data-c="SDV"><td class="res-pl">23</td><td class="res-cp">1</td><td class="res-name">Will Parker</td><td class="res-cat">SDV&nbsp;M</td><td class="res-time">6:03:33</td><td class="res-gap">+1:52:36</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">24</td><td class="res-cp">14</td><td class="res-name">Xiang Liu</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">6:13:14</td><td class="res-gap">+2:02:17</td></tr>
+          <tr data-g="M" data-c="SV"><td class="res-pl">25</td><td class="res-cp">1</td><td class="res-name">Al Cross</td><td class="res-cat">SV&nbsp;M</td><td class="res-time">6:18:15</td><td class="res-gap">+2:07:18</td></tr>
+          <tr data-g="F" data-c="SV"><td class="res-pl">26</td><td class="res-cp">1</td><td class="res-name">Harriette Carr</td><td class="res-cat">SV&nbsp;F</td><td class="res-time">6:18:26</td><td class="res-gap">+2:07:29</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">27</td><td class="res-cp">8</td><td class="res-name">Jacob McElwee</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">6:19:26</td><td class="res-gap">+2:08:29</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">28</td><td class="res-cp">9</td><td class="res-name">Mike Keenan</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">6:21:34</td><td class="res-gap">+2:10:37</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">29</td><td class="res-cp">10</td><td class="res-name">Justin Tampeau</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">6:22:28</td><td class="res-gap">+2:11:31</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">30</td><td class="res-cp">11</td><td class="res-name">Richard Procter</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">6:24:41</td><td class="res-gap">+2:13:44</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">31</td><td class="res-cp">12</td><td class="res-name">Richard Clemo</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">6:26:41</td><td class="res-gap">+2:15:44</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">32</td><td class="res-cp">13</td><td class="res-name">Justin Sprecher</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">6:43:04</td><td class="res-gap">+2:32:07</td></tr>
+          <tr data-g="M" data-c="SV"><td class="res-pl">33</td><td class="res-cp">2</td><td class="res-name">David Foster</td><td class="res-cat">SV&nbsp;M</td><td class="res-time">6:49:27</td><td class="res-gap">+2:38:30</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">34</td><td class="res-cp">14</td><td class="res-name">Grant Pritchard</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">7:17:21</td><td class="res-gap">+3:06:24</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">35</td><td class="res-cp">15</td><td class="res-name">Ben Muton-Phillips</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">7:23:12</td><td class="res-gap">+3:12:15</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">35</td><td class="res-cp">15</td><td class="res-name">Euan Christie</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">7:23:12</td><td class="res-gap">+3:12:15</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">37</td><td class="res-cp">15</td><td class="res-name">Alexey Amos</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">7:23:13</td><td class="res-gap">+3:12:16</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">38</td><td class="res-cp">16</td><td class="res-name">Tim Lamb</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">7:23:48</td><td class="res-gap">+3:12:51</td></tr>
+          <tr data-g="M" data-c="SV"><td class="res-pl">39</td><td class="res-cp">3</td><td class="res-name">Phil Kendon</td><td class="res-cat">SV&nbsp;M</td><td class="res-time">7:24:27</td><td class="res-gap">+3:13:30</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">40</td><td class="res-cp">17</td><td class="res-name">Jason Eason</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">7:40:10</td><td class="res-gap">+3:29:13</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">41</td><td class="res-cp">17</td><td class="res-name">Cullum Mangin</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">7:41:11</td><td class="res-gap">+3:30:14</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">41</td><td class="res-cp">17</td><td class="res-name">Sam Taylor</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">7:41:11</td><td class="res-gap">+3:30:14</td></tr>
+          <tr data-g="M" data-c="SV"><td class="res-pl">43</td><td class="res-cp">4</td><td class="res-name">Aaron Sloss</td><td class="res-cat">SV&nbsp;M</td><td class="res-time">7:54:41</td><td class="res-gap">+3:43:44</td></tr>
+          <tr data-g="M" data-c="SV"><td class="res-pl">44</td><td class="res-cp">5</td><td class="res-name">Neil Wilson</td><td class="res-cat">SV&nbsp;M</td><td class="res-time">7:56:34</td><td class="res-gap">+3:45:37</td></tr>
+          <tr data-g="M" data-c="SNR"><td class="res-pl">44</td><td class="res-cp">18</td><td class="res-name">Sam Ashworth</td><td class="res-cat">SNR&nbsp;M</td><td class="res-time">7:56:34</td><td class="res-gap">+3:45:37</td></tr>
+          <tr data-g="M" data-c="SV"><td class="res-pl">46</td><td class="res-cp">6</td><td class="res-name">Jeremy Bray</td><td class="res-cat">SV&nbsp;M</td><td class="res-time">8:49:11</td><td class="res-gap">+4:38:14</td></tr>
+          <tr data-g="M" data-c="SDV"><td class="res-pl">47</td><td class="res-cp">2</td><td class="res-name">Anthony Bus</td><td class="res-cat">SDV&nbsp;M</td><td class="res-time">9:02:06</td><td class="res-gap">+4:51:09</td></tr>
+          <tr data-g="M" data-c="SDV"><td class="res-pl">48</td><td class="res-cp">3</td><td class="res-name">Roger Jones</td><td class="res-cat">SDV&nbsp;M</td><td class="res-time">9:03:51</td><td class="res-gap">+4:52:54</td></tr>
+          <tr data-g="F" data-c="VET"><td class="res-pl">49</td><td class="res-cp">1</td><td class="res-name">Melanie Gibson</td><td class="res-cat">VET&nbsp;F</td><td class="res-time">9:12:01</td><td class="res-gap">+5:01:04</td></tr>
+          <tr data-g="F" data-c="VET"><td class="res-pl">49</td><td class="res-cp">1</td><td class="res-name">Sarah Mackey</td><td class="res-cat">VET&nbsp;F</td><td class="res-time">9:12:01</td><td class="res-gap">+5:01:04</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">51</td><td class="res-cp">19</td><td class="res-name">Mattie Wilson</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">9:12:02</td><td class="res-gap">+5:01:05</td></tr>
+          <tr data-g="F" data-c="SNR"><td class="res-pl">52</td><td class="res-cp">2</td><td class="res-name">Natasha Furness</td><td class="res-cat">SNR&nbsp;F</td><td class="res-time">9:12:04</td><td class="res-gap">+5:01:07</td></tr>
+          <tr data-g="M" data-c="VET"><td class="res-pl">52</td><td class="res-cp">20</td><td class="res-name">Tony Arnold</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">9:12:04</td><td class="res-gap">+5:01:07</td></tr>
+          <tr data-g="M" data-c="SV"><td class="res-pl">54</td><td class="res-cp">7</td><td class="res-name">Martin Hill <span class="res-note">6am start</span></td><td class="res-cat">SV&nbsp;M</td><td class="res-time">10:36:43</td><td class="res-gap">+6:25:46</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="res-key">JNR under 20 · SNR 20–39 · VET 40–49 · SV 50–59 · SDV 60+. Pl shows overall place, or place within the selected filter. Ties share a place.</p>
   </section>
 
 <section>
@@ -717,6 +807,38 @@ var routeCoords = [[-41.60018,175.25805],[-41.59928,175.25932],[-41.59846,175.26
       grid.classList.remove('scrolling');
     }, 150);
   }, { passive: true });
+})();
+</script>
+
+<script>
+(function () {
+  var table = document.getElementById('res-table');
+  if (!table) return;
+  var btns = document.querySelectorAll('.res-filter');
+  var rows = table.tBodies[0].rows;
+  function apply(f) {
+    var n = 0, lastTime = null, lastPl = 0;
+    table.classList.toggle('filtered', f !== 'all');
+    for (var i = 0; i < rows.length; i++) {
+      var r = rows[i];
+      var show = f === 'all' || r.dataset.g === f || r.dataset.c === f;
+      r.classList.toggle('hide', !show);
+      if (show && f !== 'all') {
+        n++;
+        var t = r.querySelector('.res-time').textContent;
+        var pl = (t === lastTime) ? lastPl : n;
+        lastTime = t; lastPl = pl;
+        r.querySelector('.res-cp').textContent = pl;
+      }
+    }
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      for (var j = 0; j < btns.length; j++) btns[j].classList.remove('on');
+      this.classList.add('on');
+      apply(this.dataset.f);
+    });
+  }
 })();
 </script>
 

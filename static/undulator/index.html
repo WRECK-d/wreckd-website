@@ -464,6 +464,7 @@ footer {
           <tr data-g="F" data-c="SNR"><td class="res-pl">52</td><td class="res-cp">2</td><td class="res-name">Natasha Furness</td><td class="res-cat">SNR&nbsp;F</td><td class="res-time">9:12:04</td><td class="res-gap">+5:01:07</td></tr>
           <tr data-g="M" data-c="VET"><td class="res-pl">52</td><td class="res-cp">20</td><td class="res-name">Tony Arnold</td><td class="res-cat">VET&nbsp;M</td><td class="res-time">9:12:04</td><td class="res-gap">+5:01:07</td></tr>
           <tr data-g="M" data-c="SV"><td class="res-pl">54</td><td class="res-cp">7</td><td class="res-name">Martin Hill <span class="res-note">6am start</span></td><td class="res-cat">SV&nbsp;M</td><td class="res-time">10:36:43</td><td class="res-gap">+6:25:46</td></tr>
+          <tr data-g="M" data-c="SV" data-dns="1"><td class="res-pl">DNS</td><td class="res-cp">DNS</td><td class="res-name">Chris Martin <span class="res-note">05:55 start?</span></td><td class="res-cat">SV&nbsp;M</td><td class="res-time">(10:30:00)</td><td class="res-gap"></td></tr>
         </tbody>
       </table>
     </div>
@@ -823,7 +824,7 @@ var routeCoords = [[-41.60018,175.25805],[-41.59928,175.25932],[-41.59846,175.26
       var r = rows[i];
       var show = f === 'all' || r.dataset.g === f || r.dataset.c === f;
       r.classList.toggle('hide', !show);
-      if (show && f !== 'all') {
+      if (show && f !== 'all' && !r.dataset.dns) {
         n++;
         var t = r.querySelector('.res-time').textContent;
         var pl = (t === lastTime) ? lastPl : n;

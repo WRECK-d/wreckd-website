@@ -37,11 +37,18 @@ notes:
   aorangi-undulator-2023: "Includes A100 runners, who raced the Undulator as day 2."
   aorangi-undulator-2022: "Includes A100 runners. Gender not recorded."
   aorangi-undulator-2021: "Run on the B course. Includes A100 runners. Gender not recorded."
+  aorangi-undulator-2020: "Includes A100 runners, who raced the Undulator as day 2. Times to the minute."
+  aorangi-undulator-2019: "Includes A100 runners, who raced the Undulator as day 2. Times to the minute."
+  aorangi-undulator-2017: "Includes A100 runners, who raced the Undulator as day 2. Times to the minute."
+  aorangi-undulator-2016: "Includes A100 runners, who raced the Undulator as day 2. Times to the minute."
+  aorangi-undulator-2015: "Includes A100 runners, who raced the Undulator as day 2. Times to the minute."
+  aorangi-undulator-2014: "Includes A100 runners, who raced the Undulator as day 2. Times to the minute. Team entrants are listed with category Team."
   aorangi-undulator-2018: "Times recorded to the minute. Includes A100 runners."
   a100-2023: "Total = day 1 + day 2 + day 3."
   a100-2022: "Total = day 1 + day 2 + day 3. Gender not recorded."
   a100-2021: "Total = day 1 + day 2 + day 3. Gender not recorded."
-  a100-2018: "Partial record: men's totals to the minute; women's placings without totals."
+  a100-2018: "Partial record: men's totals only; women have day 1 and day 2 times but no day 3 or total."
+  a100-2015: "Three recorded totals don't match the day times (flagged in the Note column)."
 ---
 
 Every result we have on file for our races. Open a year to see the full field, or download it as a CSV.

@@ -344,3 +344,6 @@ header {
 .results-search input { width: 100%; box-sizing: border-box; padding: 0.5rem; border: 1px solid #ba1b1d; background: #fff; color: #ba1b1d; font-size: 1rem; }
 .results-search input:focus { outline: 2px solid #ba1b1d; outline-offset: 1px; }
 .results-count { font-size: 0.85rem; min-height: 1.2em; margin: 0.4rem 0 0; }
+.results-records summary { font-size: 1.1rem; }
+.results-records__title { font-size: 1rem; margin: 1.25rem 0 0.4rem; }
+.results-records .wreckd-details__body > h3:first-child { margin-top: 0; }

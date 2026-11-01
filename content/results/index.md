@@ -20,6 +20,56 @@ events:
     title: "A100"
     blurb: "Three-day stage race in the Aorangi. Day 2 is the Undulator."
 
+# Course records, shown under each event. Edit the rows here when a record falls.
+records:
+  aorangi-undulator:
+    - title: "Course records (also A100 day 2)"
+      columns: ["Category", "Name", "Event", "Year", "Time"]
+      rows:
+        - ["Open Men", "Chris Swallow", "AU", "2016", "3:57:00"]
+        - ["Vet Men", "Andrew Thompson", "AU", "2019", "4:12:00"]
+        - ["Super Vet Men", "Will Parker", "AU", "2019", "5:05:00"]
+        - ["Super Duper Vet Men", "Will Parker", "AU", "2026", "6:03:33"]
+        - ["Young Legend Men", "Martin McCrudden", "AU", "2017", "4:33:00"]
+        - ["Open Women", "Lou Beckingsale", "A100", "2015", "5:04:00"]
+        - ["Vet Women", "Jackie Holley", "AU", "2014", "5:22:00"]
+        - ["Super Vet Women", "Jill Westenra", "AU", "2014", "5:39:00"]
+        - ["Young Legend Women", "Georgia Whiting", "AU", "2020", "6:07:00"]
+      note: "Super Duper Vet Men was previously Wayne Ricketts, 7:18:00 (2015)."
+    - title: "Stage records"
+      columns: ["Stage", "Name", "Event", "Time"]
+      rows:
+        - ["Kawakawa", "Chris Swallow", "AU", "1:09:00"]
+        - ["Kawakawa", "Tim Sutton", "A100", "1:12:00"]
+        - ["Pararaki", "Chris Swallow", "AU", "0:41:00"]
+        - ["Washpool", "Danny Garrett", "AU", "0:49:00"]
+        - ["Washpool", "Tim Sutton", "A100", "0:50:00"]
+        - ["Pinnacles", "Chris Swallow", "AU", "1:15:00"]
+        - ["Pinnacles", "Tim Sutton", "A100", "1:22:00"]
+  a100:
+    - title: "3-day total"
+      columns: ["Category", "Name", "Year", "Time"]
+      rows:
+        - ["Open Men", "Tim Sutton", "2015", "10:57:00"]
+        - ["Vet Men", "Joe Murphy", "2020", "12:43:57"]
+        - ["Super Vet Men", "Sean Martin", "2022", "15:19:43"]
+        - ["Super Duper Vet Men", "Bill Thomson", "2022", "17:22:54"]
+        - ["Open Women", "Lou Beckingsale", "2015", "13:28:00"]
+        - ["Vet Women", "Marta Zanetti", "2015", "16:14:00"]
+        - ["Super Vet Women", "Jean Beaumont", "2015", "14:57:00"]
+        - ["Super Vet Women", "Sue Crowley", "2019", "15:08:00"]
+      note: "Super Vet Men was previously Iain Atkinson, 16:00:00 (2017)."
+    - title: "Day 1"
+      columns: ["Category", "Name", "Year", "Time"]
+      rows:
+        - ["Open Men", "Tim Sutton", "2015", "4:14:00"]
+    - title: "Day 2"
+      text: "Day 2 is the Aorangi Undulator; see the Undulator course records above."
+    - title: "Day 3"
+      columns: ["Category", "Name", "Year", "Time"]
+      rows:
+        - ["Open Men", "Tim Sutton", "2015", "2:24:00"]
+
 notes:
   mukamuka-munter-2026: "Category, team and gender as entered at registration."
   mukamuka-munter-2023: "Category column shows the age band as recorded."

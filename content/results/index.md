@@ -22,8 +22,34 @@ events:
 
 # Course records, shown under each event. Edit the rows here when a record falls.
 records:
+  mukamuka-munter:
+    - title: "Course records"
+      columns: ["Category", "Name", "Year", "Time"]
+      rows:
+        - ["Overall Men", "Dan Jones", "2019 & 2021", "2:31"]
+        - ["Overall Women", "Piret Klade", "2010", "3:09:34"]
+        - ["Open Women", "Deborah Lynch", "2022", "3:10:30"]
+        - ["Vet Men", "Dougal Thorburn", "2021", "2:36:21"]
+        - ["Vet Women", "Mel Brandon", "2022", "3:36:43"]
+        - ["Super Vet Men", "Josh Campbell", "2026", "3:01:33"]
+        - ["Super Vet Women", "Mary McBride", "2019", "3:58"]
+        - ["Super Duper Vet Men", "Bill Thomson", "2023", "4:00:17"]
+        - ["Super Duper Vet Women", "Julie Gordon", "2022", "4:55:31"]
+        - ["U20 Men", "Sam Anderson", "2022", "2:52:35"]
+      note: "Calculated from the results on this page. B-course years (2008, 2016) and 2009 (damaged record) not counted. Category age bands have changed over the years, and early years didn't record categories. Times without seconds were recorded to the minute."
+  mega-munter:
+    - title: "Course records"
+      columns: ["Category", "Name", "Year", "Time"]
+      rows:
+        - ["Overall Men", "Sam Hansby", "2021", "5:38:59"]
+        - ["Overall Women", "Joane Elleouet", "2021", "6:58:57"]
+        - ["Vet Men", "Joe Murphy", "2022", "6:20:40"]
+        - ["Vet Women", "Emma Pescini & Gwenan Riley", "2022", "8:39:01"]
+        - ["Super Vet Men", "Dan Kellow", "2023", "7:45:23"]
+        - ["Super Vet Women", "Jean Beaumont", "2023", "8:18:30"]
+      note: "Calculated from the results on this page."
   aorangi-undulator:
-    - title: "Course records (also A100 day 2)"
+    - title: "Course records (all runners, including A100 day 2)"
       columns: ["Category", "Name", "Event", "Year", "Time"]
       rows:
         - ["Open Men", "Chris Swallow", "AU", "2016", "3:57:00"]
@@ -31,11 +57,11 @@ records:
         - ["Super Vet Men", "Will Parker", "AU", "2019", "5:05:00"]
         - ["Super Duper Vet Men", "Will Parker", "AU", "2026", "6:03:33"]
         - ["Young Legend Men", "Martin McCrudden", "AU", "2017", "4:33:00"]
-        - ["Open Women", "Lou Beckingsale", "A100", "2015", "5:04:00"]
+        - ["Open Women", "Ali Wilson", "A100", "2022", "4:59:28"]
         - ["Vet Women", "Jackie Holley", "AU", "2014", "5:22:00"]
         - ["Super Vet Women", "Jill Westenra", "AU", "2014", "5:39:00"]
         - ["Young Legend Women", "Georgia Whiting", "AU", "2020", "6:07:00"]
-      note: "Super Duper Vet Men was previously Wayne Ricketts, 7:18:00 (2015)."
+      note: "Previous holders: Super Duper Vet Men, Wayne Ricketts 7:18:00 (2015); Open Women, Lou Beckingsale 5:04:00 (A100, 2015)."
     - title: "Stage records"
       columns: ["Stage", "Name", "Event", "Time"]
       rows:
@@ -54,17 +80,26 @@ records:
         - ["Vet Men", "Joe Murphy", "2020", "12:43:57"]
         - ["Super Vet Men", "Sean Martin", "2022", "15:19:43"]
         - ["Super Duper Vet Men", "Bill Thomson", "2022", "17:22:54"]
-        - ["Open Women", "Lou Beckingsale", "2015", "13:28:00"]
+        - ["Open Women", "Ali Wilson", "2022", "12:51:15"]
         - ["Vet Women", "Marta Zanetti", "2015", "16:14:00"]
         - ["Super Vet Women", "Jean Beaumont", "2015", "14:57:00"]
         - ["Super Vet Women", "Sue Crowley", "2019", "15:08:00"]
-      note: "Super Vet Men was previously Iain Atkinson, 16:00:00 (2017)."
+      note: "Previous holders: Super Vet Men, Iain Atkinson 16:00:00 (2017); Open Women, Lou Beckingsale 13:28:00 (2015)."
     - title: "Day 1"
       columns: ["Category", "Name", "Year", "Time"]
       rows:
         - ["Open Men", "Tim Sutton", "2015", "4:14:00"]
-    - title: "Day 2"
-      text: "Day 2 is the Aorangi Undulator; see the Undulator course records above."
+    - title: "Day 2 (the Undulator on tired legs)"
+      columns: ["Category", "Name", "Year", "Time"]
+      rows:
+        - ["Open Men", "Tim Sutton", "2015", "4:19"]
+        - ["Vet Men", "Steve Neary", "2014", "5:12"]
+        - ["Super Vet Men", "Sean Martin", "2022", "6:14:36"]
+        - ["Super Duper Vet Men", "Bill Thomson", "2022", "6:51:44"]
+        - ["Open Women", "Ali Wilson", "2022", "4:59:28"]
+        - ["Vet Women", "Marta Zanetti", "2015", "6:15"]
+        - ["Super Vet Women", "Sue Crowley", "2019", "5:55"]
+      note: "Calculated from the results. A100 runners only; 2021 (B course) not counted."
     - title: "Day 3"
       columns: ["Category", "Name", "Year", "Time"]
       rows:

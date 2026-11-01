@@ -18,7 +18,7 @@
       <summary><span class="results-year__label">Course records</span></summary>
       <div class="wreckd-details__body">
       {{- range . }}
-        <h3 class="results-records__title">{{ .title }}</h3>
+        {{ if ne .title "Course records" }}<h3 class="results-records__title">{{ .title }}</h3>{{ end }}
         {{ with .text }}<p class="results-note">{{ . }}</p>{{ end }}
         {{- if .rows }}
         <div class="results-wrap"><table class="results-table">

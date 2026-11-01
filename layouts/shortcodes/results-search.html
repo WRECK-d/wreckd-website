@@ -1,0 +1,37 @@
+{{- /* Runner search for the results page. Filters every results table and opens matching years. */ -}}
+<div class="results-search">
+  <label for="results-q">Find a runner</label>
+  <input id="results-q" type="search" placeholder="Type a name…" autocomplete="off">
+  <p id="results-count" class="results-count" aria-live="polite"></p>
+</div>
+<script>
+(function () {
+  var q = document.getElementById('results-q');
+  var out = document.getElementById('results-count');
+  if (!q) return;
+  var timer;
+  q.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(run, 120); });
+  function run() {
+    var term = q.value.trim().toLowerCase();
+    var years = document.querySelectorAll('.results-year');
+    var hits = 0, yrs = 0;
+    years.forEach(function (d) {
+      var n = 0;
+      d.querySelectorAll('tbody tr').forEach(function (tr) {
+        var name = (tr.querySelector('.col-name') || tr).textContent.toLowerCase();
+        var match = !term || name.indexOf(term) !== -1;
+        tr.hidden = !match;
+        tr.classList.toggle('results-hit', !!term && match);
+        if (term && match) n++;
+      });
+      d.hidden = !!term && n === 0;
+      if (term) { d.open = n > 0; } else { d.open = false; }
+      hits += n; if (n) yrs++;
+    });
+    document.querySelectorAll('.results-event').forEach(function (s) {
+      s.hidden = !!term && !s.querySelector('.results-year:not([hidden])');
+    });
+    out.textContent = term ? (hits ? hits + ' result' + (hits === 1 ? '' : 's') + ' across ' + yrs + ' race' + (yrs === 1 ? '' : 's') : 'No runners match “' + q.value.trim() + '”') : '';
+  }
+})();
+</script>

@@ -1,0 +1,68 @@
+{{- /*
+  Renders every <event-key>-<year>.csv in this page bundle as a collapsible year,
+  grouped by the `events` list in front matter. Usage: {{< results >}}
+  Columns that are empty for a whole year are hidden in the table (the CSV keeps them).
+*/ -}}
+{{- $page := .Page -}}
+{{- $notes := $page.Params.notes | default dict -}}
+<div class="results" id="results-list">
+{{- range $page.Params.events }}
+  {{- $key := .key -}}
+  {{- $files := $page.Resources.Match (printf "%s-[0-9][0-9][0-9][0-9].csv" $key) -}}
+  {{- if $files }}
+  <section class="results-event" id="{{ $key }}">
+    <h2>{{ with .link }}<a href="{{ . }}">{{ end }}{{ .title }}{{ with .link }}</a>{{ end }}</h2>
+    {{ with .blurb }}<p class="results-blurb">{{ . }}</p>{{ end }}
+    {{- range sort $files "Name" "desc" }}
+      {{- $file := . -}}
+      {{- $id := strings.TrimSuffix ".csv" .Name -}}
+      {{- $year := strings.TrimPrefix (printf "%s-" $key) $id -}}
+      {{- $rows := transform.Unmarshal (dict "lazyQuotes" true) . -}}
+      {{- $head := index $rows 0 -}}
+      {{- $body := after 1 $rows -}}
+      {{- /* which columns hold any data this year */ -}}
+      {{- $show := slice -}}
+      {{- range $i, $h := $head -}}
+        {{- $any := false -}}
+        {{- range $body }}{{ if ne (index . $i) "" }}{{ $any = true }}{{ end }}{{ end -}}
+        {{- if $any }}{{ $show = $show | append $i }}{{ end -}}
+      {{- end -}}
+      {{- /* time column: Total for stage races, Time otherwise */ -}}
+      {{- $tcol := 0 -}}
+      {{- range $i, $h := $head }}{{ if in (slice "Time" "Total") $h }}{{ $tcol = $i }}{{ end }}{{ end -}}
+      {{- $gcol := -1 -}}
+      {{- range $i, $h := $head }}{{ if eq $h "Gender" }}{{ $gcol = $i }}{{ end }}{{ end -}}
+      {{- $finishers := 0 -}}
+      {{- $first := "" -}}{{- $firstF := "" -}}
+      {{- range $body -}}
+        {{- if findRE `^[0-9]+$` (index . 0) -}}
+          {{- $finishers = add $finishers 1 -}}
+          {{- if not $first }}{{ $first = printf "%s %s" (index . 1) (index . $tcol) }}{{ end -}}
+          {{- if and (ge $gcol 0) (not $firstF) (eq (index . $gcol) "F") }}{{ $firstF = printf "%s %s" (index . 1) (index . $tcol) }}{{ end -}}
+        {{- end -}}
+      {{- end }}
+    <details class="wreckd-details results-year" id="{{ $id }}">
+      <summary>
+        <span class="results-year__label">{{ $year }}</span>
+        <span class="results-year__meta">{{ $finishers }} finishers{{ with $first }} · 1st {{ . }}{{ end }}{{ with $firstF }} · 1st woman {{ . }}{{ end }}</span>
+      </summary>
+      <div class="wreckd-details__body">
+        {{ with index $notes $id }}<p class="results-note">{{ . }}</p>{{ end }}
+        <p class="results-download"><a href="{{ $file.RelPermalink }}" download>Download {{ $year }} results (.csv)</a></p>
+        <div class="results-wrap">
+          <table class="results-table">
+            <thead><tr>{{ range $show }}<th class="col-{{ index $head . | urlize }}">{{ index $head . }}</th>{{ end }}</tr></thead>
+            <tbody>
+            {{- range $body }}{{ $r := . }}
+              <tr>{{ range $show }}<td class="col-{{ index $head . | urlize }}">{{ index $r . }}</td>{{ end }}</tr>
+            {{- end }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+    {{- end }}
+  </section>
+  {{- end }}
+{{- end }}
+</div>

@@ -322,3 +322,25 @@ header {
 .form-status.error {
   color: #8b0000;
 }
+
+/* Results page: {{< results >}} and {{< results-search >}} */
+.results-event { margin: 2.5rem 0 0; }
+.results-event h2 { margin-bottom: 0.25rem; }
+.results-blurb { margin: 0 0 1rem; }
+.results-year summary { gap: 1rem; flex-wrap: wrap; }
+.results-year__label { min-width: 3.5rem; }
+.results-year__meta { flex: 1; font-weight: normal; font-size: 0.85rem; }
+.results-note { font-size: 0.9rem; font-style: italic; }
+.results-download a { font-weight: bold; }
+.results-wrap { overflow-x: auto; }
+.results-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.results-table th, .results-table td { text-align: left; padding: 0.3rem 0.6rem 0.3rem 0; border-bottom: 1px dotted #ba1b1d; white-space: nowrap; vertical-align: top; }
+.results-table th { border-bottom: 1.5px solid #ba1b1d; }
+.results-table td.col-note, .results-table td.col-team { white-space: normal; min-width: 12rem; font-size: 0.8rem; }
+.results-table td.col-place { font-weight: bold; }
+.results-table tr.results-hit td { background: #fbe9e9; }
+.results-search { max-width: 28rem; margin: 1.5rem 0; }
+.results-search label { display: block; font-weight: bold; color: #ba1b1d; margin-bottom: 0.25rem; }
+.results-search input { width: 100%; box-sizing: border-box; padding: 0.5rem; border: 1px solid #ba1b1d; background: #fff; color: #ba1b1d; font-size: 1rem; }
+.results-search input:focus { outline: 2px solid #ba1b1d; outline-offset: 1px; }
+.results-count { font-size: 0.85rem; min-height: 1.2em; margin: 0.4rem 0 0; }

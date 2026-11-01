@@ -23,6 +23,11 @@ theme = 'ananke'
     weight = 20
 
   [[menu.main]]
+    name = "Results"
+    url = "/results/"
+    weight = 25
+
+  [[menu.main]]
     name = "Faq"
     url = "/faq/"
     weight = 20

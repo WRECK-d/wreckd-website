@@ -8,17 +8,13 @@ events:
   - key: mukamuka-munter
     title: "Mukamuka Munter"
     link: /mukamuka/
-    blurb: "Wainuiomata coast, round the Mukamuka rocks and over the hills."
   - key: mega-munter
     title: "Mega Munter"
-    blurb: "The long version of the Munter, run 2021–2023."
   - key: aorangi-undulator
     title: "Aorangi Undulator"
     link: /undulator/
-    blurb: "Mangatoetoe to the Putangirua Pinnacles, ~27 km through the Aorangi Range."
   - key: a100
     title: "A100"
-    blurb: "Three-day stage race in the Aorangi. Day 2 is the Undulator."
 
 # Course records, shown under each event. Edit the rows here when a record falls.
 records:
@@ -36,7 +32,6 @@ records:
         - ["Super Duper Vet Men", "Bill Thomson", "2023", "4:00:17"]
         - ["Super Duper Vet Women", "Julie Gordon", "2022", "4:55:31"]
         - ["U20 Men", "Sam Anderson", "2022", "2:52:35"]
-      note: "Calculated from the results on this page. B-course years (2008, 2016) and 2009 (damaged record) not counted. Category age bands have changed over the years, and early years didn't record categories. Times without seconds were recorded to the minute."
   mega-munter:
     - title: "Course records"
       columns: ["Category", "Name", "Year", "Time"]
@@ -62,16 +57,6 @@ records:
         - ["Super Vet Women", "Jill Westenra", "AU", "2014", "5:39:00"]
         - ["Young Legend Women", "Georgia Whiting", "AU", "2020", "6:07:00"]
       note: "Previous holders: Super Duper Vet Men, Wayne Ricketts 7:18:00 (2015); Open Women, Lou Beckingsale 5:04:00 (A100, 2015)."
-    - title: "Stage records"
-      columns: ["Stage", "Name", "Event", "Time"]
-      rows:
-        - ["Kawakawa", "Chris Swallow", "AU", "1:09:00"]
-        - ["Kawakawa", "Tim Sutton", "A100", "1:12:00"]
-        - ["Pararaki", "Chris Swallow", "AU", "0:41:00"]
-        - ["Washpool", "Danny Garrett", "AU", "0:49:00"]
-        - ["Washpool", "Tim Sutton", "A100", "0:50:00"]
-        - ["Pinnacles", "Chris Swallow", "AU", "1:15:00"]
-        - ["Pinnacles", "Tim Sutton", "A100", "1:22:00"]
   a100:
     - title: "3-day total"
       columns: ["Category", "Name", "Year", "Time"]
@@ -89,7 +74,7 @@ records:
       columns: ["Category", "Name", "Year", "Time"]
       rows:
         - ["Open Men", "Tim Sutton", "2015", "4:14:00"]
-    - title: "Day 2 (the Undulator on tired legs)"
+    - title: "Day 2"
       columns: ["Category", "Name", "Year", "Time"]
       rows:
         - ["Open Men", "Tim Sutton", "2015", "4:19"]
@@ -136,12 +121,6 @@ notes:
   a100-2015: "Three recorded totals don't match the day times (flagged in the Note column)."
 ---
 
-Every result we have on file for our races. Open a year to see the full field, or download it as a CSV.
-
 {{< results-search >}}
 
 {{< results >}}
-
----
-
-**Missing a year, or spotted a mistake?** Old results were typed up by hand on race day, so a few names and times are rough. If you've got better records, or results from a year that isn't here, email **[office@runs.nz](mailto:office@runs.nz)**.

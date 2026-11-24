@@ -7,7 +7,7 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 
 ---
 
-**The Ōhau Undertaking**
+### The Ōhau Undertaking
 
 **Course:** ~25 km / 1,400 m, loop\
 **Route:** Poads Road carpark → Ōhau River → South Ōhau Hut → Dora Saddle → Waiopehu Hut → Poads Road carpark\
@@ -23,7 +23,7 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 
 ---
 
-## Just done: [Aorangi Undulator →](/undulator/#results)
+**Just done: [Aorangi Undulator →](/undulator/#results)** 
 
 **Saturday 31 October 2026 · Not for the weak!**
 
@@ -35,13 +35,13 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 
 ---
 
-## Got an idea?
+### Got an idea?
 
 Fixtures come from members. If you've got an idea for one, or you'd like to organise an activity, big or small, low-key or full send, email **[office@runs.nz](mailto:office@runs.nz)**, lets make it happen.
 
 
 
-## FY27/28
+### FY27/28
 
 **After Dark Series**
 
@@ -77,7 +77,7 @@ Fixtures come from members. If you've got an idea for one, or you'd like to orga
 
 ---
 
-## Past fixtures
+### Past fixtures
 
 **[Aorangi Undulator](/undulator/)**: Saturday 31 October 2026 · [Results](/undulator/#results)\
 **Annual General Meeting**: 15 September 2026, Southern Cross Garden Bar, Wellington\

@@ -1,9 +1,25 @@
 ---
 title: "Fixtures"
-description: "WREC'kd fixtures: the After Dark Series from April 2027, plus Aorangi Undulator 2026 results. Grassroots wilderness and trail running in the Aorangi, Remutaka, Orongorongo and Tararua ranges."
+description: "WREC'kd fixtures: the Ōhau Undertaking in February 2027, the After Dark Series from April 2027, plus Aorangi Undulator 2026 results. Grassroots wilderness and trail running in the Aorangi, Remutaka, Orongorongo and Tararua ranges."
 ---
 
 WREC'kd organises grassroots running activities for its [members](/join/). See our [T+Cs](/conditions/) for the fine print.
+
+---
+
+**The Ōhau Undertaking**
+
+**Course:** ~25 km / 1,400 m, loop\
+**Route:** Poads Road carpark → Ōhau River → South Ōhau Hut → Dora Saddle → Waiopehu Hut → Poads Road carpark\
+**Dates:** Saturday 13 – Sunday 14 February 2027, start any time from 9am Saturday\
+**Format:** Self-supported, either day, either direction. Race it, run it casual, or make it an overnight tramp\
+**Fee:** Free (members only)\
+**Places:** No cap\
+**After-match:** Sunday 14 February, 3pm, Long Beach, Waikanae
+
+{{< highlight-box >}}
+**[Ōhau Undertaking →](/ohau-undertaking/)**
+{{< /highlight-box >}}
 
 ---
 
@@ -23,7 +39,7 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 
 Fixtures come from members. If you've got an idea for one, or you'd like to organise an activity, big or small, low-key or full send, email **[office@runs.nz](mailto:office@runs.nz)**, lets make it happen.
 
----
+
 
 ## FY27/28
 

@@ -45,9 +45,10 @@ Fixtures come from members. If you've got an idea for one, or you'd like to orga
 
 **After Dark Series**
 
-**3 Rounds:** Kapakapanui, East Whakanui, Dobsons Loop\
+**3 Rounds:** Dobsons Loop, Kapakapanui, Whakanui/Mckerrow\
 **Dates:** When the clocks go back (from April 4 2027)\
 **Difficulty:** Varies\
+**Format:** Team 2+\
 **Fee:** Free (members only)\
 **Places:** No cap\
 **RSVP closes:** TBC

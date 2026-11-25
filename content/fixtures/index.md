@@ -12,7 +12,7 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 **Route:** TBC\
 **Date and Time:** Sunday 20th December at 9am\
 **Format:** Adventure / Exploration / Hike\
-**Start/Finish:** Day's Bay Pavilion\
+**Start/Finish:** Day's Bay Pavilion
 
 ---
 ### The Ōhau Undertaking

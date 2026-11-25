@@ -6,7 +6,15 @@ description: "WREC'kd fixtures: the Ōhau Undertaking in February 2027, the Afte
 WREC'kd organises grassroots running activities for its [members](/join/). See our [T+Cs](/conditions/) for the fine print.
 
 ---
+### Gollan's Station Xmas Adventure 
 
+**Course:** ~20 km / 800 m, loop\
+**Route:** TBC\
+**Date and Time:** Sunday 20th December at 9am\
+**Format:** Adventure / Exploration / Hike\
+**Start/Finish:** Day's Bay Pavilion\
+
+---
 ### The Ōhau Undertaking
 
 **Course:** ~25 km / 1,400 m, loop\

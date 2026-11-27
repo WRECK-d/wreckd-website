@@ -471,6 +471,7 @@ async function handleRegister(request, env) {
     ref,
     type: data.type,
     fixture: fixture.slug,
+    fixture_title: fixture.name,
     team,
     name: data.name.trim(),
     publish_name: data.publish_name === "no" ? "no" : "yes",

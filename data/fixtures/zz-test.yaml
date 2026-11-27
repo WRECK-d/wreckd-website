@@ -1,0 +1,6 @@
+name: TEST – ignore
+prefix: ZZ
+fee: 0
+closes: <tomorrow's date, YYYY-MM-DD>
+race_spots: 1
+open: yes

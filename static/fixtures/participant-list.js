@@ -16,7 +16,7 @@
  * Every matching container on the page is populated independently.
  */
 (function () {
-  var WORKER_URL = "https://wreckd-fixtures-worker.wreckd.workers.dev";
+  var WORKER_URL = "https://wreckd-fixtures-worker.wreckd-collective.workers.dev";
 
   var FIXTURE_TITLES = {
     "mukamuka-munter": "Mukamuka Munter",

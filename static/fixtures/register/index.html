@@ -274,7 +274,8 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 <body>
 <div class="page">
   <h1>Fixture Registration</h1>
-  <p class="subtitle">Registration is closed — there are no fixtures currently open for entry. Keep an eye on <a href="/fixtures/">Fixtures</a> for upcoming events.</p>
+  <p class="subtitle" id="reg-status">Loading open fixtures…</p>
+  <div id="upcoming" class="hidden" style="font-size:0.85rem"></div>
 
   <div id="form-wrapper" class="hidden">
     <form id="reg-form">
@@ -282,7 +283,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       <!-- EVENT SELECTION -->
       <h2>Select your fixture</h2>
       <div class="form-group">
-        <div class="radio-group">
+        <div class="radio-group" id="fixture-options">
         </div>
       </div>
 
@@ -295,7 +296,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
             Race — I am entering as a competitor
           </label>
           <label class="radio-label">
-            <input type="radio" name="type" value="volunteer">
+            <input type="radio" name="type" value="volunteer" id="type-volunteer">
             Volunteer — I am giving my time to support the event
           </label>
         </div>
@@ -422,11 +423,13 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         <h2>Entry fee</h2>
         <div class="fee-box">
           <div id="fee-amount">Select a fixture above to see the fee.</div>
+          <div id="bank-details">
           <br>
           <strong>Bank transfer only</strong><br>
           Bank: BNZ — Account name: WRECKd — 02-0688-0269592-000<br>
           Use your registration reference as the payment reference.<br>
           Your entry is confirmed once payment is received.
+          </div>
         </div>
       </div>
 
@@ -441,6 +444,7 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       <div class="success-title">Registration submitted. Thank you!</div>
       <div class="ref-box">
         <strong>Reference:</strong> <span id="success-ref"></span><br>
+        <span id="success-pay">
         <strong>Amount due:</strong> <span id="success-amount"></span> NZD<br><br>
         Please transfer to:<br>
         Bank: BNZ<br>
@@ -448,6 +452,8 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         Account number: 02-0688-0269592-000<br>
         Reference: <span id="success-ref-2"></span><br><br>
         Your entry will be confirmed once payment is received.
+        </span>
+        <span id="success-free" class="hidden"><br>No entry fee. You're in.</span>
       </div>
       <p>Please review the <a href="/conditions/">Race Conditions &amp; Code of Conduct</a> before the event. We've also linked it in your confirmation email.</p>
     </div>
@@ -499,15 +505,94 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
 </div>
 
 <script>
+// ── SETUP: the address of the fixtures worker in the club's Cloudflare account ──
 const WORKER_URL = "https://wreckd-fixtures-worker.wreckd.workers.dev";
-const FEES = {};
 
-// Show event info blurbs
-document.querySelectorAll('input[name="fixture"]').forEach(radio => {
-  radio.addEventListener("change", () => {
-    updateFeeDisplay();
+// Filled from the worker's /fixtures list (which comes from data/fixtures/*.yaml)
+const FEES = {};
+const FIXTURE_INFO = {};
+
+function escapeHtml(v) {
+  return String(v == null ? "" : v).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function fixtureLabel(f) {
+  const bits = [];
+  if (f.date) bits.push(escapeHtml(f.date));
+  if (f.location) bits.push(escapeHtml(f.location));
+  bits.push(f.fee ? `$${escapeHtml(f.fee)} entry` : "Free entry");
+  if (f.spots_left !== null && f.spots_left !== undefined) bits.push(`${f.spots_left} race spot${f.spots_left === 1 ? "" : "s"} left`);
+  if (f.closes_text) bits.push(`entries close ${escapeHtml(f.closes_text)}`);
+  const link = f.info_link ? ` · <a href="${escapeHtml(f.info_link)}" target="_blank" rel="noopener">event info</a>` : "";
+  return `<strong>${escapeHtml(f.name)}</strong><br><span style="font-size:0.8rem">${bits.join(" · ")}${link}</span>`;
+}
+
+async function loadFixtures() {
+  const statusEl = document.getElementById("reg-status");
+  let fixtures = [];
+  try {
+    const resp = await fetch(`${WORKER_URL}/fixtures`);
+    if (!resp.ok) throw new Error("bad response");
+    fixtures = (await resp.json()).fixtures || [];
+  } catch (e) {
+    statusEl.innerHTML = "We couldn't load the fixtures list just now. Please refresh the page, or email <a href=\"mailto:office@runs.nz\">office@runs.nz</a>.";
+    return;
+  }
+
+  const open = fixtures.filter(f => f.status === "open");
+  const soon = fixtures.filter(f => f.status === "not_yet_open");
+  const full = fixtures.filter(f => f.status === "full");
+
+  const notes = [];
+  soon.forEach(f => notes.push(`<strong>${escapeHtml(f.name)}</strong>: entries open ${escapeHtml(f.opens_text)}`));
+  full.forEach(f => notes.push(`<strong>${escapeHtml(f.name)}</strong>: race entries are full${f.volunteers ? " (volunteers still welcome: email office@runs.nz)" : ""}`));
+  if (notes.length) {
+    const up = document.getElementById("upcoming");
+    up.innerHTML = `<p>${notes.join("<br>")}</p>`;
+    up.classList.remove("hidden");
+  }
+
+  if (!open.length) {
+    statusEl.innerHTML = "Registration is closed — there are no fixtures currently open for entry. Keep an eye on <a href=\"/fixtures/\">Fixtures</a> for upcoming events.";
+    return;
+  }
+
+  statusEl.textContent = "Members only. Choose your fixture and fill in the form below.";
+  const box = document.getElementById("fixture-options");
+  const wanted = new URLSearchParams(location.search).get("fixture");
+  open.forEach(f => {
+    FEES[f.slug] = f.fee;
+    FIXTURE_INFO[f.slug] = f;
+    const label = document.createElement("label");
+    label.className = "radio-label";
+    label.innerHTML = `<input type="radio" name="fixture" value="${escapeHtml(f.slug)}" required> <span>${fixtureLabel(f)}</span>`;
+    box.appendChild(label);
   });
-});
+  const radios = box.querySelectorAll('input[name="fixture"]');
+  radios.forEach(r => r.addEventListener("change", applyFixtureRules));
+  const pre = Array.from(radios).find(r => r.value === wanted) || (radios.length === 1 ? radios[0] : null);
+  if (pre) { pre.checked = true; applyFixtureRules(); }
+  document.getElementById("form-wrapper").classList.remove("hidden");
+}
+
+// Turn volunteer / team options on or off to suit the chosen fixture
+function applyFixtureRules() {
+  const f = FIXTURE_INFO[getFixture()];
+  const vol = document.getElementById("type-volunteer");
+  if (f) {
+    vol.disabled = !f.volunteers;
+    vol.closest("label").style.opacity = f.volunteers ? "" : "0.4";
+    if (!f.volunteers && vol.checked) {
+      vol.checked = false;
+      document.getElementById("volunteer-roles-section").classList.add("hidden");
+    }
+  }
+  const isRace = getType() === "race";
+  document.getElementById("team-section").classList.toggle("hidden", !isRace || (f && !f.teams));
+  updateFeeDisplay();
+}
+loadFixtures();
 
 function getFixture() {
   const r = document.querySelector('input[name="fixture"]:checked');
@@ -526,10 +611,16 @@ function updateFeeDisplay() {
   const feeAmount = document.getElementById("fee-amount");
   if (type === "race") {
     feeSection.classList.remove("hidden");
+    const bank = document.getElementById("bank-details");
     if (fixture && FEES[fixture]) {
       feeAmount.innerHTML = `Entry fee: <strong>$${FEES[fixture]} NZD</strong>`;
+      bank.classList.remove("hidden");
+    } else if (fixture) {
+      feeAmount.innerHTML = "<strong>Free entry</strong> for WREC'kd members. Nothing to pay.";
+      bank.classList.add("hidden");
     } else {
       feeAmount.textContent = "Select a fixture above to see the fee.";
+      bank.classList.remove("hidden");
     }
   } else {
     feeSection.classList.add("hidden");
@@ -542,9 +633,8 @@ document.querySelectorAll('input[name="type"]').forEach(radio => {
     const isVolunteer = radio.value === "volunteer" && radio.checked;
     const isRace = radio.value === "race" && radio.checked;
     document.getElementById("volunteer-roles-section").classList.toggle("hidden", !isVolunteer);
-    document.getElementById("team-section").classList.toggle("hidden", !isRace);
     document.getElementById("declaration-section").classList.remove("hidden");
-    updateFeeDisplay();
+    applyFixtureRules();
   });
 });
 
@@ -737,6 +827,10 @@ document.querySelectorAll(".modal-overlay").forEach(overlay => {
 document.getElementById("reg-form").addEventListener("submit", e => {
   e.preventDefault();
   const type = getType();
+  if (!getFixture()) {
+    showError("Please select a fixture.");
+    return;
+  }
   if (!type) {
     showError("Please select Race or Volunteer.");
     return;
@@ -834,6 +928,10 @@ async function submitForm(extra) {
       document.getElementById("success-ref").textContent = result.ref;
       document.getElementById("success-ref-2").textContent = result.ref;
       document.getElementById("success-amount").textContent = result.fee;
+      if (!Number(result.fee)) {
+        document.getElementById("success-pay").classList.add("hidden");
+        document.getElementById("success-free").classList.remove("hidden");
+      }
     } else {
       document.getElementById("success-volunteer").classList.remove("hidden");
       document.getElementById("success-ref-vol").textContent = result.ref;

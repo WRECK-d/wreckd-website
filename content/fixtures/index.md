@@ -17,6 +17,8 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 ---
 ### The Ōhau Undertaking
 
+**Entries open now** · close Friday 12 February 2027, 8pm
+
 **Course:** ~25 km / 1,400 m, loop\
 **Route:** Poads Road carpark → Ōhau River → South Ōhau Hut → Dora Saddle → Waiopehu Hut → Poads Road carpark\
 **Dates:** Saturday 13 – Sunday 14 February 2027, start any time from 9am Saturday\
@@ -26,7 +28,8 @@ WREC'kd organises grassroots running activities for its [members](/join/). See o
 **After-match:** Sunday 14 February, 3pm, Long Beach, Waikanae
 
 {{< highlight-box >}}
-**[Ōhau Undertaking →](/ohau-undertaking/)**
+**[Enter the Ōhau Undertaking →](/fixtures/register/?fixture=ohau-undertaking)**\
+[Event info →](/ohau-undertaking/)
 {{< /highlight-box >}}
 
 ---

@@ -1,0 +1,14 @@
+# Ōhau Undertaking: event settings. See _template.yaml for what each line does.
+name: The Ōhau Undertaking
+prefix: OU
+date: Sat 13 – Sun 14 February 2027
+location: Poads Road carpark, Levin
+info_link: /ohau-undertaking/
+fee: 0
+opens: 
+closes: 2027-02-12 20:00
+race_spots: 
+volunteers: yes
+teams: yes
+# Change to yes when you're ready to take entries
+open: no

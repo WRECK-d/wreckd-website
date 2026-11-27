@@ -1,0 +1,46 @@
+# ─────────────────────────────────────────────────────────────
+# WREC'kd event settings: TEMPLATE (this file is ignored)
+#
+# To add an event: copy this file, name the copy after the event
+# using lowercase-and-dashes (e.g. after-dark-round-1.yaml), and
+# change the values below. It goes live within about a minute.
+#
+# The file name (without .yaml) is the event's ID. Don't rename it
+# once people have signed up.
+# ─────────────────────────────────────────────────────────────
+
+# Name shown on the sign-up form
+name: Example Event
+
+# 2–3 letters starting every sign-up reference (EX-SMIT).
+# Must be different for every event, ever. Used to count entries.
+prefix: EX
+
+# Shown on the form. Plain text, write it how you like.
+date: Saturday 1 May 2027
+location: Days Bay Pavilion
+
+# Optional link to the event page
+info_link: /fixtures/
+
+# Entry fee in NZ dollars. 0 = free (no bank details shown)
+fee: 0
+
+# Entries open and close, NZ time. YYYY-MM-DD or YYYY-MM-DD HH:MM
+# A date with no time = start of day for opens, end of day for closes.
+# Leave opens blank to open straight away. closes is required.
+opens: 2027-03-01
+closes: 2027-04-28 20:00
+
+# Maximum race entries. Leave blank for no limit.
+# If someone withdraws and you want to free their spot, add 1.
+race_spots: 
+
+# Can people sign up as volunteers? yes / no
+volunteers: yes
+
+# Show the team name box? yes / no
+teams: yes
+
+# Master switch. Set to no to close entries immediately.
+open: yes

@@ -1,6 +1,6 @@
 name: TEST – ignore
 prefix: ZZ
 fee: 0
-closes: <2027-01-01>
+closes: 2027-01-01
 race_spots: 1
 open: yes

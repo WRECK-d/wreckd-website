@@ -9,6 +9,8 @@ opens:
 closes: 2027-02-12 20:00
 race_spots: 
 volunteers: yes
+# Paste the volunteer WhatsApp invite link here (optional)
+volunteer_chat: https://chat.whatsapp.com/BvexuaqF0Zk16HcfwxWwma?s=cl&p=i&iam=2
 teams: yes
 # Change to yes when you're ready to take entries
 open: yes

@@ -346,12 +346,12 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
         <input type="email" id="email" name="email" required>
         <div id="member-status" class="field-help"></div>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="dob-group">
         <label for="dob">Date of birth *</label>
         <input type="text" id="dob" name="dob" required placeholder="DD/MM/YYYY" inputmode="numeric" pattern="\d{2}/\d{2}/\d{4}" maxlength="10">
         <div class="field-help">Format: DD/MM/YYYY (e.g. 03/11/1979)</div>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="gender-group">
         <label for="gender">Gender *</label>
         <input type="text" id="gender" name="gender" required>
       </div>
@@ -393,11 +393,31 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
           <label class="checkbox-label"><input type="checkbox" id="exp-backcountry" name="experience" value="backcountry"> I have experience running in New Zealand backcountry, or with navigation and multi-day tramping / hiking</label>
           <label class="checkbox-label"><input type="checkbox" name="experience" value="mukamuka"> I have previously completed Mukamuka Munter</label>
           <label class="checkbox-label"><input type="checkbox" name="experience" value="undulator"> I have previously completed Aorangi Undulator</label>
+          <label class="checkbox-label"><input type="checkbox" name="experience" value="volunteered"> I have helped out or volunteered at WREC'kd or other trail / outdoor events</label>
           <label class="checkbox-label"><input type="checkbox" id="exp-none" name="experience" value="none"> None of the above — this may be my first backcountry event</label>
         </div>
         <div id="experience-detail-section" class="hidden" style="margin-top:12px;">
           <label for="experience_detail">Please describe your relevant experience</label>
           <textarea id="experience_detail" name="experience_detail"></textarea>
+        </div>
+      </div>
+
+      <!-- FIRST AID & SKILLS (volunteers only) -->
+      <div id="skills-section" class="hidden">
+        <h2>First aid &amp; useful skills *</h2>
+        <div class="form-group">
+          <label>Do you have first aid training?</label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="first_aid" value="outdoor-or-higher"> Yes — outdoor / pre-hospital first aid or higher (e.g. Outdoor First Aid, PHEC, nurse, paramedic, doctor)</label>
+            <label class="radio-label"><input type="radio" name="first_aid" value="workplace"> Yes — workplace / standard first aid, current</label>
+            <label class="radio-label"><input type="radio" name="first_aid" value="lapsed"> I've done a course but it's lapsed</label>
+            <label class="radio-label"><input type="radio" name="first_aid" value="none"> No</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="skills">Anything else useful?</label>
+          <div class="field-help">Optional. E.g. backcountry medical, search &amp; rescue, radio / comms, navigation, driving a 4WD, photography, or knowing the area and tracks well.</div>
+          <textarea id="skills" name="skills"></textarea>
         </div>
       </div>
 
@@ -458,12 +478,17 @@ button[type=submit]:disabled { opacity: 0.5; cursor: default; }
       <p>Please review the <a href="/conditions/">Race Conditions &amp; Code of Conduct</a> before the event. We've also linked it in your confirmation email.</p>
     </div>
     <div id="success-volunteer" class="hidden">
-      <div class="success-title">Thank you for volunteering!</div>
+      <div class="success-title">Legend, thanks for helping out!</div>
       <div class="ref-box">
         <strong>Reference:</strong> <span id="success-ref-vol"></span><br><br>
-        No payment required. We'll be in touch with arrangements.
+        Here's what happens next:
+        <ul>
+          <li id="vol-chat-line">Jump in the volunteer WhatsApp chat. The Race Director will send you the link.</li>
+          <li>We'll organise a marshal briefing before the event so you know where you'll be and what to do.</li>
+          <li>The Race Director will be in touch with the details.</li>
+        </ul>
       </div>
-      <p>Please review the <a href="/volunteer-arrangements/">Volunteer Arrangements</a> before the event. We've also linked it in your confirmation email.</p>
+      <p>Have a quick read of the <a href="/volunteer-arrangements/">volunteer info</a> before the day.</p>
     </div>
   </div>
 </div>
@@ -558,7 +583,7 @@ async function loadFixtures() {
     return;
   }
 
-  statusEl.textContent = "Members only. Choose your fixture and fill in the form below.";
+  statusEl.textContent = "Racing is for WREC'kd members. Volunteers don't need to be members. Choose your fixture and fill in the form below.";
   const box = document.getElementById("fixture-options");
   const wanted = new URLSearchParams(location.search).get("fixture");
   open.forEach(f => {
@@ -588,8 +613,23 @@ function applyFixtureRules() {
       document.getElementById("volunteer-roles-section").classList.add("hidden");
     }
   }
-  const isRace = getType() === "race";
+  const type = getType();
+  const isRace = type === "race";
+  const isVol = type === "volunteer";
   document.getElementById("team-section").classList.toggle("hidden", !isRace || (f && !f.teams));
+  // Volunteers: no DOB, gender or membership check; ask about first aid & skills
+  document.getElementById("dob-group").classList.toggle("hidden", isVol);
+  document.getElementById("gender-group").classList.toggle("hidden", isVol);
+  document.getElementById("dob").required = !isVol;
+  document.getElementById("gender").required = !isVol;
+  document.getElementById("skills-section").classList.toggle("hidden", !isVol);
+  if (isVol) {
+    memberStatus = null;
+    const ms = document.getElementById("member-status");
+    ms.textContent = "";
+  } else if (isRace && memberStatus === null && document.getElementById("email").value.trim()) {
+    checkMembership();
+  }
   updateFeeDisplay();
 }
 loadFixtures();
@@ -675,6 +715,7 @@ function normalizeTeamName(name) {
 // Check membership when the user finishes typing their email
 let memberStatus = null; // null=unknown, true=member, false=non-member
 async function checkMembership() {
+  if (getType() === "volunteer") return; // volunteers don't need to be members
   const email = document.getElementById("email").value.trim();
   const status = document.getElementById("member-status");
   if (!email || !email.includes("@")) {
@@ -840,11 +881,15 @@ document.getElementById("reg-form").addEventListener("submit", e => {
     showError("Please select at least one option for backcountry & event experience.");
     return;
   }
-  if (!parseDOB(document.getElementById("dob").value.trim())) {
+  if (type === "race" && !parseDOB(document.getElementById("dob").value.trim())) {
     showError("Please enter your date of birth as DD/MM/YYYY.");
     return;
   }
-  if (memberStatus === false) {
+  if (type === "volunteer" && !document.querySelector('input[name="first_aid"]:checked')) {
+    showError("Please answer the first aid question.");
+    return;
+  }
+  if (type === "race" && memberStatus === false) {
     showError("This email is not a registered WREC'kd member. Please join first at /join.");
     return;
   }
@@ -889,8 +934,10 @@ async function submitForm(extra) {
     name: form.name.value.trim(),
     publish_name: document.getElementById("no-publish-name").checked ? "no" : "yes",
     email: form.email.value.trim(),
-    dob: parseDOB(form.dob.value.trim()),
-    gender: form.gender.value.trim(),
+    dob: getType() === "race" ? parseDOB(form.dob.value.trim()) : "",
+    gender: getType() === "race" ? form.gender.value.trim() : "",
+    first_aid: getType() === "volunteer" ? ((document.querySelector('input[name="first_aid"]:checked') || {}).value || "") : "",
+    skills: getType() === "volunteer" ? document.getElementById("skills").value.trim() : "",
     address: form.address.value.trim(),
     mobile: form.mobile.value.trim(),
     alt_contact: form.alt_contact.value.trim(),
@@ -935,6 +982,11 @@ async function submitForm(extra) {
     } else {
       document.getElementById("success-volunteer").classList.remove("hidden");
       document.getElementById("success-ref-vol").textContent = result.ref;
+      if (result.volunteer_chat) {
+        const line = document.getElementById("vol-chat-line");
+        line.innerHTML = 'Jump in the <a href="" target="_blank" rel="noopener">volunteer WhatsApp chat</a>. That\'s where we\'ll share updates.';
+        line.querySelector("a").href = result.volunteer_chat;
+      }
     }
   } catch (err) {
     showError("Network error. Please try again.");

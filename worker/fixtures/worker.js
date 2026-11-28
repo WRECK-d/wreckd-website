@@ -278,6 +278,7 @@ function normaliseEvent(slug, raw) {
     date: raw.date || "",
     location: raw.location || "",
     info_link: raw.info_link || "",
+    volunteer_chat: /^https:\/\//.test(raw.volunteer_chat || "") ? raw.volunteer_chat : "",
     fee: toNumberOrNull(raw.fee) || 0,
     race_spots: toNumberOrNull(raw.race_spots),
     volunteers: yesNo(raw.volunteers, true),
@@ -411,7 +412,11 @@ async function handleRegister(request, env) {
     });
   }
 
-  const missing = REQUIRED_FIELDS.filter((f) => !data[f] || !String(data[f]).trim());
+  // Volunteers don't give date of birth or gender
+  const required = data.type === "volunteer"
+    ? REQUIRED_FIELDS.filter((f) => f !== "dob" && f !== "gender")
+    : REQUIRED_FIELDS;
+  const missing = required.filter((f) => !data[f] || !String(data[f]).trim());
   if (missing.length > 0) {
     return new Response(JSON.stringify({ error: `Missing required fields: ${missing.join(", ")}` }), {
       status: 400,
@@ -441,7 +446,8 @@ async function handleRegister(request, env) {
   if (status === "closed" || status === "misconfigured") return reject(`Registration for ${fixture.name} is closed.`);
   if (status === "full" && data.type === "race") return reject(`Sorry, ${fixture.name} is full.`);
 
-  const memberCheck = await isMember(data.email, env);
+  // Racers must be members; volunteers don't need to be
+  const memberCheck = data.type === "volunteer" ? true : await isMember(data.email, env);
   if (!memberCheck) {
     return new Response(JSON.stringify({
       error: "You must be a paid WREC\u2019kd member to register for a fixture. Please join at wreckd.org.nz/join before registering.",
@@ -476,8 +482,8 @@ async function handleRegister(request, env) {
     name: data.name.trim(),
     publish_name: data.publish_name === "no" ? "no" : "yes",
     email: data.email.trim(),
-    dob: data.dob,
-    gender: data.gender,
+    dob: data.dob || "",
+    gender: data.gender || "",
     address: data.address.trim(),
     mobile: data.mobile.trim(),
     alt_contact: data.alt_contact || "",
@@ -489,6 +495,8 @@ async function handleRegister(request, env) {
     plb: data.plb,
     ...(data.type === "volunteer" ? {
       volunteer_roles: data.volunteer_roles || "",
+      first_aid: data.first_aid || "",
+      skills: data.skills || "",
       volunteer_declaration_name: data.volunteer_declaration_name || "",
     } : {
       race_declaration_name: data.race_declaration_name || "",
@@ -511,6 +519,8 @@ async function handleRegister(request, env) {
     ref,
     type: data.type,
     fee: data.type === "race" ? fixture.fee : 0,
+    // Only given to people who've just signed up as volunteers, never published
+    ...(data.type === "volunteer" && fixture.volunteer_chat ? { volunteer_chat: fixture.volunteer_chat } : {}),
   }), {
     status: 200,
     headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
